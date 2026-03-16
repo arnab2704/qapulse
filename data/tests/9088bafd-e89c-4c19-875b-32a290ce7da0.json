@@ -1,0 +1,24 @@
+[
+  {
+    "id": "b7d65092-5c37-44a3-9271-353ebd87fee3",
+    "run_id": "f725b72f-36fe-45fa-a127-5423b0df4cd1",
+    "name": "BasketAPIAddItem",
+    "full_name": "com.example.retail.tests.APITest.testBasketAPIAddItem",
+    "suite": "APITest",
+    "feature": "API Layer",
+    "status": "failed",
+    "duration_ms": 3156,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@api",
+      "@smoke"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

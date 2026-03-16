@@ -1,0 +1,23 @@
+[
+  {
+    "id": "37b8955e-939e-4173-9235-695e3bfae778",
+    "run_id": "ce08850c-6c33-414a-b9f2-39bc42118b37",
+    "name": "DuplicateEmailBlocked",
+    "full_name": "com.example.retail.tests.RegistrationTest.testDuplicateEmailBlocked",
+    "suite": "RegistrationTest",
+    "feature": "User Registration",
+    "status": "failed",
+    "duration_ms": 4967,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@regression"
+    ],
+    "region": "AT",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

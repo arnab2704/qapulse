@@ -1,0 +1,23 @@
+[
+  {
+    "id": "a6e51972-6d47-435e-bd0c-a680656f4689",
+    "run_id": "48a7b791-0695-4a8d-bc0d-22c537ec9460",
+    "name": "Autocomplete",
+    "full_name": "com.example.retail.tests.SearchTest.testAutocomplete",
+    "suite": "SearchTest",
+    "feature": "Search",
+    "status": "failed",
+    "duration_ms": 4596,
+    "error_msg": "AssertionError: Unexpected HTTP 500 from product service",
+    "error_type": "AssertionError",
+    "stack_trace": "com.example.RetailException\n\tat BaseTest.java:22",
+    "tags": [
+      "@regression"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

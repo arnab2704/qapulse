@@ -1,0 +1,23 @@
+[
+  {
+    "id": "befbebb2-faa9-4623-9020-db507617b372",
+    "run_id": "ce35f9cb-0c93-4fa7-b7d9-bf6c3e1fa139",
+    "name": "RemoveItemUpdatesTotal",
+    "full_name": "com.example.retail.tests.BasketTest.testRemoveItemUpdatesTotal",
+    "suite": "BasketTest",
+    "feature": "Basket",
+    "status": "passed",
+    "duration_ms": 2962,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

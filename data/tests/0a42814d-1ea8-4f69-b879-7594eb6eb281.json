@@ -1,0 +1,24 @@
+[
+  {
+    "id": "ed56628d-907e-46de-ac2e-9145ef5b2f4c",
+    "run_id": "034c76cf-d6a9-419c-a0ca-e38cc713838b",
+    "name": "VatLabelCorrect",
+    "full_name": "com.example.retail.tests.ProductDetailTest.testVatLabelCorrect",
+    "suite": "ProductDetailTest",
+    "feature": "Product Detail Page",
+    "status": "passed",
+    "duration_ms": 5195,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@localisation"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

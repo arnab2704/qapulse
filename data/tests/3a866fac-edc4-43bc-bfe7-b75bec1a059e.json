@@ -1,0 +1,24 @@
+[
+  {
+    "id": "b45fa21e-02b9-4ca0-943d-b2703ac51aaa",
+    "run_id": "a9a3ace2-b26c-4989-82ef-ceeecbf45fb7",
+    "name": "ImagesAltText",
+    "full_name": "com.example.retail.tests.AccessibilityTest.testImagesAltText",
+    "suite": "AccessibilityTest",
+    "feature": "Accessibility",
+    "status": "failed",
+    "duration_ms": 2031,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@a11y",
+      "@wcag"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

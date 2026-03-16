@@ -1,0 +1,24 @@
+[
+  {
+    "id": "9f096bcf-e300-41d3-af10-2878c1f5f379",
+    "run_id": "3defac14-4adb-41e9-831a-36ce51d98c39",
+    "name": "AuthAPITokenRefresh",
+    "full_name": "com.example.retail.tests.APITest.testAuthAPITokenRefresh",
+    "suite": "APITest",
+    "feature": "API Layer",
+    "status": "failed",
+    "duration_ms": 4657,
+    "error_msg": "AssertionError: Unexpected HTTP 500 from product service",
+    "error_type": "AssertionError",
+    "stack_trace": "com.example.RetailException\n\tat BaseTest.java:22",
+    "tags": [
+      "@api",
+      "@smoke"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 1
+  }
+]

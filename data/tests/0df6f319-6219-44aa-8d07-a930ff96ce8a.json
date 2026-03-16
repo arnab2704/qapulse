@@ -1,0 +1,24 @@
+[
+  {
+    "id": "43ce47b4-a3fc-410f-972a-0a54fe3aca26",
+    "run_id": "31724990-0b31-480d-a3fd-aaf48667b282",
+    "name": "PromoCodeDiscount",
+    "full_name": "com.example.retail.tests.BasketTest.testPromoCodeDiscount",
+    "suite": "BasketTest",
+    "feature": "Basket",
+    "status": "failed",
+    "duration_ms": 2900,
+    "error_msg": "AssertionError: Unexpected HTTP 500 from product service",
+    "error_type": "AssertionError",
+    "stack_trace": "com.example.RetailException\n\tat BaseTest.java:22",
+    "tags": [
+      "@regression",
+      "@promo"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

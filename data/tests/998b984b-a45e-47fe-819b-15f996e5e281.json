@@ -1,0 +1,25 @@
+[
+  {
+    "id": "e96da248-916a-4872-87ec-c575a716e8bd",
+    "run_id": "435ab14f-7498-485c-9f6a-92aebe699468",
+    "name": "GuestCheckoutLoads",
+    "full_name": "com.example.retail.tests.CheckoutTest.testGuestCheckoutLoads",
+    "suite": "CheckoutTest",
+    "feature": "Checkout",
+    "status": "failed",
+    "duration_ms": 4375,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@smoke",
+      "@checkout",
+      "@critical"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "fd588c62-6ded-4e9a-9b3b-5789ecb807be",
+    "run_id": "8a8067c0-552f-4073-8e59-25d7d285cfbc",
+    "name": "HerobannerDisplayed",
+    "full_name": "com.example.retail.tests.HomepageTest.testHerobannerDisplayed",
+    "suite": "HomepageTest",
+    "feature": "Homepage",
+    "status": "failed",
+    "duration_ms": 2879,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@smoke",
+      "@homepage"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

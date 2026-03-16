@@ -1,0 +1,24 @@
+[
+  {
+    "id": "59946d7c-81c0-4952-9cf7-b8a352521cc6",
+    "run_id": "b6843660-7f48-4d1b-9f35-2df5da317701",
+    "name": "ProductTitleVisible",
+    "full_name": "com.example.retail.tests.ProductDetailTest.testProductTitleVisible",
+    "suite": "ProductDetailTest",
+    "feature": "Product Detail Page",
+    "status": "passed",
+    "duration_ms": 1130,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@pdp"
+    ],
+    "region": "AT",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

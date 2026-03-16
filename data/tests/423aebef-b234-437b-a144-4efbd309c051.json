@@ -1,0 +1,24 @@
+[
+  {
+    "id": "b4c5f8f0-0cdb-4311-a67a-54be1422e1ce",
+    "run_id": "255328cf-a5ac-4fdd-bb28-8a36eeb1396c",
+    "name": "ViewportMetaCorrect",
+    "full_name": "com.example.retail.tests.MobileTest.testViewportMetaCorrect",
+    "suite": "MobileTest",
+    "feature": "Mobile Navigation",
+    "status": "passed",
+    "duration_ms": 1083,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression",
+      "@mobile"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

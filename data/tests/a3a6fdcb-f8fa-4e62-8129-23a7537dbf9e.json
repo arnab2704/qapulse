@@ -1,0 +1,24 @@
+[
+  {
+    "id": "2057163e-62c1-4a32-9d43-ad6474f842ff",
+    "run_id": "6241e151-c76a-4a24-bfe3-89bc2a6fdb61",
+    "name": "ConsentPreferencesSaved",
+    "full_name": "com.example.retail.tests.GDPRTest.testConsentPreferencesSaved",
+    "suite": "GDPRTest",
+    "feature": "GDPR",
+    "status": "failed",
+    "duration_ms": 3085,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@gdpr",
+      "@compliance"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

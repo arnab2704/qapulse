@@ -1,0 +1,24 @@
+[
+  {
+    "id": "e43a70c3-8765-409e-afcb-df3c02e6b0ae",
+    "run_id": "f10194fb-9234-45a5-af5b-f35a17bc5b0a",
+    "name": "CategoryPageLoads",
+    "full_name": "com.example.retail.tests.CatalogueTest.testCategoryPageLoads",
+    "suite": "CatalogueTest",
+    "feature": "Product Catalogue",
+    "status": "failed",
+    "duration_ms": 1297,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@smoke",
+      "@catalogue"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

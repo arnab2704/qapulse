@@ -1,0 +1,25 @@
+[
+  {
+    "id": "e85889fa-8fab-4535-af74-ea3b955027c2",
+    "run_id": "d321eea6-27b2-4a9e-8c69-aadbc0adfda2",
+    "name": "BasketTotalsCorrect",
+    "full_name": "com.example.retail.tests.BasketTest.testBasketTotalsCorrect",
+    "suite": "BasketTest",
+    "feature": "Basket",
+    "status": "failed",
+    "duration_ms": 5303,
+    "error_msg": "AssertionError: Basket total €129.99 expected €124.99 — VAT overcalculated",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BasketTest.java:88",
+    "tags": [
+      "@smoke",
+      "@basket",
+      "@critical"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "05a3b868-e639-4067-ad24-90c1f841ff05",
+    "run_id": "357afc6e-8dc0-45db-b730-5e26dc8bb078",
+    "name": "ProductPageCLS",
+    "full_name": "com.example.retail.tests.PerformanceTest.testProductPageCLS",
+    "suite": "PerformanceTest",
+    "feature": "Performance",
+    "status": "failed",
+    "duration_ms": 2034,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@performance",
+      "@cwv"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

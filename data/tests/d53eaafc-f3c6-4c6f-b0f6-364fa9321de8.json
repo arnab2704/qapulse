@@ -1,0 +1,24 @@
+[
+  {
+    "id": "22bfeea0-90ed-4daf-ad9c-45b692dc6a2f",
+    "run_id": "017dc9aa-73c8-41e2-a6c2-48dab38b7c49",
+    "name": "HerobannerDisplayed",
+    "full_name": "com.example.retail.tests.HomepageTest.testHerobannerDisplayed",
+    "suite": "HomepageTest",
+    "feature": "Homepage",
+    "status": "passed",
+    "duration_ms": 5609,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@homepage"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

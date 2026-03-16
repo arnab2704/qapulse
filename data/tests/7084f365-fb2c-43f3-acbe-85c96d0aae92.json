@@ -1,0 +1,24 @@
+[
+  {
+    "id": "d770b4ce-32ca-4eb5-ad0d-b958cf1e03c7",
+    "run_id": "1d36bfda-7a06-4776-a5a2-efec37e21e92",
+    "name": "NewUserRegistration",
+    "full_name": "com.example.retail.tests.RegistrationTest.testNewUserRegistration",
+    "suite": "RegistrationTest",
+    "feature": "User Registration",
+    "status": "passed",
+    "duration_ms": 3661,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@registration"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

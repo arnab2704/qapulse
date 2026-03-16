@@ -1,0 +1,24 @@
+[
+  {
+    "id": "95af7d40-438f-4d1a-94bc-8fa645709324",
+    "run_id": "7d22ebaf-7238-4408-889e-ff920caea7e7",
+    "name": "ProductAPIResponse200",
+    "full_name": "com.example.retail.tests.APITest.testProductAPIResponse200",
+    "suite": "APITest",
+    "feature": "API Layer",
+    "status": "passed",
+    "duration_ms": 3184,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@api",
+      "@smoke"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

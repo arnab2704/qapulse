@@ -1,0 +1,24 @@
+[
+  {
+    "id": "5844e7f8-bb2e-4c57-983d-ad54bf80e7c3",
+    "run_id": "c2bdd85f-8780-4af2-8616-1d4b1f2bf82d",
+    "name": "CategoryPageLCP",
+    "full_name": "com.example.retail.tests.PerformanceTest.testCategoryPageLCP",
+    "suite": "PerformanceTest",
+    "feature": "Performance",
+    "status": "passed",
+    "duration_ms": 349,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@performance",
+      "@cwv"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "fd66d63c-2ea9-4513-a226-e1c24b085d1e",
+    "run_id": "39e1afe8-746b-4e38-9ad8-ffbe721f1cff",
+    "name": "ViewportMetaCorrect",
+    "full_name": "com.example.retail.tests.MobileTest.testViewportMetaCorrect",
+    "suite": "MobileTest",
+    "feature": "Mobile Navigation",
+    "status": "failed",
+    "duration_ms": 5435,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@regression",
+      "@mobile"
+    ],
+    "region": "AT",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

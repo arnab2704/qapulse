@@ -1,0 +1,24 @@
+[
+  {
+    "id": "d657020e-732e-4cc3-9c42-f7696c8206cb",
+    "run_id": "877a98e5-10c0-4479-9241-2cf850f05ee9",
+    "name": "NavigationMenuAllLinks",
+    "full_name": "com.example.retail.tests.HomepageTest.testNavigationMenuAllLinks",
+    "suite": "HomepageTest",
+    "feature": "Homepage",
+    "status": "passed",
+    "duration_ms": 3298,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@nav"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

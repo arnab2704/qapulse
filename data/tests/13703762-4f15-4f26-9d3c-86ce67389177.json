@@ -1,0 +1,24 @@
+[
+  {
+    "id": "8dffd7c7-e15b-4455-b591-8439fe9f2747",
+    "run_id": "8bad61c7-25e7-40e9-89eb-bac0ed24faa1",
+    "name": "OrderHistoryPage",
+    "full_name": "com.example.retail.tests.AccountTest.testOrderHistoryPage",
+    "suite": "AccountTest",
+    "feature": "User Account",
+    "status": "passed",
+    "duration_ms": 2392,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression",
+      "@account"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "8b9fba15-bbc8-4d17-bdd6-4c186d20e781",
+    "run_id": "1b53776d-edc9-40b5-9a7e-75fef8f4394c",
+    "name": "Autocomplete",
+    "full_name": "com.example.retail.tests.SearchTest.testAutocomplete",
+    "suite": "SearchTest",
+    "feature": "Search",
+    "status": "passed",
+    "duration_ms": 4396,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

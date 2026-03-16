@@ -1,0 +1,24 @@
+[
+  {
+    "id": "ae7e2281-2d17-4196-a474-260bc1c5b41a",
+    "run_id": "0b508398-4f1a-43f4-9c07-94c817caa2da",
+    "name": "FailedLoginInvalidPassword",
+    "full_name": "com.example.retail.tests.LoginTest.testFailedLoginInvalidPassword",
+    "suite": "LoginTest",
+    "feature": "User Authentication",
+    "status": "failed",
+    "duration_ms": 3796,
+    "error_msg": "AssertionError: Unexpected HTTP 500 from product service",
+    "error_type": "AssertionError",
+    "stack_trace": "com.example.RetailException\n\tat BaseTest.java:22",
+    "tags": [
+      "@regression",
+      "@login"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

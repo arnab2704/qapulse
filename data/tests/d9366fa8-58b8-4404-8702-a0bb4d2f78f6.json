@@ -1,0 +1,24 @@
+[
+  {
+    "id": "ef45855e-c774-44c4-9cb4-6a209076d543",
+    "run_id": "439809a3-50f1-48dd-946c-a07458419a3d",
+    "name": "PasswordReset",
+    "full_name": "com.example.retail.tests.AccountTest.testPasswordReset",
+    "suite": "AccountTest",
+    "feature": "User Account",
+    "status": "passed",
+    "duration_ms": 4939,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression",
+      "@password"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

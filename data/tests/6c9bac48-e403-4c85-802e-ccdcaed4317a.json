@@ -1,0 +1,25 @@
+[
+  {
+    "id": "db8276d7-d1e4-4150-9bf7-ef5c0b2a0d7c",
+    "run_id": "861424dd-5918-4d77-92ac-1b357ad7b59a",
+    "name": "KeyboardNavCheckout",
+    "full_name": "com.example.retail.tests.AccessibilityTest.testKeyboardNavCheckout",
+    "suite": "AccessibilityTest",
+    "feature": "Accessibility",
+    "status": "passed",
+    "duration_ms": 2928,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@a11y",
+      "@wcag",
+      "@critical"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

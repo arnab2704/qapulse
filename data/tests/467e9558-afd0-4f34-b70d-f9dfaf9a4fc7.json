@@ -1,0 +1,24 @@
+[
+  {
+    "id": "502a2064-d3a6-4aec-a122-be104194c936",
+    "run_id": "afd67316-99d8-4e32-9bed-d9fe13729846",
+    "name": "PaymentWithExpiredCard",
+    "full_name": "com.example.retail.tests.CheckoutTest.testPaymentWithExpiredCard",
+    "suite": "CheckoutTest",
+    "feature": "Checkout",
+    "status": "passed",
+    "duration_ms": 3547,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression",
+      "@payment"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

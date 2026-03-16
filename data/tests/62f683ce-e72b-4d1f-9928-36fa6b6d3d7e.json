@@ -1,0 +1,24 @@
+[
+  {
+    "id": "a5e23c46-b7b3-417c-bea3-1f4fc9ec1dd4",
+    "run_id": "15627f05-1a67-4dfc-a0eb-215443014dde",
+    "name": "AuthAPITokenRefresh",
+    "full_name": "com.example.retail.tests.APITest.testAuthAPITokenRefresh",
+    "suite": "APITest",
+    "feature": "API Layer",
+    "status": "passed",
+    "duration_ms": 3446,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@api",
+      "@smoke"
+    ],
+    "region": "AT",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "296339b5-8828-4d84-a94b-e377d597a689",
+    "run_id": "b2613ea0-f214-483d-8011-ac2f1c990a01",
+    "name": "ConsentPreferencesSaved",
+    "full_name": "com.example.retail.tests.GDPRTest.testConsentPreferencesSaved",
+    "suite": "GDPRTest",
+    "feature": "GDPR",
+    "status": "passed",
+    "duration_ms": 5589,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@gdpr",
+      "@compliance"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

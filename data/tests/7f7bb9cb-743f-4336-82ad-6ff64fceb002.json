@@ -1,0 +1,24 @@
+[
+  {
+    "id": "bd1296cf-ee59-441d-a28c-5b17495a7145",
+    "run_id": "3d377217-fdb4-4939-8d76-ab8bb4bd8517",
+    "name": "PaymentWithExpiredCard",
+    "full_name": "com.example.retail.tests.CheckoutTest.testPaymentWithExpiredCard",
+    "suite": "CheckoutTest",
+    "feature": "Checkout",
+    "status": "failed",
+    "duration_ms": 5451,
+    "error_msg": "TimeoutException: Payment validation endpoint offline after v2.2 deploy",
+    "error_type": "AssertionError",
+    "stack_trace": "org.openqa.selenium.TimeoutException\n\tat CheckoutTest.java:221",
+    "tags": [
+      "@regression",
+      "@payment"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

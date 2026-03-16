@@ -1,0 +1,24 @@
+[
+  {
+    "id": "33a4bbcb-a5b2-4b24-ae07-29288844fbf2",
+    "run_id": "f55d2cff-af61-4656-bff6-3d8fa8c4901c",
+    "name": "TouchTargetsSized",
+    "full_name": "com.example.retail.tests.MobileTest.testTouchTargetsSized",
+    "suite": "MobileTest",
+    "feature": "Mobile Navigation",
+    "status": "passed",
+    "duration_ms": 477,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression",
+      "@mobile"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

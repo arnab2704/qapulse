@@ -1,0 +1,24 @@
+[
+  {
+    "id": "b612784c-1034-4d52-ab07-ad74dc31ebef",
+    "run_id": "0d4fecd8-b289-4c05-bd2c-b19e01715d89",
+    "name": "MobileMenuOpens",
+    "full_name": "com.example.retail.tests.MobileTest.testMobileMenuOpens",
+    "suite": "MobileTest",
+    "feature": "Mobile Navigation",
+    "status": "passed",
+    "duration_ms": 4898,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@mobile"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

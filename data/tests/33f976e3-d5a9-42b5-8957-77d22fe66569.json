@@ -1,0 +1,25 @@
+[
+  {
+    "id": "a09f5196-a3aa-42fd-9c11-a2ed49d029c6",
+    "run_id": "7065d179-e8f4-493c-810c-62534fa25761",
+    "name": "KeyboardNavCheckout",
+    "full_name": "com.example.retail.tests.AccessibilityTest.testKeyboardNavCheckout",
+    "suite": "AccessibilityTest",
+    "feature": "Accessibility",
+    "status": "failed",
+    "duration_ms": 721,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@a11y",
+      "@wcag",
+      "@critical"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

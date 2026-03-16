@@ -1,0 +1,25 @@
+[
+  {
+    "id": "782d65f8-76d1-4d55-9a2b-328491d1af14",
+    "run_id": "834a8f53-64d4-49c6-b5d9-9c9821aea27d",
+    "name": "OrderAPICreateOrder",
+    "full_name": "com.example.retail.tests.APITest.testOrderAPICreateOrder",
+    "suite": "APITest",
+    "feature": "API Layer",
+    "status": "passed",
+    "duration_ms": 2174,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@api",
+      "@smoke",
+      "@critical"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

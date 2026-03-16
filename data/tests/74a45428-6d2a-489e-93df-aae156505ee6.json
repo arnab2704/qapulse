@@ -1,0 +1,25 @@
+[
+  {
+    "id": "b1409a01-1092-4bca-beb9-49eb07148523",
+    "run_id": "86c11af3-9a7a-4eb1-bd91-d99c31e4f84e",
+    "name": "OrderSummaryMatchesBasket",
+    "full_name": "com.example.retail.tests.CheckoutTest.testOrderSummaryMatchesBasket",
+    "suite": "CheckoutTest",
+    "feature": "Checkout",
+    "status": "passed",
+    "duration_ms": 2991,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@checkout",
+      "@critical"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

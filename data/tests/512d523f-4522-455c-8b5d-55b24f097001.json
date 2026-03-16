@@ -1,0 +1,24 @@
+[
+  {
+    "id": "6cce7171-a496-42bd-8b51-b042a5e57725",
+    "run_id": "958b9222-902a-49d2-89bf-f3571a253c55",
+    "name": "CurrencyDisplayedCorrectly",
+    "full_name": "com.example.retail.tests.CatalogueTest.testCurrencyDisplayedCorrectly",
+    "suite": "CatalogueTest",
+    "feature": "Product Catalogue",
+    "status": "failed",
+    "duration_ms": 3681,
+    "error_msg": "AssertionError: Unexpected HTTP 500 from product service",
+    "error_type": "AssertionError",
+    "stack_trace": "com.example.RetailException\n\tat BaseTest.java:22",
+    "tags": [
+      "@smoke",
+      "@localisation"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

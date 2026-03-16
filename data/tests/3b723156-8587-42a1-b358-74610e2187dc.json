@@ -1,0 +1,23 @@
+[
+  {
+    "id": "13051db0-84e5-4a31-b528-bd6d3623f09d",
+    "run_id": "028d1e73-12c0-4bce-835b-d0147a47ca75",
+    "name": "LoginWithRememberMe",
+    "full_name": "com.example.retail.tests.LoginTest.testLoginWithRememberMe",
+    "suite": "LoginTest",
+    "feature": "User Authentication",
+    "status": "passed",
+    "duration_ms": 3918,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

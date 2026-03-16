@@ -1,0 +1,24 @@
+[
+  {
+    "id": "715ee97c-9a83-467b-ae69-450c59cb57ca",
+    "run_id": "47cbf9b3-7784-4ff8-8c83-4e687d2dbd88",
+    "name": "NavigationMenuAllLinks",
+    "full_name": "com.example.retail.tests.HomepageTest.testNavigationMenuAllLinks",
+    "suite": "HomepageTest",
+    "feature": "Homepage",
+    "status": "failed",
+    "duration_ms": 3509,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@smoke",
+      "@nav"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

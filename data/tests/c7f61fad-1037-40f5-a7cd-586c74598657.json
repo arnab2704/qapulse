@@ -1,0 +1,24 @@
+[
+  {
+    "id": "987ae29f-3688-4adf-9693-79a25e6ae0f5",
+    "run_id": "a9c183db-c91f-4dfb-bdf6-d492b212ec3e",
+    "name": "PasswordReset",
+    "full_name": "com.example.retail.tests.AccountTest.testPasswordReset",
+    "suite": "AccountTest",
+    "feature": "User Account",
+    "status": "failed",
+    "duration_ms": 2670,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@regression",
+      "@password"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

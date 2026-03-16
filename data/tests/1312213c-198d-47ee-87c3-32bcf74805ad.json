@@ -1,0 +1,25 @@
+[
+  {
+    "id": "3ca2a07a-073b-48b6-92a0-97c094aff228",
+    "run_id": "21c744c0-3dc2-4932-af56-2b56e2517422",
+    "name": "OrderSummaryMatchesBasket",
+    "full_name": "com.example.retail.tests.CheckoutTest.testOrderSummaryMatchesBasket",
+    "suite": "CheckoutTest",
+    "feature": "Checkout",
+    "status": "failed",
+    "duration_ms": 1856,
+    "error_msg": "AssertionError: VAT calculation wrong in order summary — 19% applied instead of 20%",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat CheckoutTest.java:179",
+    "tags": [
+      "@smoke",
+      "@checkout",
+      "@critical"
+    ],
+    "region": "AT",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

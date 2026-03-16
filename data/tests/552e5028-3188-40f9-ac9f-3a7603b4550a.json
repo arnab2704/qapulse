@@ -1,0 +1,25 @@
+[
+  {
+    "id": "61997a3b-5b1c-43df-ab37-e0fd93f95e55",
+    "run_id": "3d66668d-6df5-4823-af17-3977c60a77af",
+    "name": "PaymentFormAcceptsCard",
+    "full_name": "com.example.retail.tests.CheckoutTest.testPaymentFormAcceptsCard",
+    "suite": "CheckoutTest",
+    "feature": "Checkout",
+    "status": "failed",
+    "duration_ms": 2082,
+    "error_msg": "AssertionError: Payment gateway returned HTTP 502 — regression in v2.2 deploy",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat CheckoutTest.java:203\n\tat Release22Deploy.java:89",
+    "tags": [
+      "@smoke",
+      "@payment",
+      "@critical"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

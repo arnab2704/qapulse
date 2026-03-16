@@ -1,0 +1,24 @@
+[
+  {
+    "id": "6421aa3c-dc5c-42fb-8e4e-c1a420a4b53f",
+    "run_id": "0c5fe2b6-f14f-4e7e-88d5-b574533c3473",
+    "name": "ImagesAltText",
+    "full_name": "com.example.retail.tests.AccessibilityTest.testImagesAltText",
+    "suite": "AccessibilityTest",
+    "feature": "Accessibility",
+    "status": "passed",
+    "duration_ms": 1793,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@a11y",
+      "@wcag"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "831d9f65-6cf7-4875-a70c-636c5e01261b",
+    "run_id": "82c02179-3b24-4e78-a87e-56b883c85bb8",
+    "name": "DateFormats",
+    "full_name": "com.example.retail.tests.LocalisationTest.testDateFormats",
+    "suite": "LocalisationTest",
+    "feature": "Localisation",
+    "status": "failed",
+    "duration_ms": 2641,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@regression",
+      "@localisation"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

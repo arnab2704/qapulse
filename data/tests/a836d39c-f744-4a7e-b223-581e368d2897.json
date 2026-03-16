@@ -1,0 +1,24 @@
+[
+  {
+    "id": "b7044062-fc87-4855-afec-b49a322b3373",
+    "run_id": "61872e20-6382-4bbf-a72c-2e5851a0ff09",
+    "name": "CategoryPageLoads",
+    "full_name": "com.example.retail.tests.CatalogueTest.testCategoryPageLoads",
+    "suite": "CatalogueTest",
+    "feature": "Product Catalogue",
+    "status": "passed",
+    "duration_ms": 1318,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@catalogue"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

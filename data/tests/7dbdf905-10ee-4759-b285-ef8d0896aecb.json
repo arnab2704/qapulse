@@ -1,0 +1,25 @@
+[
+  {
+    "id": "1e6b0017-569e-421a-82d8-d843b6e110b6",
+    "run_id": "04f826bd-58cc-43d6-8229-52ee3c8831c0",
+    "name": "BasketTotalsCorrect",
+    "full_name": "com.example.retail.tests.BasketTest.testBasketTotalsCorrect",
+    "suite": "BasketTest",
+    "feature": "Basket",
+    "status": "passed",
+    "duration_ms": 3526,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@basket",
+      "@critical"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

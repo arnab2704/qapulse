@@ -1,0 +1,25 @@
+[
+  {
+    "id": "451b41ca-53e4-430c-aaa9-049a9921f29a",
+    "run_id": "df5e56a1-a113-4f3c-91b9-086a3314517f",
+    "name": "AddToBasketButton",
+    "full_name": "com.example.retail.tests.ProductDetailTest.testAddToBasketButton",
+    "suite": "ProductDetailTest",
+    "feature": "Product Detail Page",
+    "status": "passed",
+    "duration_ms": 5015,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@basket",
+      "@critical"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

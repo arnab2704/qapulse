@@ -1,0 +1,24 @@
+[
+  {
+    "id": "9fca825c-b06a-4868-b45f-343f14bb2cf8",
+    "run_id": "96b39a17-c713-40d2-bd10-fe284da1b092",
+    "name": "ProductPageCLS",
+    "full_name": "com.example.retail.tests.PerformanceTest.testProductPageCLS",
+    "suite": "PerformanceTest",
+    "feature": "Performance",
+    "status": "passed",
+    "duration_ms": 1990,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@performance",
+      "@cwv"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

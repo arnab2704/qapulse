@@ -1,0 +1,24 @@
+[
+  {
+    "id": "ee78a3c9-87a5-4e7d-a28d-bda081f78511",
+    "run_id": "325c54af-5dfe-453e-b15e-76e9d8e43cdf",
+    "name": "DateFormats",
+    "full_name": "com.example.retail.tests.LocalisationTest.testDateFormats",
+    "suite": "LocalisationTest",
+    "feature": "Localisation",
+    "status": "failed",
+    "duration_ms": 2489,
+    "error_msg": "AssertionError: Unexpected HTTP 500 from product service",
+    "error_type": "AssertionError",
+    "stack_trace": "com.example.RetailException\n\tat BaseTest.java:22",
+    "tags": [
+      "@regression",
+      "@localisation"
+    ],
+    "region": "AT",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

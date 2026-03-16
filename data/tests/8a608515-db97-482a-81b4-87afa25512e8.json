@@ -1,0 +1,24 @@
+[
+  {
+    "id": "53ba7844-d2b4-43ee-8e06-d1a790c50ad8",
+    "run_id": "2508da95-a297-47f8-8b9b-3f41c4c7f976",
+    "name": "BasketCountUpdates",
+    "full_name": "com.example.retail.tests.BasketTest.testBasketCountUpdates",
+    "suite": "BasketTest",
+    "feature": "Basket",
+    "status": "passed",
+    "duration_ms": 2949,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@basket"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "8a11d37d-f503-4e67-beef-c0e3a63c8fde",
+    "run_id": "352a74c9-2e49-416f-93b7-3dd00df21f17",
+    "name": "PromoCodeDiscount",
+    "full_name": "com.example.retail.tests.BasketTest.testPromoCodeDiscount",
+    "suite": "BasketTest",
+    "feature": "Basket",
+    "status": "passed",
+    "duration_ms": 3544,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression",
+      "@promo"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

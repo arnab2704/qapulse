@@ -1,0 +1,24 @@
+[
+  {
+    "id": "7277a202-1c17-4559-bf3a-c33458b1ca51",
+    "run_id": "0fe638b0-2a06-4fb1-af09-3eaa68e52026",
+    "name": "UpdateDeliveryAddress",
+    "full_name": "com.example.retail.tests.AccountTest.testUpdateDeliveryAddress",
+    "suite": "AccountTest",
+    "feature": "User Account",
+    "status": "passed",
+    "duration_ms": 4990,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression",
+      "@account"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

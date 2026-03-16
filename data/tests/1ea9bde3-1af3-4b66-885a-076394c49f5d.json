@@ -1,0 +1,25 @@
+[
+  {
+    "id": "a1ca7cef-0905-4c09-b323-02fbc4de65d3",
+    "run_id": "94198763-f1c2-4641-9c28-78289f35a5b8",
+    "name": "PaymentFormAcceptsCard",
+    "full_name": "com.example.retail.tests.CheckoutTest.testPaymentFormAcceptsCard",
+    "suite": "CheckoutTest",
+    "feature": "Checkout",
+    "status": "failed",
+    "duration_ms": 4609,
+    "error_msg": "AssertionError: Stripe redirect broken on AT locale after v2.2 deploy",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat CheckoutTest.java:205",
+    "tags": [
+      "@smoke",
+      "@payment",
+      "@critical"
+    ],
+    "region": "AT",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

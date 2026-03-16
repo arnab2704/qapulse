@@ -1,0 +1,24 @@
+[
+  {
+    "id": "87146177-2e2c-4f04-abff-e0a1f81db00b",
+    "run_id": "8aea661f-7257-4710-840e-98291b7a9426",
+    "name": "ProductFiltersWork",
+    "full_name": "com.example.retail.tests.CatalogueTest.testProductFiltersWork",
+    "suite": "CatalogueTest",
+    "feature": "Product Catalogue",
+    "status": "failed",
+    "duration_ms": 1328,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@regression",
+      "@filters"
+    ],
+    "region": "AT",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

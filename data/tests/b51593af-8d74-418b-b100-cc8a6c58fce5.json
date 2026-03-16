@@ -1,0 +1,24 @@
+[
+  {
+    "id": "e6db6efa-f225-468f-80b8-7aedccc3ea09",
+    "run_id": "d22bb156-4198-4cab-a09f-9fe3cd5601e1",
+    "name": "FailedLoginInvalidPassword",
+    "full_name": "com.example.retail.tests.LoginTest.testFailedLoginInvalidPassword",
+    "suite": "LoginTest",
+    "feature": "User Authentication",
+    "status": "passed",
+    "duration_ms": 4065,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression",
+      "@login"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

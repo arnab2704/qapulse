@@ -1,0 +1,23 @@
+[
+  {
+    "id": "ede8fd97-d3f2-448f-938b-bd87df00c7c6",
+    "run_id": "80a3ad1d-8c47-4f10-ae3f-767a4e0957de",
+    "name": "SortByPriceLowHigh",
+    "full_name": "com.example.retail.tests.CatalogueTest.testSortByPriceLowHigh",
+    "suite": "CatalogueTest",
+    "feature": "Product Catalogue",
+    "status": "passed",
+    "duration_ms": 2398,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

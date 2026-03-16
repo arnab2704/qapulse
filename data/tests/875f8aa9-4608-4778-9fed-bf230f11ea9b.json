@@ -1,0 +1,24 @@
+[
+  {
+    "id": "32bb9f8b-8e33-4ee3-b2bb-a89a2020653c",
+    "run_id": "813fbf97-670a-4056-905d-19c5c6a25629",
+    "name": "FailedLoginInvalidPassword",
+    "full_name": "com.example.retail.tests.LoginTest.testFailedLoginInvalidPassword",
+    "suite": "LoginTest",
+    "feature": "User Authentication",
+    "status": "failed",
+    "duration_ms": 2550,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@regression",
+      "@login"
+    ],
+    "region": "AT",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

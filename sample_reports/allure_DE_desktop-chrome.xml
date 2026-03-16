@@ -1,0 +1,1840 @@
+<?xml version="1.0" ?>
+<ns2:testSuite xmlns:ns2="urn:model.allure.qatools.yandex.ru" name="Retail — DE — Desktop Chrome" start="1773584810514" stop="1773584990514">
+  <test-case status="passed" start="1773584937998" stop="1773584940048">
+    <name>Home Page Loads Correctly</name>
+    <title>Home Page Loads Correctly</title>
+    <labels>
+      <label name="feature" value="Homepage"/>
+      <label name="story" value="home_page_loads_correctly"/>
+      <label name="suite" value="Homepage"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-8420"/>
+      <label name="smoke" value="true"/>
+      <label name="homepage" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: home page loads correctly</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584931257" stop="1773584932956">
+    <name>Hero Banner Displays Correct Promotion</name>
+    <title>Hero Banner Displays Correct Promotion</title>
+    <labels>
+      <label name="feature" value="Homepage"/>
+      <label name="story" value="hero_banner_displays_correct_promotion"/>
+      <label name="suite" value="Homepage"/>
+      <label name="priority" value="medium"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-2367"/>
+      <label name="regression" value="true"/>
+      <label name="homepage" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: hero banner displays correct promotion</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584861481" stop="1773584863466">
+    <name>Navigation Menu All Links Work</name>
+    <title>Navigation Menu All Links Work</title>
+    <labels>
+      <label name="feature" value="Homepage"/>
+      <label name="story" value="navigation_menu_all_links_work"/>
+      <label name="suite" value="Homepage"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-7118"/>
+      <label name="smoke" value="true"/>
+      <label name="nav" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: navigation menu all links work</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584847298" stop="1773584849238">
+    <name>Search Bar Visible And Functional</name>
+    <title>Search Bar Visible And Functional</title>
+    <labels>
+      <label name="feature" value="Homepage"/>
+      <label name="story" value="search_bar_visible_and_functional"/>
+      <label name="suite" value="Homepage"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-7742"/>
+      <label name="smoke" value="true"/>
+      <label name="search" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: search bar visible and functional</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584920288" stop="1773584922053">
+    <name>Footer Links And Legal Pages Accessible</name>
+    <title>Footer Links And Legal Pages Accessible</title>
+    <labels>
+      <label name="feature" value="Homepage"/>
+      <label name="story" value="footer_links_and_legal_pages_accessible"/>
+      <label name="suite" value="Homepage"/>
+      <label name="priority" value="low"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-1480"/>
+      <label name="regression" value="true"/>
+      <label name="footer" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: footer links and legal pages accessible</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584881551" stop="1773584883090">
+    <name>Cookie Consent Banner Appears On First Visit</name>
+    <title>Cookie Consent Banner Appears On First Visit</title>
+    <labels>
+      <label name="feature" value="Homepage"/>
+      <label name="story" value="cookie_consent_banner_appears_on_first_visit"/>
+      <label name="suite" value="Homepage"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-4504"/>
+      <label name="gdpr" value="true"/>
+      <label name="compliance" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: cookie consent banner appears on first visit</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584889778" stop="1773584891557">
+    <name>Category Page Loads With Correct Products</name>
+    <title>Category Page Loads With Correct Products</title>
+    <labels>
+      <label name="feature" value="ProductCatalogue"/>
+      <label name="story" value="category_page_loads_with_correct_products"/>
+      <label name="suite" value="ProductCatalogue"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-4958"/>
+      <label name="smoke" value="true"/>
+      <label name="catalogue" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: category page loads with correct products</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584850467" stop="1773584852669">
+    <name>Product Filters Narrow Results Correctly</name>
+    <title>Product Filters Narrow Results Correctly</title>
+    <labels>
+      <label name="feature" value="ProductCatalogue"/>
+      <label name="story" value="product_filters_narrow_results_correctly"/>
+      <label name="suite" value="ProductCatalogue"/>
+      <label name="priority" value="medium"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-6045"/>
+      <label name="regression" value="true"/>
+      <label name="filters" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: product filters narrow results correctly</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584901986" stop="1773584904177">
+    <name>Sort By Price Low To High Works</name>
+    <title>Sort By Price Low To High Works</title>
+    <labels>
+      <label name="feature" value="ProductCatalogue"/>
+      <label name="story" value="sort_by_price_low_to_high_works"/>
+      <label name="suite" value="ProductCatalogue"/>
+      <label name="priority" value="medium"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-9883"/>
+      <label name="regression" value="true"/>
+      <label name="sort" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: sort by price low to high works</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584930879" stop="1773584932851">
+    <name>Product Images Load Without Errors</name>
+    <title>Product Images Load Without Errors</title>
+    <labels>
+      <label name="feature" value="ProductCatalogue"/>
+      <label name="story" value="product_images_load_without_errors"/>
+      <label name="suite" value="ProductCatalogue"/>
+      <label name="priority" value="medium"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-1025"/>
+      <label name="smoke" value="true"/>
+      <label name="images" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: product images load without errors</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584874115" stop="1773584875701">
+    <name>Pagination Navigates To Next Page</name>
+    <title>Pagination Navigates To Next Page</title>
+    <labels>
+      <label name="feature" value="ProductCatalogue"/>
+      <label name="story" value="pagination_navigates_to_next_page"/>
+      <label name="suite" value="ProductCatalogue"/>
+      <label name="priority" value="low"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-9204"/>
+      <label name="regression" value="true"/>
+      <label name="pagination" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: pagination navigates to next page</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584919196" stop="1773584920874">
+    <name>Out Of Stock Badge Displays Correctly</name>
+    <title>Out Of Stock Badge Displays Correctly</title>
+    <labels>
+      <label name="feature" value="ProductCatalogue"/>
+      <label name="story" value="out_of_stock_badge_displays_correctly"/>
+      <label name="suite" value="ProductCatalogue"/>
+      <label name="priority" value="medium"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-3554"/>
+      <label name="regression" value="true"/>
+      <label name="stock" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: out of stock badge displays correctly</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="failed" start="1773584911451" stop="1773584913619">
+    <name>Locale Currency Displayed In Product Price</name>
+    <title>Locale Currency Displayed In Product Price</title>
+    <labels>
+      <label name="feature" value="ProductCatalogue"/>
+      <label name="story" value="locale_currency_displayed_in_product_price"/>
+      <label name="suite" value="ProductCatalogue"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-1804"/>
+      <label name="smoke" value="true"/>
+      <label name="localisation" value="true"/>
+    </labels>
+    <failure>
+      <message>AssertionError: HTTP 500 received from product API</message>
+      <stack-trace>org.openqa.selenium.support.ui.AssertionError
+	at com.example.retail.tests.ProductCatalogue.locale_currency_displayed_in_product_price(line 138)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:406)</stack-trace>
+    </failure>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: locale currency displayed in product price</name>
+      </step>
+      <step status="failed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584941361" stop="1773584942872">
+    <name>Breadcrumb Reflects Correct Category Path</name>
+    <title>Breadcrumb Reflects Correct Category Path</title>
+    <labels>
+      <label name="feature" value="ProductCatalogue"/>
+      <label name="story" value="breadcrumb_reflects_correct_category_path"/>
+      <label name="suite" value="ProductCatalogue"/>
+      <label name="priority" value="low"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-4910"/>
+      <label name="regression" value="true"/>
+      <label name="nav" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: breadcrumb reflects correct category path</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584943186" stop="1773584944644">
+    <name>Product Title And Description Visible</name>
+    <title>Product Title And Description Visible</title>
+    <labels>
+      <label name="feature" value="ProductDetail"/>
+      <label name="story" value="product_title_and_description_visible"/>
+      <label name="suite" value="ProductDetail"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-7575"/>
+      <label name="smoke" value="true"/>
+      <label name="pdp" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: product title and description visible</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584837823" stop="1773584840002">
+    <name>Add To Basket Button Works</name>
+    <title>Add To Basket Button Works</title>
+    <labels>
+      <label name="feature" value="ProductDetail"/>
+      <label name="story" value="add_to_basket_button_works"/>
+      <label name="suite" value="ProductDetail"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-9372"/>
+      <label name="smoke" value="true"/>
+      <label name="basket" value="true"/>
+      <label name="critical" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: add to basket button works</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584837652" stop="1773584839753">
+    <name>Size Selector Updates Stock Availability</name>
+    <title>Size Selector Updates Stock Availability</title>
+    <labels>
+      <label name="feature" value="ProductDetail"/>
+      <label name="story" value="size_selector_updates_stock_availability"/>
+      <label name="suite" value="ProductDetail"/>
+      <label name="priority" value="medium"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-6924"/>
+      <label name="regression" value="true"/>
+      <label name="pdp" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: size selector updates stock availability</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584815537" stop="1773584817672">
+    <name>Product Image Gallery Swipes On Mobile</name>
+    <title>Product Image Gallery Swipes On Mobile</title>
+    <labels>
+      <label name="feature" value="ProductDetail"/>
+      <label name="story" value="product_image_gallery_swipes_on_mobile"/>
+      <label name="suite" value="ProductDetail"/>
+      <label name="priority" value="medium"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-8433"/>
+      <label name="regression" value="true"/>
+      <label name="mobile" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: product image gallery swipes on mobile</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584851978" stop="1773584854017">
+    <name>Reviews Section Displays Ratings</name>
+    <title>Reviews Section Displays Ratings</title>
+    <labels>
+      <label name="feature" value="ProductDetail"/>
+      <label name="story" value="reviews_section_displays_ratings"/>
+      <label name="suite" value="ProductDetail"/>
+      <label name="priority" value="low"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-5323"/>
+      <label name="regression" value="true"/>
+      <label name="reviews" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: reviews section displays ratings</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="broken" start="1773584915711" stop="1773584917604">
+    <name>Related Products Carousel Renders</name>
+    <title>Related Products Carousel Renders</title>
+    <labels>
+      <label name="feature" value="ProductDetail"/>
+      <label name="story" value="related_products_carousel_renders"/>
+      <label name="suite" value="ProductDetail"/>
+      <label name="priority" value="low"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-6460"/>
+      <label name="regression" value="true"/>
+      <label name="upsell" value="true"/>
+    </labels>
+    <failure>
+      <message>TimeoutException: Page load exceeded 10s threshold</message>
+      <stack-trace>org.openqa.selenium.support.ui.AssertionError
+	at com.example.retail.tests.ProductDetail.related_products_carousel_renders(line 60)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:406)</stack-trace>
+    </failure>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: related products carousel renders</name>
+      </step>
+      <step status="failed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584911131" stop="1773584913423">
+    <name>Locale Vat Label Correct For Region</name>
+    <title>Locale Vat Label Correct For Region</title>
+    <labels>
+      <label name="feature" value="ProductDetail"/>
+      <label name="story" value="locale_vat_label_correct_for_region"/>
+      <label name="suite" value="ProductDetail"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-9861"/>
+      <label name="smoke" value="true"/>
+      <label name="localisation" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: locale vat label correct for region</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584953338" stop="1773584955837">
+    <name>Basket Icon Updates Count After Add</name>
+    <title>Basket Icon Updates Count After Add</title>
+    <labels>
+      <label name="feature" value="Basket"/>
+      <label name="story" value="basket_icon_updates_count_after_add"/>
+      <label name="suite" value="Basket"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-8376"/>
+      <label name="smoke" value="true"/>
+      <label name="basket" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: basket icon updates count after add</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="failed" start="1773584886848" stop="1773584888828">
+    <name>Basket Page Shows Correct Items And Totals</name>
+    <title>Basket Page Shows Correct Items And Totals</title>
+    <labels>
+      <label name="feature" value="Basket"/>
+      <label name="story" value="basket_page_shows_correct_items_and_totals"/>
+      <label name="suite" value="Basket"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-9043"/>
+      <label name="smoke" value="true"/>
+      <label name="basket" value="true"/>
+      <label name="critical" value="true"/>
+    </labels>
+    <failure>
+      <message>AssertionError: Element not found within timeout</message>
+      <stack-trace>org.openqa.selenium.support.ui.AssertionError
+	at com.example.retail.tests.Basket.basket_page_shows_correct_items_and_totals(line 98)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:406)</stack-trace>
+    </failure>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: basket page shows correct items and totals</name>
+      </step>
+      <step status="failed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584837320" stop="1773584839708">
+    <name>Remove Item From Basket Updates Total</name>
+    <title>Remove Item From Basket Updates Total</title>
+    <labels>
+      <label name="feature" value="Basket"/>
+      <label name="story" value="remove_item_from_basket_updates_total"/>
+      <label name="suite" value="Basket"/>
+      <label name="priority" value="medium"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-9424"/>
+      <label name="regression" value="true"/>
+      <label name="basket" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: remove item from basket updates total</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584927821" stop="1773584929226">
+    <name>Promo Code Applies Discount Correctly</name>
+    <title>Promo Code Applies Discount Correctly</title>
+    <labels>
+      <label name="feature" value="Basket"/>
+      <label name="story" value="promo_code_applies_discount_correctly"/>
+      <label name="suite" value="Basket"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-1168"/>
+      <label name="regression" value="true"/>
+      <label name="promo" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: promo code applies discount correctly</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584819102" stop="1773584820915">
+    <name>Continue Shopping Returns To Catalogue</name>
+    <title>Continue Shopping Returns To Catalogue</title>
+    <labels>
+      <label name="feature" value="Basket"/>
+      <label name="story" value="continue_shopping_returns_to_catalogue"/>
+      <label name="suite" value="Basket"/>
+      <label name="priority" value="low"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-3373"/>
+      <label name="regression" value="true"/>
+      <label name="basket" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: continue shopping returns to catalogue</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="failed" start="1773584905483" stop="1773584908983">
+    <name>Checkout Page Loads For Guest User</name>
+    <title>Checkout Page Loads For Guest User</title>
+    <labels>
+      <label name="feature" value="Checkout"/>
+      <label name="story" value="checkout_page_loads_for_guest_user"/>
+      <label name="suite" value="Checkout"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-8349"/>
+      <label name="smoke" value="true"/>
+      <label name="checkout" value="true"/>
+      <label name="critical" value="true"/>
+    </labels>
+    <failure>
+      <message>AssertionError: Element not found within timeout</message>
+      <stack-trace>org.openqa.selenium.support.ui.AssertionError
+	at com.example.retail.tests.Checkout.checkout_page_loads_for_guest_user(line 135)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:406)</stack-trace>
+    </failure>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: checkout page loads for guest user</name>
+      </step>
+      <step status="failed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584950756" stop="1773584952456">
+    <name>Delivery Address Form Validates Correctly</name>
+    <title>Delivery Address Form Validates Correctly</title>
+    <labels>
+      <label name="feature" value="Checkout"/>
+      <label name="story" value="delivery_address_form_validates_correctly"/>
+      <label name="suite" value="Checkout"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-4134"/>
+      <label name="regression" value="true"/>
+      <label name="checkout" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: delivery address form validates correctly</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584856074" stop="1773584857942">
+    <name>Order Summary Matches Basket Totals</name>
+    <title>Order Summary Matches Basket Totals</title>
+    <labels>
+      <label name="feature" value="Checkout"/>
+      <label name="story" value="order_summary_matches_basket_totals"/>
+      <label name="suite" value="Checkout"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-9864"/>
+      <label name="smoke" value="true"/>
+      <label name="checkout" value="true"/>
+      <label name="critical" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: order summary matches basket totals</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584874646" stop="1773584879629">
+    <name>Payment Form Accepts Valid Card Details</name>
+    <title>Payment Form Accepts Valid Card Details</title>
+    <labels>
+      <label name="feature" value="Checkout"/>
+      <label name="story" value="payment_form_accepts_valid_card_details"/>
+      <label name="suite" value="Checkout"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-4895"/>
+      <label name="smoke" value="true"/>
+      <label name="payment" value="true"/>
+      <label name="critical" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: payment form accepts valid card details</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584872380" stop="1773584874373">
+    <name>User Can Register With Valid Details</name>
+    <title>User Can Register With Valid Details</title>
+    <labels>
+      <label name="feature" value="UserAccount"/>
+      <label name="story" value="user_can_register_with_valid_details"/>
+      <label name="suite" value="UserAccount"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-5567"/>
+      <label name="smoke" value="true"/>
+      <label name="registration" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: user can register with valid details</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584931987" stop="1773584933707">
+    <name>User Can Login With Correct Credentials</name>
+    <title>User Can Login With Correct Credentials</title>
+    <labels>
+      <label name="feature" value="UserAccount"/>
+      <label name="story" value="user_can_login_with_correct_credentials"/>
+      <label name="suite" value="UserAccount"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-9735"/>
+      <label name="smoke" value="true"/>
+      <label name="login" value="true"/>
+      <label name="critical" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: user can login with correct credentials</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584933477" stop="1773584934696">
+    <name>Login Fails With Invalid Password</name>
+    <title>Login Fails With Invalid Password</title>
+    <labels>
+      <label name="feature" value="UserAccount"/>
+      <label name="story" value="login_fails_with_invalid_password"/>
+      <label name="suite" value="UserAccount"/>
+      <label name="priority" value="medium"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-4494"/>
+      <label name="regression" value="true"/>
+      <label name="login" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: login fails with invalid password</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584830876" stop="1773584832399">
+    <name>User Can Reset Password Via Email</name>
+    <title>User Can Reset Password Via Email</title>
+    <labels>
+      <label name="feature" value="UserAccount"/>
+      <label name="story" value="user_can_reset_password_via_email"/>
+      <label name="suite" value="UserAccount"/>
+      <label name="priority" value="medium"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-7310"/>
+      <label name="regression" value="true"/>
+      <label name="password" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: user can reset password via email</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584965542" stop="1773584967449">
+    <name>Order History Page Shows Past Orders</name>
+    <title>Order History Page Shows Past Orders</title>
+    <labels>
+      <label name="feature" value="UserAccount"/>
+      <label name="story" value="order_history_page_shows_past_orders"/>
+      <label name="suite" value="UserAccount"/>
+      <label name="priority" value="medium"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-6592"/>
+      <label name="regression" value="true"/>
+      <label name="account" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: order history page shows past orders</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584877075" stop="1773584879143">
+    <name>User Can Update Delivery Address</name>
+    <title>User Can Update Delivery Address</title>
+    <labels>
+      <label name="feature" value="UserAccount"/>
+      <label name="story" value="user_can_update_delivery_address"/>
+      <label name="suite" value="UserAccount"/>
+      <label name="priority" value="low"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-8187"/>
+      <label name="regression" value="true"/>
+      <label name="account" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: user can update delivery address</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584863737" stop="1773584865255">
+    <name>Search Returns Relevant Results</name>
+    <title>Search Returns Relevant Results</title>
+    <labels>
+      <label name="feature" value="Search"/>
+      <label name="story" value="search_returns_relevant_results"/>
+      <label name="suite" value="Search"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-6466"/>
+      <label name="smoke" value="true"/>
+      <label name="search" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: search returns relevant results</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584839472" stop="1773584841361">
+    <name>Search With No Results Shows Empty State</name>
+    <title>Search With No Results Shows Empty State</title>
+    <labels>
+      <label name="feature" value="Search"/>
+      <label name="story" value="search_with_no_results_shows_empty_state"/>
+      <label name="suite" value="Search"/>
+      <label name="priority" value="medium"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-8523"/>
+      <label name="regression" value="true"/>
+      <label name="search" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: search with no results shows empty state</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584962197" stop="1773584964132">
+    <name>Autocomplete Suggestions Appear While Typing</name>
+    <title>Autocomplete Suggestions Appear While Typing</title>
+    <labels>
+      <label name="feature" value="Search"/>
+      <label name="story" value="autocomplete_suggestions_appear_while_typing"/>
+      <label name="suite" value="Search"/>
+      <label name="priority" value="medium"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-5576"/>
+      <label name="regression" value="true"/>
+      <label name="search" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: autocomplete suggestions appear while typing</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584817265" stop="1773584818769">
+    <name>Search Results Filterable By Category</name>
+    <title>Search Results Filterable By Category</title>
+    <labels>
+      <label name="feature" value="Search"/>
+      <label name="story" value="search_results_filterable_by_category"/>
+      <label name="suite" value="Search"/>
+      <label name="priority" value="low"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-1402"/>
+      <label name="regression" value="true"/>
+      <label name="search" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: search results filterable by category</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584883467" stop="1773584885177">
+    <name>Search Handles Special Characters Gracefully</name>
+    <title>Search Handles Special Characters Gracefully</title>
+    <labels>
+      <label name="feature" value="Search"/>
+      <label name="story" value="search_handles_special_characters_gracefully"/>
+      <label name="suite" value="Search"/>
+      <label name="priority" value="low"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-3473"/>
+      <label name="regression" value="true"/>
+      <label name="search" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: search handles special characters gracefully</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="failed" start="1773584970479" stop="1773584973479">
+    <name>Homepage Lcp Under 2500Ms</name>
+    <title>Homepage Lcp Under 2500Ms</title>
+    <labels>
+      <label name="feature" value="Performance"/>
+      <label name="story" value="homepage_lcp_under_2500ms"/>
+      <label name="suite" value="Performance"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-3180"/>
+      <label name="performance" value="true"/>
+      <label name="core-web-vitals" value="true"/>
+    </labels>
+    <failure>
+      <message>AssertionError: HTTP 500 received from product API</message>
+      <stack-trace>org.openqa.selenium.support.ui.AssertionError
+	at com.example.retail.tests.Performance.homepage_lcp_under_2500ms(line 167)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:406)</stack-trace>
+    </failure>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: homepage lcp under 2500ms</name>
+      </step>
+      <step status="failed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584871838" stop="1773584875924">
+    <name>Category Page Lcp Under 3000Ms</name>
+    <title>Category Page Lcp Under 3000Ms</title>
+    <labels>
+      <label name="feature" value="Performance"/>
+      <label name="story" value="category_page_lcp_under_3000ms"/>
+      <label name="suite" value="Performance"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-4011"/>
+      <label name="performance" value="true"/>
+      <label name="core-web-vitals" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: category page lcp under 3000ms</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584868924" stop="1773584871145">
+    <name>Product Page Cls Score Below 01</name>
+    <title>Product Page Cls Score Below 01</title>
+    <labels>
+      <label name="feature" value="Performance"/>
+      <label name="story" value="product_page_cls_score_below_01"/>
+      <label name="suite" value="Performance"/>
+      <label name="priority" value="medium"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-4057"/>
+      <label name="performance" value="true"/>
+      <label name="core-web-vitals" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: product page cls score below 01</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584847369" stop="1773584849082">
+    <name>All Images Have Descriptive Alt Text</name>
+    <title>All Images Have Descriptive Alt Text</title>
+    <labels>
+      <label name="feature" value="Accessibility"/>
+      <label name="story" value="all_images_have_descriptive_alt_text"/>
+      <label name="suite" value="Accessibility"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-1381"/>
+      <label name="a11y" value="true"/>
+      <label name="wcag" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: all images have descriptive alt text</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584892498" stop="1773584895478">
+    <name>Keyboard Navigation Works For Checkout</name>
+    <title>Keyboard Navigation Works For Checkout</title>
+    <labels>
+      <label name="feature" value="Accessibility"/>
+      <label name="story" value="keyboard_navigation_works_for_checkout"/>
+      <label name="suite" value="Accessibility"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-6539"/>
+      <label name="a11y" value="true"/>
+      <label name="wcag" value="true"/>
+      <label name="critical" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: keyboard navigation works for checkout</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584963445" stop="1773584964713">
+    <name>Prices Display Correct Currency Symbol</name>
+    <title>Prices Display Correct Currency Symbol</title>
+    <labels>
+      <label name="feature" value="Localisation"/>
+      <label name="story" value="prices_display_correct_currency_symbol"/>
+      <label name="suite" value="Localisation"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-5969"/>
+      <label name="smoke" value="true"/>
+      <label name="localisation" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: prices display correct currency symbol</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584835141" stop="1773584836610">
+    <name>Date Formats Match Regional Standard</name>
+    <title>Date Formats Match Regional Standard</title>
+    <labels>
+      <label name="feature" value="Localisation"/>
+      <label name="story" value="date_formats_match_regional_standard"/>
+      <label name="suite" value="Localisation"/>
+      <label name="priority" value="medium"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-4939"/>
+      <label name="regression" value="true"/>
+      <label name="localisation" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: date formats match regional standard</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584920435" stop="1773584922304">
+    <name>Privacy Policy Link Present And Accessible</name>
+    <title>Privacy Policy Link Present And Accessible</title>
+    <labels>
+      <label name="feature" value="GDPR"/>
+      <label name="story" value="privacy_policy_link_present_and_accessible"/>
+      <label name="suite" value="GDPR"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-4607"/>
+      <label name="gdpr" value="true"/>
+      <label name="compliance" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: privacy policy link present and accessible</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+  <test-case status="passed" start="1773584952916" stop="1773584954386">
+    <name>Consent Preferences Saved Correctly</name>
+    <title>Consent Preferences Saved Correctly</title>
+    <labels>
+      <label name="feature" value="GDPR"/>
+      <label name="story" value="consent_preferences_saved_correctly"/>
+      <label name="suite" value="GDPR"/>
+      <label name="priority" value="high"/>
+      <label name="region" value="DE"/>
+      <label name="device" value="Desktop Chrome"/>
+      <label name="device_type" value="desktop"/>
+      <label name="os" value="Windows 11"/>
+      <label name="browser" value="Chrome 124"/>
+      <label name="viewport" value="1920x1080"/>
+      <label name="locale" value="de-DE"/>
+      <label name="currency" value="EUR"/>
+      <label name="environment" value="DE-desktop-chrome"/>
+      <label name="testId" value="RT-9427"/>
+      <label name="gdpr" value="true"/>
+      <label name="compliance" value="true"/>
+    </labels>
+    <steps>
+      <step status="passed">
+        <name>Navigate to https://shop.example.de</name>
+      </step>
+      <step status="passed">
+        <name>Set locale to de-DE</name>
+      </step>
+      <step status="passed">
+        <name>Execute: consent preferences saved correctly</name>
+      </step>
+      <step status="passed">
+        <name>Assert result</name>
+      </step>
+    </steps>
+  </test-case>
+</ns2:testSuite>

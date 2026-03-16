@@ -1,0 +1,24 @@
+[
+  {
+    "id": "db8c7d07-e3f4-4bf2-89b4-a1d52954fe8e",
+    "run_id": "c24ecda5-2ab0-46f2-a94d-601594f6dbb4",
+    "name": "PasswordReset",
+    "full_name": "com.example.retail.tests.AccountTest.testPasswordReset",
+    "suite": "AccountTest",
+    "feature": "User Account",
+    "status": "failed",
+    "duration_ms": 3863,
+    "error_msg": "AssertionError: Unexpected HTTP 500 from product service",
+    "error_type": "AssertionError",
+    "stack_trace": "com.example.RetailException\n\tat BaseTest.java:22",
+    "tags": [
+      "@regression",
+      "@password"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

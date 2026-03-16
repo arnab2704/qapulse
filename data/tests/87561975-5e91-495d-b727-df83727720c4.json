@@ -1,0 +1,24 @@
+[
+  {
+    "id": "0d12f197-567d-45d5-beeb-591a91daab33",
+    "run_id": "8ee89431-dfd3-405a-bfa4-4c51617efc61",
+    "name": "SuccessfulLogin",
+    "full_name": "com.example.retail.tests.LoginTest.testSuccessfulLogin",
+    "suite": "LoginTest",
+    "feature": "User Authentication",
+    "status": "passed",
+    "duration_ms": 3373,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@login"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "6e837801-500d-4e86-a603-68100207a351",
+    "run_id": "1431b21e-571e-49cc-a5be-2b72e9c34d0e",
+    "name": "DuplicateEmailBlocked",
+    "full_name": "com.example.retail.tests.RegistrationTest.testDuplicateEmailBlocked",
+    "suite": "RegistrationTest",
+    "feature": "User Registration",
+    "status": "passed",
+    "duration_ms": 5997,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

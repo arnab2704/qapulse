@@ -1,0 +1,24 @@
+[
+  {
+    "id": "fc2561f5-c044-4f30-8470-de3c42c34907",
+    "run_id": "e46b49f5-66ee-4562-ad9a-bd8ecda2f00d",
+    "name": "UpdateDeliveryAddress",
+    "full_name": "com.example.retail.tests.AccountTest.testUpdateDeliveryAddress",
+    "suite": "AccountTest",
+    "feature": "User Account",
+    "status": "failed",
+    "duration_ms": 1387,
+    "error_msg": "AssertionError: Unexpected HTTP 500 from product service",
+    "error_type": "AssertionError",
+    "stack_trace": "com.example.RetailException\n\tat BaseTest.java:22",
+    "tags": [
+      "@regression",
+      "@account"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

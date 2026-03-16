@@ -1,0 +1,23 @@
+[
+  {
+    "id": "108f5f3a-b261-444b-8672-d17d7866cc0b",
+    "run_id": "a51f0242-7acd-4707-905a-556697eed01c",
+    "name": "Autocomplete",
+    "full_name": "com.example.retail.tests.SearchTest.testAutocomplete",
+    "suite": "SearchTest",
+    "feature": "Search",
+    "status": "passed",
+    "duration_ms": 1145,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression"
+    ],
+    "region": "AT",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

@@ -1,0 +1,25 @@
+[
+  {
+    "id": "fe38a817-dde7-43fe-a91c-de909033465b",
+    "run_id": "1334f4f4-0581-43e5-ba99-b92ee638bef5",
+    "name": "MobileCheckoutFlow",
+    "full_name": "com.example.retail.tests.MobileTest.testMobileCheckoutFlow",
+    "suite": "MobileTest",
+    "feature": "Mobile Navigation",
+    "status": "passed",
+    "duration_ms": 2409,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@mobile",
+      "@critical"
+    ],
+    "region": "AT",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

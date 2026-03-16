@@ -1,0 +1,24 @@
+[
+  {
+    "id": "480be70f-9b84-4817-bd08-577babc1c46f",
+    "run_id": "53845d6d-20d7-47d0-9f8f-32b8e158f068",
+    "name": "CookieConsentBanner",
+    "full_name": "com.example.retail.tests.HomepageTest.testCookieConsentBanner",
+    "suite": "HomepageTest",
+    "feature": "Homepage",
+    "status": "failed",
+    "duration_ms": 452,
+    "error_msg": "TimeoutException: Cookie consent banner not found after 5s",
+    "error_type": "AssertionError",
+    "stack_trace": "org.openqa.selenium.TimeoutException\n\tat GDPRTest.java:45",
+    "tags": [
+      "@gdpr",
+      "@compliance"
+    ],
+    "region": "AT",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

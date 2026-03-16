@@ -1,0 +1,25 @@
+[
+  {
+    "id": "bd98ef0e-404d-4863-9ef7-8af85e020fbd",
+    "run_id": "87ec3885-88ea-4950-8c29-daba7c7a02ff",
+    "name": "PaymentFormAcceptsCard",
+    "full_name": "com.example.retail.tests.CheckoutTest.testPaymentFormAcceptsCard",
+    "suite": "CheckoutTest",
+    "feature": "Checkout",
+    "status": "passed",
+    "duration_ms": 1193,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@payment",
+      "@critical"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

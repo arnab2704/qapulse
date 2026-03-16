@@ -1,0 +1,24 @@
+[
+  {
+    "id": "22b1dcf8-bef1-4d51-8cf0-ac010a738d4d",
+    "run_id": "a7a6b0a7-c702-4ab6-b324-aafecaa99b9a",
+    "name": "CookieConsentBanner",
+    "full_name": "com.example.retail.tests.HomepageTest.testCookieConsentBanner",
+    "suite": "HomepageTest",
+    "feature": "Homepage",
+    "status": "passed",
+    "duration_ms": 1107,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@gdpr",
+      "@compliance"
+    ],
+    "region": "AT",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

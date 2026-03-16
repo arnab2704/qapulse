@@ -1,0 +1,24 @@
+[
+  {
+    "id": "5db2cbb2-d54b-4f7e-af3f-41490cffc18b",
+    "run_id": "0e3f664d-4ac9-4a74-a5bd-48d4bd823097",
+    "name": "ProductFiltersWork",
+    "full_name": "com.example.retail.tests.CatalogueTest.testProductFiltersWork",
+    "suite": "CatalogueTest",
+    "feature": "Product Catalogue",
+    "status": "passed",
+    "duration_ms": 2997,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression",
+      "@filters"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

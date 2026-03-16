@@ -1,0 +1,24 @@
+[
+  {
+    "id": "f0587b3f-e59a-4320-9017-c85e89bcc3e0",
+    "run_id": "83b92106-1eec-451e-ba2e-34f80bd05993",
+    "name": "BasketCountUpdates",
+    "full_name": "com.example.retail.tests.BasketTest.testBasketCountUpdates",
+    "suite": "BasketTest",
+    "feature": "Basket",
+    "status": "failed",
+    "duration_ms": 4394,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@smoke",
+      "@basket"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

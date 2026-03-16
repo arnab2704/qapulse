@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>ExtentReports — DE Desktop Chrome</title>
+<style>
+* {box-sizing:border-box;margin:0;padding:0}
+body {background:#0a0c10;color:#e8eaf0;font-family:'Segoe UI',Arial,sans-serif;font-size:14px}
+.header {background:#0e1117;border-bottom:1px solid #1e2535;padding:20px 32px;display:flex;align-items:center;justify-content:space-between}
+.title {font-size:22px;font-weight:700;color:#fff}.title span{color:#00e5a0}
+.meta {font-size:12px;color:#666;margin-top:4px}
+.summary {display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:20px 32px;background:#0e1117;border-bottom:1px solid #1e2535}
+.scard {background:#141820;border-radius:8px;padding:16px;text-align:center}
+.sval {font-size:32px;font-weight:700;font-family:'Courier New',monospace}
+.slbl {font-size:11px;color:#666;margin-top:4px;letter-spacing:1px;text-transform:uppercase}
+.pbar-wrap {background:#1a2030;border-radius:4px;height:8px;overflow:hidden;margin:12px 32px}
+.pbar {height:100%;background:linear-gradient(90deg,#00e5a0,#4895ef);border-radius:4px}
+.tags-row {display:flex;gap:8px;flex-wrap:wrap;padding:12px 32px;background:#0e1117;border-bottom:1px solid #1e2535}
+.tag {background:#1a2030;color:#7c85ff;padding:3px 10px;border-radius:12px;font-size:11px;border:1px solid #2a2a4e}
+table {width:100%;border-collapse:collapse;margin:0}
+th {background:#0e1117;padding:10px 12px;text-align:left;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#555;border-bottom:1px solid #1e2535}
+.test-row:hover {background:rgba(255,255,255,0.02)}
+.test-row td {border-bottom:1px solid #131820}
+.content {padding:0 32px 32px}
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <div class="title">Extent<span>Reports</span> — Retail QA</div>
+    <div class="meta">DE · Desktop Chrome · Windows 11 · Chrome 124 · 1920x1080 · Generated 2026-03-15 15:02:24 UTC</div>
+  </div>
+  <div style="text-align:right">
+    <div style="font-size:28px;font-weight:700;color:#00e5a0">100.0%</div>
+    <div style="font-size:11px;color:#666">pass rate</div>
+  </div>
+</div>
+<div class="summary">
+  <div class="scard"><div class="sval" style="color:#e8eaf0">50</div><div class="slbl">Total</div></div>
+  <div class="scard"><div class="sval" style="color:#00e5a0">50</div><div class="slbl">Passed</div></div>
+  <div class="scard"><div class="sval" style="color:#ff4d6d">0</div><div class="slbl">Failed</div></div>
+  <div class="scard"><div class="sval" style="color:#00e5a0">100.0%</div><div class="slbl">Pass rate</div></div>
+</div>
+<div class="pbar-wrap"><div class="pbar" style="width:100.0%"></div></div>
+<div class="tags-row">
+  <span class="tag">DE</span><span class="tag">Desktop Chrome</span><span class="tag">desktop</span><span class="tag">de-DE</span><span class="tag">EUR</span>
+</div>
+<div class="content">
+<table>
+  <thead><tr><th>Test scenario</th><th style="text-align:center">Priority</th><th style="text-align:center">Duration</th><th style="text-align:center">Status</th></tr></thead>
+  <tbody>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Home Page Loads Correctly</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Homepage</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@homepage</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1949ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Hero Banner Displays Correct Promotion</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Homepage</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@homepage</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">medium</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">2287ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Navigation Menu All Links Work</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Homepage</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@nav</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">2227ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Search Bar Visible And Functional</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Homepage</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@search</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1458ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Footer Links And Legal Pages Accessible</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Homepage</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@footer</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">low</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1536ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Cookie Consent Banner Appears On First Visit</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Homepage</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@gdpr</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@compliance</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1026ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Category Page Loads With Correct Products</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">ProductCatalogue</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@catalogue</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">2186ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Product Filters Narrow Results Correctly</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">ProductCatalogue</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@filters</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">medium</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1804ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Sort By Price Low To High Works</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">ProductCatalogue</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@sort</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">medium</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1893ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Product Images Load Without Errors</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">ProductCatalogue</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@images</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">medium</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1435ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Pagination Navigates To Next Page</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">ProductCatalogue</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@pagination</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">low</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">2159ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Out Of Stock Badge Displays Correctly</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">ProductCatalogue</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@stock</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">medium</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1354ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Locale Currency Displayed In Product Price</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">ProductCatalogue</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@localisation</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1488ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Breadcrumb Reflects Correct Category Path</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">ProductCatalogue</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@nav</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">low</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1662ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Product Title And Description Visible</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">ProductDetail</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@pdp</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">2013ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Add To Basket Button Works</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">ProductDetail</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@basket</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@critical</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">2249ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Size Selector Updates Stock Availability</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">ProductDetail</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@pdp</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">medium</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1384ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Product Image Gallery Swipes On Mobile</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">ProductDetail</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@mobile</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">medium</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">2008ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Reviews Section Displays Ratings</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">ProductDetail</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@reviews</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">low</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1228ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Related Products Carousel Renders</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">ProductDetail</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@upsell</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">low</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1741ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Locale Vat Label Correct For Region</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">ProductDetail</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@localisation</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">2298ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Basket Icon Updates Count After Add</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Basket</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@basket</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1753ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Basket Page Shows Correct Items And Totals</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Basket</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@basket</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@critical</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">2431ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Remove Item From Basket Updates Total</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Basket</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@basket</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">medium</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">2254ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Promo Code Applies Discount Correctly</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Basket</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@promo</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1736ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Continue Shopping Returns To Catalogue</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Basket</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@basket</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">low</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1980ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Checkout Page Loads For Guest User</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Checkout</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@checkout</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@critical</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">3660ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Delivery Address Form Validates Correctly</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Checkout</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@checkout</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1421ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Order Summary Matches Basket Totals</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Checkout</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@checkout</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@critical</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1978ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Payment Form Accepts Valid Card Details</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Checkout</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@payment</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@critical</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">5165ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">User Can Register With Valid Details</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">UserAccount</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@registration</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1751ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">User Can Login With Correct Credentials</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">UserAccount</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@login</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@critical</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1871ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Login Fails With Invalid Password</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">UserAccount</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@login</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">medium</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1653ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">User Can Reset Password Via Email</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">UserAccount</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@password</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">medium</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1329ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Order History Page Shows Past Orders</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">UserAccount</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@account</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">medium</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">2150ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">User Can Update Delivery Address</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">UserAccount</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@account</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">low</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1818ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Search Returns Relevant Results</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Search</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@search</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1736ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Search With No Results Shows Empty State</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Search</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@search</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">medium</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1138ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Autocomplete Suggestions Appear While Typing</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Search</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@search</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">medium</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1486ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Search Results Filterable By Category</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Search</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@search</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">low</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">992ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Search Handles Special Characters Gracefully</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Search</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@search</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">low</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">976ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Homepage Lcp Under 2500Ms</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Performance</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@performance</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@core-web-vitals</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">3523ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Category Page Lcp Under 3000Ms</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Performance</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@performance</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@core-web-vitals</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">4508ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Product Page Cls Score Below 01</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Performance</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@performance</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@core-web-vitals</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">medium</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1737ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">All Images Have Descriptive Alt Text</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Accessibility</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@a11y</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@wcag</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1399ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Keyboard Navigation Works For Checkout</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Accessibility</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@a11y</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@wcag</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@critical</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">3380ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Prices Display Correct Currency Symbol</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Localisation</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@smoke</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@localisation</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">2300ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Date Formats Match Regional Standard</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">Localisation</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@regression</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@localisation</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">medium</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1477ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Privacy Policy Link Present And Accessible</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">GDPR</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@gdpr</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@compliance</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">1995ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr>
+        <tr class="test-row">
+          <td style="padding:10px 12px">
+            <div class="test-name" style="font-weight:500;color:#e8eaf0">Consent Preferences Saved Correctly</div>
+            <div style="font-size:11px;color:#666;margin-top:2px">GDPR</div>
+            <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@gdpr</span> <span style="background:#2a2a3e;color:#7c85ff;padding:1px 6px;border-radius:3px;font-size:10px">@compliance</span>
+            
+          </td>
+          <td style="padding:10px 12px;text-align:center"><span style="background:#1a2030;color:#888;padding:2px 8px;border-radius:4px;font-size:11px">high</span></td>
+          <td style="padding:10px 12px;text-align:center;font-size:11px;color:#888">2129ms</td>
+          <td style="padding:10px 12px;text-align:center"><span style="color:#00c853;font-weight:600;font-size:12px">✓ PASS</span></td>
+        </tr></tbody>
+</table>
+</div>
+</body>
+</html>

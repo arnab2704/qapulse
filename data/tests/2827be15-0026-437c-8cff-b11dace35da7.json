@@ -1,0 +1,24 @@
+[
+  {
+    "id": "4d6e5a65-d3dd-44de-9020-eef763acbedb",
+    "run_id": "976d7d1a-049c-4dfc-8222-7c399d674d8a",
+    "name": "DateFormats",
+    "full_name": "com.example.retail.tests.LocalisationTest.testDateFormats",
+    "suite": "LocalisationTest",
+    "feature": "Localisation",
+    "status": "passed",
+    "duration_ms": 2391,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression",
+      "@localisation"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

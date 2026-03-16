@@ -1,0 +1,24 @@
+[
+  {
+    "id": "618a0c5f-6c4a-4409-97c1-c5b24d6face3",
+    "run_id": "fdd6debd-b8e6-4331-8137-77425d8595c4",
+    "name": "SearchAPIResponse",
+    "full_name": "com.example.retail.tests.APITest.testSearchAPIResponse",
+    "suite": "APITest",
+    "feature": "API Layer",
+    "status": "passed",
+    "duration_ms": 5677,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@api",
+      "@regression"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

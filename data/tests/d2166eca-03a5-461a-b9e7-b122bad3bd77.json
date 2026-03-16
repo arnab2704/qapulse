@@ -1,0 +1,24 @@
+[
+  {
+    "id": "9bfdea5d-2dd5-45c4-aa03-9af61be67495",
+    "run_id": "165055b4-3185-4bf0-8080-15416056160c",
+    "name": "UpdateDeliveryAddress",
+    "full_name": "com.example.retail.tests.AccountTest.testUpdateDeliveryAddress",
+    "suite": "AccountTest",
+    "feature": "User Account",
+    "status": "failed",
+    "duration_ms": 1408,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@regression",
+      "@account"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

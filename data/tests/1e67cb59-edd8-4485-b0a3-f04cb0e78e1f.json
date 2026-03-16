@@ -1,0 +1,25 @@
+[
+  {
+    "id": "ba8b26f3-4263-4615-b237-dad553cd0d69",
+    "run_id": "d07b3f40-580d-4aa4-9669-3587ce3d4153",
+    "name": "GuestCheckoutLoads",
+    "full_name": "com.example.retail.tests.CheckoutTest.testGuestCheckoutLoads",
+    "suite": "CheckoutTest",
+    "feature": "Checkout",
+    "status": "passed",
+    "duration_ms": 3859,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@checkout",
+      "@critical"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

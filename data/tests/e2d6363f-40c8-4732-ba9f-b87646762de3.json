@@ -1,0 +1,24 @@
+[
+  {
+    "id": "662af42e-3c19-4d22-9ccb-ad464ed8f724",
+    "run_id": "f3b40d4c-8c5d-4b87-a894-b435b315fbbb",
+    "name": "SearchReturnsResults",
+    "full_name": "com.example.retail.tests.SearchTest.testSearchReturnsResults",
+    "suite": "SearchTest",
+    "feature": "Search",
+    "status": "passed",
+    "duration_ms": 5254,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@search"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

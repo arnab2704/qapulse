@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1341272f-8588-48c4-9572-8a3e80ef2757",
+    "run_id": "d0e51236-da0c-4534-acfc-fa60788c270f",
+    "name": "ProductTitleVisible",
+    "full_name": "com.example.retail.tests.ProductDetailTest.testProductTitleVisible",
+    "suite": "ProductDetailTest",
+    "feature": "Product Detail Page",
+    "status": "failed",
+    "duration_ms": 2104,
+    "error_msg": "AssertionError: Unexpected assertion failure — intermittent CI environment issue",
+    "error_type": "AssertionError",
+    "stack_trace": "org.junit.ComparisonFailure\n\tat BaseTest.java:22",
+    "tags": [
+      "@smoke",
+      "@pdp"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

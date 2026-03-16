@@ -1,0 +1,24 @@
+[
+  {
+    "id": "2c7160d3-45d3-44bd-bf69-ffa04b30696f",
+    "run_id": "ab36e678-6b8d-4c88-9c91-c917aa001841",
+    "name": "BasketAPIAddItem",
+    "full_name": "com.example.retail.tests.APITest.testBasketAPIAddItem",
+    "suite": "APITest",
+    "feature": "API Layer",
+    "status": "passed",
+    "duration_ms": 5002,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@api",
+      "@smoke"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

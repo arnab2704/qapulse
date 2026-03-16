@@ -1,0 +1,25 @@
+[
+  {
+    "id": "c76289be-9c24-417f-9039-dd12128e74dd",
+    "run_id": "707da788-92ad-4421-baf4-8d1d62a62585",
+    "name": "PaymentFormAcceptsCard",
+    "full_name": "com.example.retail.tests.CheckoutTest.testPaymentFormAcceptsCard",
+    "suite": "CheckoutTest",
+    "feature": "Checkout",
+    "status": "failed",
+    "duration_ms": 2505,
+    "error_msg": "AssertionError: Unexpected HTTP 500 from product service",
+    "error_type": "AssertionError",
+    "stack_trace": "com.example.RetailException\n\tat BaseTest.java:22",
+    "tags": [
+      "@smoke",
+      "@payment",
+      "@critical"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

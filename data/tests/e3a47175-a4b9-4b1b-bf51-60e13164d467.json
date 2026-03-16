@@ -1,0 +1,24 @@
+[
+  {
+    "id": "46e4e1f3-7e7d-4a27-8e48-c649143a4161",
+    "run_id": "7a2ea5a8-7ea1-4340-908d-d53902b0621f",
+    "name": "CurrencyDisplayedCorrectly",
+    "full_name": "com.example.retail.tests.CatalogueTest.testCurrencyDisplayedCorrectly",
+    "suite": "CatalogueTest",
+    "feature": "Product Catalogue",
+    "status": "passed",
+    "duration_ms": 2393,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@localisation"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

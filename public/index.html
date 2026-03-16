@@ -1,0 +1,2389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>QA Pulse — AI Test Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#08090d;--bg2:#0e1117;--bg3:#141820;--bg4:#1a2030;--bg5:#212840;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.11);--border3:rgba(255,255,255,0.18);
+  --text:#dde2ef;--text2:#7d87a0;--text3:#44506a;
+  --accent:#00e5a0;--accent2:#00b37d;--accent-glow:rgba(0,229,160,0.12);
+  --pass:#00e5a0;--fail:#ff4d6d;--skip:#f4a261;--pending:#4895ef;
+  --fail-bg:rgba(255,77,109,0.1);--pass-bg:rgba(0,229,160,0.08);--skip-bg:rgba(244,162,97,0.1);--pending-bg:rgba(72,149,239,0.1);
+  --font-h:'Syne',sans-serif;--font-b:'DM Sans',sans-serif;--font-m:'DM Mono',monospace;
+  --r:10px;--rl:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:14px;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,229,160,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,160,0.025) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0}
+/* scrollbar */
+::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--bg5);border-radius:2px}
+/* layout */
+.shell{display:flex;min-height:100vh;position:relative;z-index:1}
+/* sidebar */
+.sidebar{width:230px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:100}
+.logo{padding:20px 18px 16px;border-bottom:1px solid var(--border)}
+.logo-mark{font-family:var(--font-h);font-size:21px;font-weight:800;letter-spacing:-.5px}
+.logo-mark span{color:var(--accent)}
+.logo-sub{font-size:10px;font-family:var(--font-m);color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+.nav{flex:1;padding:10px 0;overflow-y:auto}
+.nav-sec{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);font-family:var(--font-m);padding:14px 18px 5px}
+.nav-item{display:flex;align-items:center;gap:9px;padding:9px 18px;color:var(--text2);cursor:pointer;font-size:13px;border-left:2px solid transparent;transition:all .15s;user-select:none}
+.nav-item:hover{color:var(--text);background:rgba(255,255,255,0.03)}
+.nav-item.active{color:var(--accent);background:var(--accent-glow);border-left-color:var(--accent)}
+.nav-item svg{width:15px;height:15px;flex-shrink:0;opacity:.65}
+.nav-item.active svg{opacity:1}
+.sidebar-bottom{padding:14px 18px;border-top:1px solid var(--border)}
+.server-badge{display:flex;align-items:center;gap:7px;font-size:11px;font-family:var(--font-m);color:var(--text3)}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+/* filter bar */
+.filter-bar{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;gap:10px;height:50px;position:sticky;top:56px;z-index:40}
+.filter-label{font-size:10px;font-family:var(--font-m);color:var(--text3);letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
+select.fsel{background:var(--bg3);border:1px solid var(--border2);color:var(--text);font-size:12px;font-family:var(--font-m);padding:5px 10px;border-radius:var(--r);outline:none;cursor:pointer;transition:border-color .15s}
+select.fsel:hover,select.fsel:focus{border-color:var(--accent)}
+select.fsel option{background:var(--bg3)}
+.filter-sep{width:1px;height:22px;background:var(--border2)}
+/* topbar */
+.main{margin-left:230px;flex:1;display:flex;flex-direction:column}
+.topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-left{display:flex;align-items:center;gap:12px}
+.topbar-title{font-family:var(--font-h);font-size:16px;font-weight:700}
+.breadcrumb{font-size:11px;font-family:var(--font-m);color:var(--text3)}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:var(--r);font-size:12px;font-family:var(--font-b);cursor:pointer;border:1px solid var(--border2);background:var(--bg3);color:var(--text2);font-weight:500;transition:all .15s;white-space:nowrap}
+.btn:hover{border-color:var(--border3);color:var(--text);background:var(--bg4)}
+.btn-accent{background:var(--accent);color:#08090d;border-color:var(--accent);font-weight:700}
+.btn-accent:hover{background:#00ffb3;border-color:#00ffb3}
+.btn-danger{border-color:rgba(255,77,109,.3);color:var(--fail)}
+.btn-danger:hover{background:var(--fail-bg);border-color:var(--fail)}
+/* content */
+.content{padding:24px;flex:1}
+.panel{display:none}.panel.active{display:block}
+/* stats row */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:16px 18px;position:relative;overflow:hidden;transition:border-color .2s}
+.stat-card:hover{border-color:var(--border2)}
+.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.stat-card.c-total::after{background:linear-gradient(90deg,var(--accent),#4895ef)}
+.stat-card.c-pass::after{background:var(--pass)}
+.stat-card.c-fail::after{background:var(--fail)}
+.stat-card.c-skip::after{background:var(--skip)}
+.stat-label{font-size:10px;font-family:var(--font-m);color:var(--text3);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px}
+.stat-value{font-family:var(--font-h);font-size:34px;font-weight:800;line-height:1}
+.stat-value.pass{color:var(--pass)}.stat-value.fail{color:var(--fail)}.stat-value.skip{color:var(--skip)}.stat-value.total{color:var(--text)}
+.stat-meta{font-size:11px;font-family:var(--font-m);margin-top:5px;color:var(--text3)}
+/* grid */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px}
+.g-wide{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:20px}
+/* card */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:0}
+.card.mb{margin-bottom:20px}
+.card-head{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.card-title{font-family:var(--font-h);font-size:13px;font-weight:700;color:var(--text)}
+.card-sub{font-size:11px;font-family:var(--font-m);color:var(--text3)}
+.card-body{padding:18px}
+/* table */
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{text-align:left;font-size:10px;font-family:var(--font-m);letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);padding:0 10px 10px;border-bottom:1px solid var(--border);white-space:nowrap}
+.tbl td{padding:10px;border-bottom:1px solid var(--border);font-size:12.5px;vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tbody tr:hover td{background:rgba(255,255,255,0.015)}
+/* badges */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:20px;font-size:10px;font-family:var(--font-m);font-weight:500;letter-spacing:.4px;text-transform:uppercase}
+.bp{background:var(--pass-bg);color:var(--pass)}
+.bf{background:var(--fail-bg);color:var(--fail)}
+.bs{background:var(--skip-bg);color:var(--skip)}
+.bn{background:var(--pending-bg);color:var(--pending)}
+.bformat{background:rgba(167,139,250,.1);color:#a78bfa;border:1px solid rgba(167,139,250,.2)}
+.bregion{background:rgba(56,189,248,.1);color:#38bdf8;border:1px solid rgba(56,189,248,.15)}
+.bdevice{background:rgba(244,114,182,.1);color:#f472b6;border:1px solid rgba(244,114,182,.15)}
+.bflaky{background:rgba(244,162,97,.1);color:var(--skip);border:1px solid rgba(244,162,97,.2)}
+/* chart */
+.chart-h180{position:relative;height:180px}
+.chart-h220{position:relative;height:220px}
+.chart-h260{position:relative;height:260px}
+/* donut */
+.donut-wrap{display:flex;align-items:center;gap:20px}
+.donut-canvas{width:130px!important;height:130px!important;flex-shrink:0}
+.dlegend .li{display:flex;align-items:center;gap:8px;padding:4px 0}
+.dlegend .dot2{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dlegend .lbl{font-size:12px;color:var(--text2);flex:1}
+.dlegend .val{font-size:12px;font-family:var(--font-m);color:var(--text);font-weight:500}
+/* progress */
+.pbar-wrap{height:5px;background:var(--bg5);border-radius:3px;overflow:hidden;margin-top:6px}
+.pbar{height:100%;border-radius:3px;transition:width .5s ease}
+/* suite rows */
+.suite-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+.suite-row:last-child{border:none}
+.sname{flex:1;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sbar{width:100px;height:5px;background:var(--bg5);border-radius:3px;overflow:hidden;flex-shrink:0}
+.sbar-fill{height:100%;border-radius:3px}
+.spct{font-size:11px;font-family:var(--font-m);min-width:36px;text-align:right;flex-shrink:0}
+/* region/device heatmap */
+.heatmap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.hm-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px;cursor:pointer;transition:all .2s}
+.hm-card:hover{border-color:var(--border2);background:var(--bg4)}
+.hm-card.selected{border-color:var(--accent);background:var(--accent-glow)}
+.hm-name{font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hm-pct{font-size:22px;font-weight:700;font-family:var(--font-h);line-height:1}
+.hm-meta{font-size:10px;font-family:var(--font-m);color:var(--text3);margin-top:3px}
+
+/* zip upload tab */
+.upload-tab-bar{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:20px}
+.upload-tab{padding:10px 20px;font-size:12px;font-family:var(--font-m);color:var(--text3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;letter-spacing:.4px;display:flex;align-items:center;gap:7px}
+.upload-tab:hover{color:var(--text2)}
+.upload-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.upload-tab-panel{display:none}.upload-tab-panel.active{display:block}
+.zip-info-box{background:var(--bg3);border:1px solid rgba(0,229,160,.15);border-radius:var(--r);padding:14px 16px;margin-bottom:16px;font-size:13px;line-height:1.7;color:var(--text2)}
+.zip-info-box code{background:var(--bg4);padding:1px 6px;border-radius:4px;font-family:var(--font-m);font-size:12px;color:var(--accent)}
+.folder-tree{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;font-family:var(--font-m);font-size:12px;line-height:2;color:var(--text2);margin-bottom:16px}
+
+/* upload wizard */
+.step-pill{padding:7px 16px;border-radius:20px;font-size:12px;font-family:var(--font-m);background:var(--bg3);border:1px solid var(--border);color:var(--text3);transition:all .2s}
+.step-pill.active{background:var(--accent-glow);border-color:var(--accent);color:var(--accent);font-weight:500}
+.step-pill.done{background:rgba(0,229,160,.05);border-color:rgba(0,229,160,.3);color:var(--accent2)}
+.step-arrow{color:var(--text3);padding:0 8px;font-size:16px}
+.field-lbl{font-size:11px;font-family:var(--font-m);color:var(--text3);display:block;margin-bottom:5px;letter-spacing:.5px;text-transform:uppercase}
+.field-inp,.field-sel{width:100%;background:var(--bg3);border:1px solid var(--border2);color:var(--text);font-size:12px;font-family:var(--font-m);padding:9px 11px;border-radius:var(--r);outline:none;transition:border-color .15s}
+.field-inp::placeholder{color:var(--text3)}
+.field-inp:focus,.field-sel:focus{border-color:var(--accent)}
+.field-sel.invalid,.field-inp.invalid{border-color:var(--fail)!important;box-shadow:0 0 0 2px rgba(255,77,109,.1)}
+.field-sel option{background:var(--bg3)}
+.field-hint{font-size:11px;font-family:var(--font-m);margin-top:5px;min-height:16px}
+.file-chip{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;font-size:12px;color:var(--text)}
+.file-chip svg{flex-shrink:0}
+.confirm-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:16px 18px;display:flex;align-items:center;gap:14px}
+.confirm-card .cicon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+/* upload */
+.upload-zone{border:1.5px dashed var(--border2);border-radius:var(--rl);padding:44px 28px;text-align:center;cursor:pointer;background:var(--bg2);position:relative;overflow:hidden;transition:all .2s}
+.upload-zone::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,229,160,.04) 0%,transparent 65%);pointer-events:none}
+.upload-zone:hover,.upload-zone.drag{border-color:var(--accent);background:rgba(0,229,160,.03)}
+.upload-icon{width:46px;height:46px;margin:0 auto 14px;border-radius:12px;background:var(--accent-glow);border:1px solid rgba(0,229,160,.2);display:flex;align-items:center;justify-content:center}
+.upload-title{font-family:var(--font-h);font-size:18px;font-weight:700;margin-bottom:7px}
+.upload-sub{color:var(--text2);font-size:13px;line-height:1.6}
+.chips{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:18px}
+.chip{padding:3px 11px;border-radius:20px;font-size:11px;font-family:var(--font-m);border:1px solid}
+/* meta form */
+.meta-form{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:18px}
+.meta-form label{font-size:11px;font-family:var(--font-m);color:var(--text3);display:block;margin-bottom:4px;letter-spacing:.5px;text-transform:uppercase}
+.meta-form input,.meta-form select{width:100%;background:var(--bg3);border:1px solid var(--border2);color:var(--text);font-size:12px;font-family:var(--font-m);padding:8px 10px;border-radius:var(--r);outline:none;transition:border-color .15s}
+.meta-form input:focus,.meta-form select:focus{border-color:var(--accent)}
+.meta-form option{background:var(--bg3)}
+/* AI chat */
+.ai-messages{display:flex;flex-direction:column;gap:12px;max-height:380px;overflow-y:auto;padding-right:2px}
+.msg{display:flex;gap:9px;align-items:flex-start}
+.mavatar{width:27px;height:27px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
+.mav-ai{background:var(--accent-glow);border:1px solid rgba(0,229,160,.2);color:var(--accent)}
+.mav-u{background:var(--bg4);border:1px solid var(--border);color:var(--text2)}
+.mbubble{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:9px 13px;font-size:13px;line-height:1.6;color:var(--text);max-width:calc(100% - 36px)}
+.msg.msg-ai .mbubble{border-color:rgba(0,229,160,.12)}
+.msg.msg-u .mbubble{background:var(--bg4)}
+.ai-input-row{display:flex;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.ai-inp{flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:9px 13px;color:var(--text);font-family:var(--font-b);font-size:13px;outline:none;transition:border-color .15s}
+.ai-inp::placeholder{color:var(--text3)}
+.ai-inp:focus{border-color:var(--accent)}
+.qbtn{padding:5px 11px;font-size:11px;border-radius:7px}
+/* loading dots */
+.ldots{display:flex;gap:4px;align-items:center;padding:3px 0}
+.ldots span{width:5px;height:5px;border-radius:50%;background:var(--accent);animation:bounce 1.2s infinite}
+.ldots span:nth-child(2){animation-delay:.2s}
+.ldots span:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,80%,100%{transform:translateY(0);opacity:.35}40%{transform:translateY(-5px);opacity:1}}
+/* insights */
+.insight{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--border)}
+.insight:last-child{border:none}
+.iicon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.ititle{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px}
+.idesc{font-size:12px;color:var(--text2);line-height:1.55}
+/* run history */
+.run-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
+.run-row:hover{background:rgba(255,255,255,0.02)}
+.run-row:last-child{border:none}
+.run-name{font-size:13px;color:var(--text);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.run-meta{font-size:10px;font-family:var(--font-m);color:var(--text3);margin-top:2px}
+/* toast */
+.toast{position:fixed;bottom:22px;right:22px;background:var(--bg3);border:1px solid var(--accent);border-radius:var(--r);padding:11px 16px;font-size:13px;color:var(--accent);font-family:var(--font-m);z-index:9999;transform:translateY(70px);opacity:0;transition:all .3s;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.err{border-color:var(--fail);color:var(--fail)}
+/* modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:500;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.modal{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--rl);width:90%;max-width:900px;max-height:85vh;overflow:hidden;display:flex;flex-direction:column}
+.modal-head{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.modal-title{font-family:var(--font-h);font-size:15px;font-weight:700}
+.modal-body{padding:20px;overflow-y:auto;flex:1}
+/* tab bar */
+.tab-bar{display:flex;gap:2px;border-bottom:1px solid var(--border);margin-bottom:18px}
+.tab-btn{padding:9px 15px;font-size:12px;font-family:var(--font-m);color:var(--text3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;letter-spacing:.4px}
+.tab-btn:hover{color:var(--text2)}
+.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
+/* compare */
+.compare-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.cmp-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px;cursor:pointer;transition:all .2s}
+.cmp-card:hover{border-color:var(--border2)}
+.cmp-card.sel{border-color:var(--accent);background:var(--accent-glow)}
+/* empty */
+.empty{text-align:center;padding:50px 20px;color:var(--text3)}
+.empty-icon{font-size:44px;margin-bottom:12px}
+.empty-title{font-family:var(--font-h);font-size:17px;color:var(--text2);margin-bottom:6px}
+.tname{max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text)}
+.tdur{font-family:var(--font-m);font-size:11px;color:var(--text3)}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="logo">
+    <div class="logo-mark">QA<span>Pulse</span></div>
+    <div class="logo-sub">Local AI Dashboard</div>
+  </div>
+  <nav class="nav">
+    <div class="nav-sec">Overview</div>
+    <div class="nav-item active" onclick="nav('dashboard',this)">
+      <svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>Dashboard
+    </div>
+    <div class="nav-item" onclick="nav('history',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><polyline points="8,4 8,8 11,10"/></svg>Run History
+    </div>
+    <div class="nav-item" onclick="nav('trends',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1,12 5,6 9,9 15,2"/></svg>Trends
+    </div>
+    <div class="nav-sec">Multi-Dimension</div>
+    <div class="nav-item" onclick="nav('regions',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c-2 2-3 4-3 6s1 4 3 6M8 2c2 2 3 4 3 6s-1 4-3 6"/></svg>Regions
+    </div>
+    <div class="nav-item" onclick="nav('devices',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="8" height="11" rx="1.5"/><rect x="11" y="5" width="4" height="7" rx="1"/><circle cx="6" cy="12" r="0.8" fill="currentColor"/></svg>Devices
+    </div>
+    <div class="nav-item" onclick="nav('compare',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="6" height="10" rx="1"/><rect x="9" y="3" width="6" height="10" rx="1"/><line x1="7" y1="8" x2="9" y2="8"/></svg>Compare Runs
+    </div>
+    <div class="nav-sec">AI</div>
+    <div class="nav-item" onclick="nav('ai',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.22 3.22l1.42 1.42M11.36 11.36l1.42 1.42M3.22 12.78l1.42-1.42M11.36 4.64l1.42-1.42"/></svg>AI Triage
+    </div>
+    <div class="nav-item" onclick="nav('insights',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2a4 4 0 0 0-2 7.46V11h4V9.46A4 4 0 0 0 8 2z"/><rect x="6" y="12" width="4" height="2" rx="1"/></svg>AI Insights
+    </div>
+    <div class="nav-sec">Setup</div>
+    <div class="nav-item" onclick="nav('upload',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10v4h12v-4"/><path d="M8 2v8"/><polyline points="5,6 8,3 11,6"/></svg>Import Reports
+    </div>
+    <div class="nav-sec">Share</div>
+    <div class="nav-item" onclick="nav('consolidated',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h12"/><path d="M2 8h12"/><path d="M2 13h12"/><circle cx="5" cy="3" r="1"/><circle cx="5" cy="8" r="1"/><circle cx="5" cy="13" r="1"/></svg>Consolidated
+    </div>
+    <div class="nav-item" onclick="nav('datastore',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="8" cy="4" rx="6" ry="2"/><path d="M2 4v4c0 1.1 2.69 2 6 2s6-.9 6-2V4"/><path d="M2 8v4c0 1.1 2.69 2 6 2s6-.9 6-2V8"/></svg>Data Store
+    </div>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="server-badge"><span class="dot"></span><span id="srv-status">Connected · localhost:7337</span></div>
+    <div style="font-size:10px;font-family:var(--font-m);color:var(--text3);margin-top:5px" id="srv-stats">Loading...</div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-left">
+      <span class="topbar-title" id="page-title">Dashboard</span>
+      <span class="breadcrumb" id="breadcrumb"></span>
+    </div>
+    <div class="topbar-right">
+      <span style="font-size:11px;font-family:var(--font-m);color:var(--text3)" id="last-updated"></span>
+      <button class="btn" onclick="refreshAll()">↻ Refresh</button>
+      <button class="btn btn-accent" onclick="openImportModal()">⬆ Import Reports</button>
+    </div>
+  </div>
+
+  <!-- GLOBAL FILTER BAR -->
+  <div class="filter-bar">
+    <span class="filter-label">Filter:</span>
+    <select class="fsel" id="f-region" onchange="applyFilters()"><option value="">All regions</option></select>
+    <select class="fsel" id="f-device" onchange="applyFilters()"><option value="">All devices</option></select>
+    <select class="fsel" id="f-env" onchange="applyFilters()">
+      <option value="">All envs</option>
+      <option value="qa">QA</option><option value="staging">Staging</option>
+      <option value="prod">Prod</option><option value="dev">Dev</option>
+    </select>
+    <select class="fsel" id="f-days" onchange="applyFilters()">
+      <option value="7">Last 7 days</option><option value="30" selected>Last 30 days</option>
+      <option value="90">Last 90 days</option><option value="365">Last year</option>
+    </select>
+    <div class="filter-sep"></div>
+    <span style="font-size:11px;font-family:var(--font-m);color:var(--text3)" id="filter-summary"></span>
+  </div>
+
+  <div class="content">
+
+    <!-- DASHBOARD -->
+    <div id="p-dashboard" class="panel active">
+      <div class="stats-row">
+        <div class="stat-card c-total"><div class="stat-label">Total runs</div><div class="stat-value total" id="d-runs">—</div><div class="stat-meta" id="d-runs-meta"></div></div>
+        <div class="stat-card c-pass"><div class="stat-label">Avg pass rate</div><div class="stat-value pass" id="d-pct">—</div><div class="stat-meta" id="d-pct-meta"></div></div>
+        <div class="stat-card c-fail"><div class="stat-label">Total failures</div><div class="stat-value fail" id="d-fail">—</div><div class="stat-meta" id="d-fail-meta"></div></div>
+        <div class="stat-card c-skip"><div class="stat-label">Total tests run</div><div class="stat-value total" id="d-tests">—</div><div class="stat-meta" id="d-tests-meta"></div></div>
+      </div>
+      <div class="g-wide">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Pass rate trend</div><span class="card-sub" id="trend-period">Last 30 days</span></div>
+          <div class="card-body"><div class="chart-h220"><canvas id="c-trend"></canvas></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Test distribution</div><span class="card-sub" id="d-run-name"></span></div>
+          <div class="card-body">
+            <div class="donut-wrap">
+              <canvas class="donut-canvas" id="c-donut"></canvas>
+              <div class="dlegend" id="d-legend"></div>
+            </div>
+            <div class="pbar-wrap" style="margin-top:14px"><div class="pbar" id="d-pbar" style="width:0%;background:linear-gradient(90deg,var(--pass),#4895ef)"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Region health</div></div>
+          <div class="card-body" id="d-region-list"><div class="empty" style="padding:20px 0"><span class="empty-icon" style="font-size:28px">🌍</span><div style="font-size:12px">No region data yet</div></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Device health</div></div>
+          <div class="card-body" id="d-device-list"><div class="empty" style="padding:20px 0"><span class="empty-icon" style="font-size:28px">📱</span><div style="font-size:12px">No device data yet</div></div></div>
+        </div>
+      </div>
+      <div class="card mb">
+        <div class="card-head"><div class="card-title">Recent runs</div><button class="btn" onclick="nav('history',document.querySelector('.nav-item[onclick*=&quot;history&quot;]'))">View all →</button></div>
+        <div class="card-body" style="padding:0"><table class="tbl" id="d-recent-tbl"><thead><tr><th>Run</th><th>Test</th><th>Suite</th><th>Region</th><th>Device</th><th>Pass rate</th><th>Tests</th><th>Date</th><th></th></tr></thead><tbody id="d-recent-body"></tbody></table></div>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <div class="card-head"><div class="card-title">🔥 Top failing tests</div><span class="card-sub" id="d-fail-label"></span></div>
+          <div class="card-body" style="padding:0"><table class="tbl" id="d-fail-tbl"><thead><tr><th>Test</th><th>Suite</th><th>Count</th><th>Region</th></tr></thead><tbody id="d-fail-body"></tbody></table></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">⚡ Flaky tests</div><span class="card-sub" id="d-flaky-label"></span></div>
+          <div class="card-body" style="padding:0"><table class="tbl" id="d-flaky-tbl"><thead><tr><th>Test</th><th>Hits</th><th>Retries</th></tr></thead><tbody id="d-flaky-body"></tbody></table></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HISTORY -->
+    <div id="p-history" class="panel">
+      <div class="card mb">
+        <div class="card-head">
+          <div class="card-title">All runs</div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <input id="search-runs" placeholder="Search runs..." style="background:var(--bg3);border:1px solid var(--border2);color:var(--text);font-size:12px;font-family:var(--font-m);padding:6px 10px;border-radius:var(--r);outline:none;width:200px" oninput="filterRunsTable(this.value)"/>
+            <span class="card-sub" id="history-count"></span>
+          </div>
+        </div>
+        <div class="card-body" style="padding:0">
+          <table class="tbl" id="history-tbl">
+            <thead><tr><th>Run name</th><th>Test</th><th>Suite</th><th>Region</th><th>Device</th><th>Env</th><th>Pass%</th><th>Tests</th><th>Failed</th><th>Duration</th><th>Date</th><th></th></tr></thead>
+            <tbody id="history-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRENDS -->
+    <div id="p-trends" class="panel">
+      <div class="g2">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Pass rate over time</div></div>
+          <div class="card-body"><div class="chart-h260"><canvas id="c-trend2"></canvas></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Tests per day</div></div>
+          <div class="card-body"><div class="chart-h260"><canvas id="c-vol"></canvas></div></div>
+        </div>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Pass rate by region</div></div>
+          <div class="card-body"><div class="chart-h220"><canvas id="c-region-bar"></canvas></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Pass rate by device</div></div>
+          <div class="card-body"><div class="chart-h220"><canvas id="c-device-bar"></canvas></div></div>
+        </div>
+      </div>
+      <div class="card mb">
+        <div class="card-head"><div class="card-title">Avg duration trend (ms)</div></div>
+        <div class="card-body"><div class="chart-h180"><canvas id="c-dur"></canvas></div></div>
+      </div>
+    </div>
+
+    <!-- REGIONS -->
+    <div id="p-regions" class="panel">
+      <div class="card mb">
+        <div class="card-head"><div class="card-title">Region overview</div><span class="card-sub">Click a region to drill down</span></div>
+        <div class="card-body"><div class="heatmap-grid" id="region-heatmap"></div></div>
+      </div>
+      <div id="region-detail" style="display:none">
+        <div class="card mb">
+          <div class="card-head"><div class="card-title" id="region-detail-title">Region detail</div><button class="btn" onclick="document.getElementById('region-detail').style.display='none'">✕ Close</button></div>
+          <div class="card-body">
+            <div class="g2">
+              <div><div class="chart-h220"><canvas id="c-region-trend"></canvas></div></div>
+              <div id="region-top-fails" style="overflow-y:auto;max-height:220px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><div class="card-title">Region × Device matrix</div></div>
+        <div class="card-body" style="overflow-x:auto"><table class="tbl" id="region-matrix-tbl"><thead id="region-matrix-head"></thead><tbody id="region-matrix-body"></tbody></table></div>
+      </div>
+    </div>
+
+    <!-- DEVICES -->
+    <div id="p-devices" class="panel">
+      <div class="g3">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Desktop</div></div>
+          <div class="card-body" id="dev-desktop"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Mobile</div></div>
+          <div class="card-body" id="dev-mobile"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Tablet / API</div></div>
+          <div class="card-body" id="dev-tablet"></div>
+        </div>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Pass rate by device type</div></div>
+          <div class="card-body"><div class="chart-h220"><canvas id="c-devtype"></canvas></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Failures per device</div></div>
+          <div class="card-body"><div class="chart-h220"><canvas id="c-devfail"></canvas></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARE -->
+    <div id="p-compare" class="panel">
+      <div class="card mb">
+        <div class="card-head"><div class="card-title">Select runs to compare (max 4)</div><button class="btn btn-accent" onclick="runComparison()">Compare →</button></div>
+        <div class="card-body"><div class="compare-grid" id="compare-select"></div></div>
+      </div>
+      <div id="compare-results" style="display:none">
+        <div class="card mb">
+          <div class="card-head"><div class="card-title">Comparison results</div></div>
+          <div class="card-body" style="padding:0"><table class="tbl" id="compare-tbl"><thead id="compare-head"></thead><tbody id="compare-body"></tbody></table></div>
+        </div>
+        <div class="card mb">
+          <div class="card-head"><div class="card-title">Pass rate comparison</div></div>
+          <div class="card-body"><div class="chart-h220"><canvas id="c-compare"></canvas></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI TRIAGE -->
+    <div id="p-ai" class="panel">
+      <div class="g-wide">
+        <div class="card mb">
+          <div class="card-head">
+            <div class="card-title">🤖 AI Triage — Claude</div>
+            <span style="font-size:10px;font-family:var(--font-m);color:var(--accent)">claude-sonnet · Live</span>
+          </div>
+          <div class="card-body">
+            <div class="ai-messages" id="ai-chat">
+              <div class="msg msg-ai">
+                <div class="mavatar mav-ai">AI</div>
+                <div class="mbubble">Hi! I'm your QA AI assistant connected to your local test database. I can analyse failures across regions and devices, spot patterns in historical data, identify flaky tests, and recommend what to fix first. What would you like to know?</div>
+              </div>
+            </div>
+            <div class="ai-input-row">
+              <input class="ai-inp" id="ai-inp" placeholder="Ask about failures, trends, regions..." onkeydown="if(event.key==='Enter')sendAI()"/>
+              <button class="btn btn-accent" onclick="sendAI()">Send</button>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
+              <button class="btn qbtn" onclick="qp('Why are tests failing most in which region?')">Region failures</button>
+              <button class="btn qbtn" onclick="qp('Which device has lowest pass rate and why?')">Worst device</button>
+              <button class="btn qbtn" onclick="qp('List the top 5 flaky tests and how to fix them')">Flaky analysis</button>
+              <button class="btn qbtn" onclick="qp('Is the pass rate improving or degrading over time?')">Pass rate trend</button>
+              <button class="btn qbtn" onclick="qp('What are the most common error types?')">Error patterns</button>
+            </div>
+          </div>
+        </div>
+        <div class="card mb">
+          <div class="card-head"><div class="card-title">Context snapshot</div></div>
+          <div class="card-body" id="ai-context-panel">
+            <div class="empty" style="padding:20px 0"><div style="font-size:12px;color:var(--text3)">Load data to see AI context</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI INSIGHTS -->
+    <div id="p-insights" class="panel">
+      <div class="card mb">
+        <div class="card-head">
+          <div class="card-title">🧠 AI-generated quality insights</div>
+          <button class="btn btn-accent" onclick="generateInsights()">Generate insights</button>
+        </div>
+        <div class="card-body" id="insights-body">
+          <div class="empty"><div class="empty-icon">💡</div><div class="empty-title">No insights yet</div><div style="font-size:13px">Click "Generate insights" — AI will analyse your full historical data</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UPLOAD -->
+    <div id="p-upload" class="panel">
+      <!-- Mode tabs -->
+      <div class="upload-tab-bar">
+        <div class="upload-tab active" onclick="switchUploadTab('single',this)">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="8" x2="11" y2="8"/><line x1="8" y1="5" x2="8" y2="11"/></svg>
+          Single / multiple files
+        </div>
+        <div class="upload-tab" onclick="switchUploadTab('zip',this)">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h6l4 4v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><polyline points="10,2 10,6 14,6"/><line x1="8" y1="9" x2="8" y2="13"/><line x1="6" y1="11" x2="10" y2="11"/></svg>
+          Allure JSON folder / ZIP
+        </div>
+      </div>
+
+      <!-- TAB: single files ------------------------------------------------->
+      <div class="upload-tab-panel active" id="tab-single">
+
+      <!-- Step indicator -->
+      <div style="display:flex;align-items:center;gap:0;margin-bottom:22px">
+        <div class="step-pill active" id="sp1">1 &nbsp;Select files</div>
+        <div class="step-arrow">›</div>
+        <div class="step-pill" id="sp2">2 &nbsp;Tag run</div>
+        <div class="step-arrow">›</div>
+        <div class="step-pill" id="sp3">3 &nbsp;Confirm &amp; upload</div>
+      </div>
+
+      <!-- STEP 1: Drop zone -------------------------------------------------->
+      <div id="step1">
+        <div class="upload-zone" id="drop-zone"
+          ondragover="event.preventDefault();this.classList.add('drag')"
+          ondragleave="this.classList.remove('drag')"
+          ondrop="dropFiles(event)"
+          onclick="document.getElementById('file-inp').click()">
+          <div class="upload-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <div class="upload-title">Drop your report files here</div>
+          <div class="upload-sub">or click to browse — multiple files supported</div>
+          <div class="chips" style="margin-top:16px">
+            <span class="chip" style="color:#a78bfa;border-color:rgba(167,139,250,.3);background:rgba(167,139,250,.07)">Allure XML</span>
+            <span class="chip" style="color:#fb923c;border-color:rgba(251,146,60,.3);background:rgba(251,146,60,.07)">ExtentReports</span>
+            <span class="chip" style="color:#60a5fa;border-color:rgba(96,165,250,.3);background:rgba(96,165,250,.07)">JUnit XML</span>
+            <span class="chip" style="color:#4ade80;border-color:rgba(74,222,128,.3);background:rgba(74,222,128,.07)">Cucumber JSON</span>
+            <span class="chip" style="color:#f472b6;border-color:rgba(244,114,182,.3);background:rgba(244,114,182,.07)">Mocha JSON</span>
+            <span class="chip" style="color:#38bdf8;border-color:rgba(56,189,248,.3);background:rgba(56,189,248,.07)">Playwright JSON</span>
+          </div>
+          <input type="file" id="file-inp" style="display:none" accept=".xml,.json,.html" multiple onchange="filesSelected(this.files)"/>
+        </div>
+      </div>
+
+      <!-- STEP 2: Metadata form (hidden until files chosen) ------------------>
+      <div id="step2" style="display:none">
+        <div class="card mb">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Tag your test run</div>
+              <div class="card-sub" style="margin-top:3px">Region and Device are required — they power the multi-region / multi-device dashboards</div>
+            </div>
+            <button class="btn" onclick="backToStep1()">← Change files</button>
+          </div>
+          <div class="card-body">
+
+            <!-- Selected files preview -->
+            <div id="files-preview" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)"></div>
+
+            <!-- Required fields row — visually prominent -->
+            <div style="background:var(--bg3);border:1px solid rgba(0,229,160,.2);border-radius:var(--r);padding:14px 16px;margin-bottom:16px">
+              <div style="font-size:11px;font-family:var(--font-m);color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px">★ Required fields</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+
+                <div>
+                  <label class="field-lbl">Region <span style="color:var(--fail)">*</span></label>
+                  <select id="m-region" class="field-sel" onchange="onRegionChange()" required>
+                    <option value="">— select region —</option>
+                    <optgroup label="Europe">
+                      <option value="UK">UK (United Kingdom)</option>
+                      <option value="DE">DE (Germany)</option>
+                      <option value="AT">AT (Austria)</option>
+                      <option value="FR">FR (France)</option>
+                      <option value="NL">NL (Netherlands)</option>
+                      <option value="ES">ES (Spain)</option>
+                      <option value="IT">IT (Italy)</option>
+                      <option value="eu-west">EU West (generic)</option>
+                    </optgroup>
+                    <optgroup label="Americas">
+                      <option value="us-east">US East</option>
+                      <option value="us-west">US West</option>
+                      <option value="ca">CA (Canada)</option>
+                    </optgroup>
+                    <optgroup label="Asia Pacific">
+                      <option value="ap-southeast">AP Southeast</option>
+                      <option value="ap-south">AP South</option>
+                      <option value="jp">JP (Japan)</option>
+                      <option value="au">AU (Australia)</option>
+                    </optgroup>
+                    <optgroup label="Other">
+                      <option value="global">Global / All regions</option>
+                    </optgroup>
+                  </select>
+                  <div class="field-hint" id="region-hint"></div>
+                </div>
+
+                <div>
+                  <label class="field-lbl">Device <span style="color:var(--fail)">*</span></label>
+                  <select id="m-device" class="field-sel" onchange="onDeviceChange()" required>
+                    <option value="">— select device —</option>
+                    <optgroup label="Desktop">
+                      <option value="desktop-chrome"  data-type="desktop" data-os="Windows 11"  data-browser="Chrome">Desktop Chrome</option>
+                      <option value="desktop-firefox" data-type="desktop" data-os="Windows 11"  data-browser="Firefox">Desktop Firefox</option>
+                      <option value="desktop-safari"  data-type="desktop" data-os="macOS 14"    data-browser="Safari">Desktop Safari (macOS)</option>
+                      <option value="desktop-edge"    data-type="desktop" data-os="Windows 11"  data-browser="Edge">Desktop Edge</option>
+                    </optgroup>
+                    <optgroup label="Mobile">
+                      <option value="iphone-safari"   data-type="mobile"  data-os="iOS 17"      data-browser="Safari Mobile">iPhone Safari (iOS)</option>
+                      <option value="android-chrome"  data-type="mobile"  data-os="Android 14"  data-browser="Chrome Mobile">Android Chrome</option>
+                      <option value="android-samsung" data-type="mobile"  data-os="Android 14"  data-browser="Samsung Internet">Android Samsung Browser</option>
+                    </optgroup>
+                    <optgroup label="Tablet">
+                      <option value="tablet-ipad"     data-type="tablet"  data-os="iPadOS 17"   data-browser="Safari">iPad Safari</option>
+                      <option value="tablet-android"  data-type="tablet"  data-os="Android 14"  data-browser="Chrome">Android Tablet Chrome</option>
+                    </optgroup>
+                    <optgroup label="API / Headless">
+                      <option value="api-backend"     data-type="api"     data-os=""            data-browser="">API / Backend (no browser)</option>
+                      <option value="headless-chrome" data-type="desktop" data-os="Linux"       data-browser="Headless Chrome">Headless Chrome (CI)</option>
+                    </optgroup>
+                  </select>
+                  <div class="field-hint" id="device-hint"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Optional fields -->
+            <div style="font-size:11px;font-family:var(--font-m);color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Optional fields</div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+              <div><label class="field-lbl">Run name</label><input id="m-name" class="field-inp" placeholder="e.g. Sprint 42 Regression"/></div>
+              <div>
+                <label class="field-lbl">Environment</label>
+                <select id="m-env" class="field-sel">
+                  <option value="qa">QA</option>
+                  <option value="staging">Staging</option>
+                  <option value="prod">Production</option>
+                  <option value="dev">Development</option>
+                  <option value="perf">Performance</option>
+                </select>
+              </div>
+              <div><label class="field-lbl">Branch</label><input id="m-branch" class="field-inp" placeholder="e.g. main, release/2.1"/></div>
+              <div><label class="field-lbl">OS (auto-filled)</label><input id="m-os" class="field-inp" placeholder="e.g. Windows 11"/></div>
+              <div><label class="field-lbl">Browser (auto-filled)</label><input id="m-browser" class="field-inp" placeholder="e.g. Chrome 124"/></div>
+              <div><label class="field-lbl">Build ID</label><input id="m-build" class="field-inp" placeholder="e.g. build-1234"/></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:flex-end;gap:10px">
+          <button class="btn" onclick="backToStep1()">← Back</button>
+          <button class="btn btn-accent" id="to-step3-btn" onclick="goToStep3()">Review &amp; upload →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Confirm cards before upload -------------------------------->
+      <div id="step3" style="display:none">
+        <div id="confirm-cards" style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px"></div>
+        <div style="display:flex;justify-content:flex-end;gap:10px">
+          <button class="btn" onclick="backToStep2()">← Edit tags</button>
+          <button class="btn btn-accent" id="submit-btn" onclick="submitImport()">⬆ Upload all files</button>
+        </div>
+      </div>
+
+      <!-- Results after upload --------------------------------------------->
+      <div id="step4" style="display:none">
+        <div id="uploaded-list"></div>
+        <div style="display:flex;justify-content:flex-end;margin-top:14px">
+          <button class="btn btn-accent" onclick="resetImport()">⬆ Import more files</button>
+        </div>
+      </div>
+
+      </div><!-- /tab-single -->
+
+      <!-- TAB: Allure JSON folder / ZIP -------------------------------------->
+      <div class="upload-tab-panel" id="tab-zip">
+
+        <div class="zip-info-box">
+          <strong style="color:var(--text)">How Allure generates results</strong><br/>
+          When you run tests with the Allure listener, it writes one <code>UUID.json</code> file per test into an <code>allure-results/</code> folder. This tab accepts that folder as a <strong>ZIP archive</strong> or lets you upload <strong>individual UUID.json files</strong> directly.<br/><br/>
+          <strong style="color:var(--text)">Multi-region / multi-device ZIPs</strong> — if your ZIP contains sub-folders (one per region or device), QA Pulse creates a separate run for each sub-folder automatically.
+        </div>
+
+        <div class="folder-tree">
+          <div style="color:var(--text3);font-size:10px;letter-spacing:1px;margin-bottom:6px">ACCEPTED ZIP STRUCTURES</div>
+          <div><span style="color:var(--accent)">Option A — single folder:</span></div>
+          <div>&nbsp;&nbsp;📦 allure_results.zip</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;└── allure-results/</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <span style="color:#a78bfa">8f14e45f-…uuid….json</span> &nbsp;<span style="color:var(--text3)">← test result</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <span style="color:#a78bfa">9b2e4a1c-…uuid….json</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <span style="color:#60a5fa">environment.properties</span> &nbsp;<span style="color:var(--text3)">← auto-read</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <span style="color:#60a5fa">executor.json</span> &nbsp;<span style="color:var(--text3)">← CI build info</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── <span style="color:var(--text3)">*.png / *.txt</span> &nbsp;<span style="color:var(--text3)">← ignored</span></div>
+          <div style="margin-top:8px"><span style="color:var(--accent)">Option B — multi-region (one run per sub-folder):</span></div>
+          <div>&nbsp;&nbsp;📦 all_regions.zip</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span style="color:#f4a261">UK_desktop-chrome/</span> &nbsp;&nbsp;&nbsp;<span style="color:var(--text3)">→ run 1</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── uuid1.json, uuid2.json …</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span style="color:#f4a261">DE_android-chrome/</span> &nbsp;&nbsp;&nbsp;<span style="color:var(--text3)">→ run 2</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;└── <span style="color:#f4a261">AT_iphone-safari/</span> &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--text3)">→ run 3</span></div>
+          <div style="margin-top:8px"><span style="color:var(--accent)">Option C — flat ZIP (no sub-folder):</span></div>
+          <div>&nbsp;&nbsp;📦 results.zip &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--text3)">→ treated as one run</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;├── uuid1.json, uuid2.json …</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;└── environment.properties</div>
+        </div>
+
+        <!-- ZIP drop zone -->
+        <div id="zip-step1">
+          <div class="upload-zone" id="zip-drop-zone"
+            ondragover="event.preventDefault();this.classList.add('drag')"
+            ondragleave="this.classList.remove('drag')"
+            ondrop="zipDropped(event)"
+            onclick="document.getElementById('zip-inp').click()">
+            <div class="upload-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="2"><path d="M4 2h10l6 6v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><polyline points="14,2 14,8 20,8"/><line x1="12" y1="13" x2="12" y2="17"/><line x1="10" y1="15" x2="14" y2="15"/></svg>
+            </div>
+            <div class="upload-title">Drop your allure-results ZIP here</div>
+            <div class="upload-sub">or click to browse — accepts .zip containing UUID.json files</div>
+            <div class="chips" style="margin-top:14px">
+              <span class="chip" style="color:#a78bfa;border-color:rgba(167,139,250,.3);background:rgba(167,139,250,.07)">allure-results/*.json</span>
+              <span class="chip" style="color:#4ade80;border-color:rgba(74,222,128,.3);background:rgba(74,222,128,.07)">environment.properties</span>
+              <span class="chip" style="color:#60a5fa;border-color:rgba(96,165,250,.3);background:rgba(96,165,250,.07)">executor.json</span>
+              <span class="chip" style="color:#f4a261;border-color:rgba(244,162,97,.3);background:rgba(244,162,97,.07)">multi-folder ZIPs</span>
+            </div>
+            <input type="file" id="zip-inp" style="display:none" accept=".zip" onchange="zipSelected(this.files)"/>
+          </div>
+        </div>
+
+        <!-- ZIP tag form -->
+        <div id="zip-step2" style="display:none">
+          <div class="card mb">
+            <div class="card-head">
+              <div>
+                <div class="card-title">Tag this Allure ZIP run</div>
+                <div class="card-sub" id="zip-file-label" style="margin-top:3px"></div>
+              </div>
+              <button class="btn" onclick="resetZipImport()">← Change ZIP</button>
+            </div>
+            <div class="card-body">
+
+              <div id="zip-folder-notice" style="display:none;background:var(--bg3);border:1px solid rgba(244,162,97,.2);border-radius:var(--r);padding:10px 14px;margin-bottom:14px;font-size:12px;color:var(--skip)"></div>
+
+              <div style="background:var(--bg3);border:1px solid rgba(0,229,160,.2);border-radius:var(--r);padding:14px 16px;margin-bottom:14px">
+                <div style="font-size:11px;font-family:var(--font-m);color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px">★ Required fields</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                  <div>
+                    <label class="field-lbl">Region <span style="color:var(--fail)">*</span></label>
+                    <select id="zm-region" class="field-sel" onchange="onZipRegionChange()" required>
+                      <option value="">— select region —</option>
+                      <optgroup label="Europe">
+                        <option value="UK">UK (United Kingdom)</option>
+                        <option value="DE">DE (Germany)</option>
+                        <option value="AT">AT (Austria)</option>
+                        <option value="FR">FR (France)</option>
+                        <option value="NL">NL (Netherlands)</option>
+                        <option value="ES">ES (Spain)</option>
+                        <option value="IT">IT (Italy)</option>
+                        <option value="eu-west">EU West (generic)</option>
+                      </optgroup>
+                      <optgroup label="Americas">
+                        <option value="us-east">US East</option>
+                        <option value="us-west">US West</option>
+                      </optgroup>
+                      <optgroup label="Asia Pacific">
+                        <option value="ap-southeast">AP Southeast</option>
+                        <option value="ap-south">AP South</option>
+                        <option value="jp">JP (Japan)</option>
+                        <option value="au">AU (Australia)</option>
+                      </optgroup>
+                      <optgroup label="Other">
+                        <option value="global">Global / All regions</option>
+                      </optgroup>
+                    </select>
+                    <div class="field-hint" id="zregion-hint" style="font-size:11px;font-family:var(--font-m);margin-top:5px;min-height:16px;color:var(--text3)">Required for single-folder ZIPs. Multi-folder ZIPs auto-detect from sub-folder names.</div>
+                  </div>
+                  <div>
+                    <label class="field-lbl">Device <span style="color:var(--fail)">*</span></label>
+                    <select id="zm-device" class="field-sel" onchange="onZipDeviceChange()" required>
+                      <option value="">— select device —</option>
+                      <optgroup label="Desktop">
+                        <option value="desktop-chrome"  data-type="desktop" data-os="Windows 11"  data-browser="Chrome">Desktop Chrome</option>
+                        <option value="desktop-firefox" data-type="desktop" data-os="Windows 11"  data-browser="Firefox">Desktop Firefox</option>
+                        <option value="desktop-safari"  data-type="desktop" data-os="macOS 14"    data-browser="Safari">Desktop Safari</option>
+                        <option value="desktop-edge"    data-type="desktop" data-os="Windows 11"  data-browser="Edge">Desktop Edge</option>
+                      </optgroup>
+                      <optgroup label="Mobile">
+                        <option value="iphone-safari"   data-type="mobile"  data-os="iOS 17"      data-browser="Safari Mobile">iPhone Safari</option>
+                        <option value="android-chrome"  data-type="mobile"  data-os="Android 14"  data-browser="Chrome Mobile">Android Chrome</option>
+                      </optgroup>
+                      <optgroup label="Tablet">
+                        <option value="tablet-ipad"     data-type="tablet"  data-os="iPadOS 17"   data-browser="Safari">iPad Safari</option>
+                      </optgroup>
+                      <optgroup label="API / Headless">
+                        <option value="api-backend"     data-type="api"     data-os=""            data-browser="">API / Backend</option>
+                        <option value="headless-chrome" data-type="desktop" data-os="Linux"       data-browser="Headless Chrome">Headless Chrome (CI)</option>
+                      </optgroup>
+                    </select>
+                    <div class="field-hint" id="zdevice-hint" style="font-size:11px;font-family:var(--font-m);margin-top:5px;min-height:16px"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+                <div><label class="field-lbl">Run name</label><input id="zm-name" class="field-inp" placeholder="e.g. Sprint 42 — Allure"/></div>
+                <div>
+                  <label class="field-lbl">Environment</label>
+                  <select id="zm-env" class="field-sel">
+                    <option value="qa">QA</option><option value="staging">Staging</option>
+                    <option value="prod">Production</option><option value="dev">Development</option>
+                  </select>
+                </div>
+                <div><label class="field-lbl">Branch</label><input id="zm-branch" class="field-inp" placeholder="e.g. main"/></div>
+                <div><label class="field-lbl">OS (auto-filled)</label><input id="zm-os" class="field-inp" placeholder="auto"/></div>
+                <div><label class="field-lbl">Browser (auto-filled)</label><input id="zm-browser" class="field-inp" placeholder="auto"/></div>
+                <div><label class="field-lbl">Build ID</label><input id="zm-build" class="field-inp" placeholder="e.g. build-1234"/></div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px">
+            <button class="btn" onclick="resetZipImport()">← Back</button>
+            <button class="btn btn-accent" onclick="submitZipImport()">⬆ Upload ZIP</button>
+          </div>
+        </div>
+
+        <!-- ZIP results -->
+        <div id="zip-step3" style="display:none">
+          <div id="zip-results-list"></div>
+          <div style="display:flex;justify-content:flex-end;margin-top:14px">
+            <button class="btn btn-accent" onclick="resetZipImport()">⬆ Import another ZIP</button>
+          </div>
+        </div>
+
+      </div><!-- /tab-zip -->
+    </div>
+
+    <!-- CONSOLIDATED -->
+    <div id="p-consolidated" class="panel">
+      <div class="card mb">
+        <div class="card-head">
+          <div>
+            <div class="card-title">Consolidated results</div>
+            <div class="card-sub">Imports that contain multiple regions/devices are grouped into one consolidated view.</div>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button class="btn" onclick="createBatchPrompt()">＋ New batch</button>
+            <button class="btn" onclick="loadBatches(false)">↻ Refresh</button>
+          </div>
+        </div>
+        <div class="card-body" style="padding:0">
+          <table class="tbl">
+            <thead><tr><th>Batch</th><th>Test</th><th>Suite</th><th>Runs</th><th>Regions</th><th>Devices</th><th>Pass%</th><th>Failed</th><th>Date</th><th></th></tr></thead>
+            <tbody id="batch-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card mb" id="batch-detail-card" style="display:none">
+        <div class="card-head">
+          <div>
+            <div class="card-title" id="batch-title">Batch detail</div>
+            <div class="card-sub" id="batch-sub">—</div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn" onclick="exportBatch('html')">Export HTML</button>
+            <button class="btn" onclick="exportBatch('md')">Export Markdown</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="g2" style="margin-bottom:14px">
+            <div class="card" style="margin-bottom:0">
+              <div class="card-head"><div class="card-title">By region</div></div>
+              <div class="card-body" style="padding:0">
+                <table class="tbl"><thead><tr><th>Region</th><th>Runs</th><th>Avg pass%</th><th>Failed</th></tr></thead><tbody id="batch-by-region"></tbody></table>
+              </div>
+            </div>
+            <div class="card" style="margin-bottom:0">
+              <div class="card-head"><div class="card-title">By device</div></div>
+              <div class="card-body" style="padding:0">
+                <table class="tbl"><thead><tr><th>Device</th><th>Type</th><th>Runs</th><th>Avg pass%</th><th>Failed</th></tr></thead><tbody id="batch-by-device"></tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:10px">
+            <div class="card-head"><div class="card-title">Runs</div></div>
+            <div class="card-body" style="padding:0;max-height:320px;overflow:auto">
+              <table class="tbl"><thead><tr><th>Run</th><th>Test</th><th>Suite</th><th>Region</th><th>Device</th><th>Env</th><th>Pass%</th><th>Total</th><th>Failed</th><th>Date</th></tr></thead><tbody id="batch-runs"></tbody></table>
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:0">
+            <div class="card-head">
+              <div>
+                <div class="card-title">Tests in this batch</div>
+                <div class="card-sub">Compare the same test across regions/devices</div>
+              </div>
+              <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+                <input id="batch-test-q" placeholder="Search test..." style="background:var(--bg3);border:1px solid var(--border2);color:var(--text);font-size:12px;font-family:var(--font-m);padding:6px 10px;border-radius:var(--r);outline:none;width:220px" oninput="renderBatchTestsView()"/>
+                <button class="btn" id="batch-view-raw" style="font-size:11px;padding:4px 10px" onclick="setBatchTestsMode('raw')">Raw</button>
+                <button class="btn" id="batch-view-matrix" style="font-size:11px;padding:4px 10px" onclick="setBatchTestsMode('matrix')">Matrix</button>
+              </div>
+            </div>
+            <div class="card-body" style="padding:0">
+              <div id="batch-tests-wrap"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- DATA STORE -->
+    <div id="p-datastore" class="panel">
+      <div class="card mb">
+        <div class="card-head">
+          <div class="card-title">📂 JSON Data Store</div>
+          <button class="btn" onclick="loadDbInfo()">↻ Refresh</button>
+        </div>
+        <div class="card-body">
+          <div style="background:var(--bg3);border:1px solid rgba(0,229,160,.15);border-radius:var(--r);padding:14px 16px;margin-bottom:16px">
+            <div style="font-size:13px;color:var(--accent);font-weight:500;margin-bottom:6px">✓ Plain JSON — no database needed</div>
+            <div style="font-size:12px;color:var(--text2);line-height:1.7">All data is stored as human-readable JSON files. Open them in VS Code, Notepad, or any text editor. Copy the <code style="background:var(--bg4);padding:2px 5px;border-radius:4px;font-family:var(--font-m)">data/</code> folder to back up everything.</div>
+          </div>
+          <div id="db-info-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px"></div>
+
+          <div class="section-divider" style="font-size:11px;font-family:var(--font-m);color:var(--text3);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:12px">File structure</div>
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;font-family:var(--font-m);font-size:12px;line-height:2;color:var(--text2)">
+            <div><span style="color:var(--accent)">data/</span></div>
+            <div>&nbsp;&nbsp;<span style="color:#60a5fa">runs.json</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--text3)">← all run metadata (edit freely)</span></div>
+            <div>&nbsp;&nbsp;<span style="color:#60a5fa">tests/</span></div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#a78bfa">&lt;run-id&gt;.json</span> &nbsp;&nbsp;<span style="color:var(--text3)">← test cases for each run</span></div>
+          </div>
+
+          <div class="section-divider" style="font-size:11px;font-family:var(--font-m);color:var(--text3);letter-spacing:1.2px;text-transform:uppercase;margin:18px 0 12px">runs.json — example entry</div>
+          <pre id="runs-sample" style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;font-family:var(--font-m);font-size:11.5px;color:var(--text2);overflow-x:auto;white-space:pre;line-height:1.7">Loading...</pre>
+
+          <div class="section-divider" style="font-size:11px;font-family:var(--font-m);color:var(--text3);letter-spacing:1.2px;text-transform:uppercase;margin:18px 0 12px">data/tests/&lt;run-id&gt;.json — example test entry</div>
+          <pre style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;font-family:var(--font-m);font-size:11.5px;color:var(--text2);overflow-x:auto;white-space:pre;line-height:1.7">[
+  {
+    <span style="color:#4ade80">"id"</span>:          <span style="color:#fb923c">"uuid-here"</span>,
+    <span style="color:#4ade80">"run_id"</span>:      <span style="color:#fb923c">"parent-run-uuid"</span>,
+    <span style="color:#4ade80">"name"</span>:        <span style="color:#fb923c">"test_login_success"</span>,
+    <span style="color:#4ade80">"suite"</span>:       <span style="color:#fb923c">"LoginService"</span>,
+    <span style="color:#4ade80">"status"</span>:      <span style="color:#fb923c">"passed"</span>,
+    <span style="color:#4ade80">"duration_ms"</span>: <span style="color:#60a5fa">412</span>,
+    <span style="color:#4ade80">"error_msg"</span>:   <span style="color:#fb923c">""</span>,
+    <span style="color:#4ade80">"tags"</span>:        <span style="color:#60a5fa">["@smoke", "@login"]</span>,
+    <span style="color:#4ade80">"region"</span>:      <span style="color:#fb923c">"eu-west"</span>,
+    <span style="color:#4ade80">"device"</span>:      <span style="color:#fb923c">"desktop-chrome"</span>,
+    <span style="color:#4ade80">"is_flaky"</span>:    <span style="color:#60a5fa">0</span>
+  }
+]</pre>
+
+          <div class="section-divider" style="font-size:11px;font-family:var(--font-m);color:var(--text3);letter-spacing:1.2px;text-transform:uppercase;margin:18px 0 12px">Backup &amp; restore</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px">
+              <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:6px">💾 Backup</div>
+              <code style="font-size:11px;font-family:var(--font-m);color:var(--text3)">cp -r data/ data_backup/</code>
+            </div>
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px">
+              <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:6px">♻ Restore</div>
+              <code style="font-size:11px;font-family:var(--font-m);color:var(--text3)">cp -r data_backup/ data/</code>
+            </div>
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px">
+              <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:6px">🔄 Reset (CLI)</div>
+              <code style="font-size:11px;font-family:var(--font-m);color:var(--text3)">rm data/runs.json data/tests/*</code>
+            </div>
+          </div>
+
+          <div class="section-divider" style="font-size:11px;font-family:var(--font-m);color:var(--text3);letter-spacing:1.2px;text-transform:uppercase;margin:18px 0 12px">Reset dashboard</div>
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+            <div>
+              <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px">Clear all data</div>
+              <div style="font-size:11px;color:var(--text3)">Permanently delete all runs and test files. Use backup first if you need to restore.</div>
+            </div>
+            <button type="button" class="btn btn-danger" id="btn-reset-dashboard" onclick="resetDashboard()">Reset dashboard</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+</div><!-- /shell -->
+
+<div class="toast" id="toast"></div>
+<input type="hidden" id="m-dtype" value="desktop"/>
+
+<!-- RUN DETAIL MODAL -->
+<div class="modal-overlay" id="run-modal" style="display:none" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title" id="modal-title">Run detail</div>
+      <button class="btn" onclick="closeModal()">✕ Close</button>
+    </div>
+    <div class="modal-body">
+      <div class="tab-bar">
+        <div class="tab-btn active" onclick="modalTab('overview',this)">Overview</div>
+        <div class="tab-btn" onclick="modalTab('suites',this)">Suites</div>
+        <div class="tab-btn" onclick="modalTab('tests',this)">All tests</div>
+        <div class="tab-btn" onclick="modalTab('failures',this)">Failures</div>
+      </div>
+      <div id="mt-overview"></div>
+      <div id="mt-suites" style="display:none"></div>
+      <div id="mt-tests" style="display:none"></div>
+      <div id="mt-failures" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
+<!-- BATCH CREATE MODAL -->
+<div class="modal-overlay" id="batch-create-modal" style="display:none" onclick="if(event.target===this)closeBatchCreateModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-head">
+      <div class="modal-title">New consolidated batch</div>
+      <button class="btn" onclick="closeBatchCreateModal()">✕ Close</button>
+    </div>
+    <div class="modal-body">
+      <div style="font-size:13px;color:var(--text2);margin-bottom:12px">
+        Select a <b>build id</b> (release) to group all matching runs into one consolidated view. Optionally override the batch name.
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:420px">
+        <div>
+          <label style="font-size:12px;font-family:var(--font-m);color:var(--text3);display:block;margin-bottom:4px">Build id <span style="color:var(--fail)">*</span></label>
+          <select id="bc-build" class="field-sel" style="width:100%">
+            <option value="">— select build —</option>
+          </select>
+          <div id="bc-build-hint" style="font-size:11px;font-family:var(--font-m);color:var(--text3);margin-top:4px"></div>
+        </div>
+        <div>
+          <label style="font-size:12px;font-family:var(--font-m);color:var(--text3);display:block;margin-bottom:4px">Batch name (optional)</label>
+          <input id="bc-name" class="field-inp" placeholder="e.g. Regression_2026.1 — All regions/devices"/>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;gap:8px;padding:12px 20px;border-top:1px solid var(--border)">
+      <button class="btn" onclick="closeBatchCreateModal()">Cancel</button>
+      <button class="btn btn-accent" id="bc-submit" onclick="submitBatchCreate()">Create batch</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── State ────────────────────────────────────────────────────────────────────
+const API = '';
+let G = { summary:{}, trends:{}, runs:[], regions:[], devices:[], selectedRuns:[] };
+let charts = {};
+let currentModalRun = null;
+let currentPage = 'dashboard';
+
+// ── Utils ─────────────────────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const fmt = n => n == null ? '—' : Number(n).toLocaleString();
+const pct = n => n == null ? '—' : Number(n).toFixed(1) + '%';
+const dur = ms => ms >= 60000 ? (ms/60000).toFixed(1)+'m' : ms >= 1000 ? (ms/1000).toFixed(1)+'s' : ms+'ms';
+const relTime = iso => { const d=new Date(iso),now=new Date(),diff=Math.floor((now-d)/1000); if(diff<60)return diff+'s ago'; if(diff<3600)return Math.floor(diff/60)+'m ago'; if(diff<86400)return Math.floor(diff/3600)+'h ago'; return Math.floor(diff/86400)+'d ago'; };
+const passColor = p => p >= 90 ? '#00e5a0' : p >= 70 ? '#f4a261' : '#ff4d6d';
+const statusBadge = s => `<span class="badge ${s==='passed'?'bp':s==='failed'?'bf':s==='skipped'?'bs':'bn'}">● ${s}</span>`;
+
+async function api(path) {
+  const res = await fetch(API + path);
+  if (!res.ok) throw new Error(`API ${path} → ${res.status}`);
+  return res.json();
+}
+
+function toast(msg, err=false) {
+  const el = $('toast');
+  el.textContent = msg;
+  el.className = 'toast show' + (err?' err':'');
+  setTimeout(() => el.classList.remove('show'), 3200);
+}
+
+function destroyChart(id) { if(charts[id]){ charts[id].destroy(); delete charts[id]; } }
+
+function mkChart(id, type, data, opts={}) {
+  destroyChart(id);
+  const ctx = $(id).getContext('2d');
+  charts[id] = new Chart(ctx, {
+    type,
+    data,
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ display:false }, ...opts.plugins },
+      scales: type==='doughnut' ? undefined : {
+        x:{ grid:{ color:'rgba(255,255,255,0.04)' }, ticks:{ color:'#44506a', font:{size:10} } },
+        y:{ grid:{ color:'rgba(255,255,255,0.04)' }, ticks:{ color:'#44506a', font:{size:10} }, ...opts.yOpts },
+        ...opts.scales
+      },
+      ...opts.extra
+    }
+  });
+}
+
+// ── Navigation ────────────────────────────────────────────────────────────────
+const pageTitles = {dashboard:'Dashboard',history:'Run History',trends:'Trends',regions:'Regions',devices:'Devices',compare:'Compare Runs',ai:'AI Triage',insights:'AI Insights',upload:'Import Reports',consolidated:'Consolidated Results',datastore:'Data Store (JSON)'};
+
+function nav(page, el) {
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  $('p-'+page).classList.add('active');
+  if(el) el.classList.add('active');
+   currentPage = page;
+  $('page-title').textContent = pageTitles[page]||page;
+  if(page==='trends') loadTrends();
+  if(page==='regions') loadRegionPage();
+  if(page==='devices') loadDevicePage();
+  if(page==='history') loadHistory();
+  if(page==='compare') loadCompare();
+  if(page==='ai') updateAIContext();
+  if(page==='datastore') loadDbInfo();
+  if(page==='consolidated') loadBatches(true);
+}
+
+// ── Filters ───────────────────────────────────────────────────────────────────
+function filters() {
+  return { region:$('f-region').value, device:$('f-device').value, env:$('f-env').value, days:$('f-days').value };
+}
+
+function filterQuery() {
+  const f=filters(), p=[];
+  if(f.region) p.push(`region=${f.region}`);
+  if(f.device) p.push(`device=${f.device}`);
+  if(f.env)    p.push(`env=${f.env}`);
+  p.push(`days=${f.days}`);
+  return p.join('&');
+}
+
+function applyFilters() {
+  const f=filters();
+  const parts = [f.region||'All regions', f.device||'All devices', f.env||'All envs', `Last ${f.days}d`];
+  $('filter-summary').textContent = parts.filter(Boolean).join(' · ');
+  $('trend-period').textContent = `Last ${f.days} days`;
+  refreshAll();
+  if (currentPage === 'history') {
+    loadHistory();
+  }
+}
+
+async function populateFilters() {
+  const [regions, devices] = await Promise.all([api('/api/regions'), api('/api/devices')]);
+  G.regions = regions; G.devices = devices;
+  $('f-region').innerHTML = '<option value="">All regions</option>' + regions.map(r=>`<option value="${r.id}">${r.name}</option>`).join('');
+  $('f-device').innerHTML = '<option value="">All devices</option>' + devices.map(d=>`<option value="${d.id}">${d.name}</option>`).join('');
+}
+
+// ── Dashboard ─────────────────────────────────────────────────────────────────
+async function loadDashboard() {
+  try {
+    const [summary, trends, runs] = await Promise.all([
+      api('/api/summary?' + filterQuery()),
+      api('/api/trends?' + filterQuery()),
+      api('/api/runs?' + filterQuery() + '&limit=10')
+    ]);
+    G.summary=summary; G.trends=trends; G.runs=runs.runs;
+
+    // stats
+    const t=summary.totals||{};
+    $('d-runs').textContent = fmt(t.total_runs||0);
+    $('d-pct').textContent  = pct(t.avg_pass_rate||0);
+    $('d-fail').textContent = fmt(t.total_failed||0);
+    $('d-tests').textContent= fmt(t.total_tests||0);
+    $('d-pct-meta').textContent = `${fmt(t.total_passed||0)} passed total`;
+    $('d-fail-meta').textContent= `across all runs`;
+    $('d-tests-meta').textContent= `${fmt(t.total_runs||0)} runs imported`;
+    $('d-runs-meta').textContent = summary.recent?.length ? relTime(summary.recent[0].created_at)+' last run' : '';
+
+    // trend chart
+    if(trends.daily?.length) {
+      const labels = trends.daily.map(d=>d.day.slice(5));
+      const data   = trends.daily.map(d=>d.avg_pass_rate);
+      mkChart('c-trend','line',{labels,datasets:[{data,borderColor:'#00e5a0',backgroundColor:'rgba(0,229,160,0.07)',tension:.4,fill:true,pointBackgroundColor:'#00e5a0',pointRadius:3,pointHoverRadius:5}]},{yOpts:{min:0,max:100}});
+    }
+
+    // distribution chart: aggregate of all filtered runs (whole or filtered by region/device)
+    const scopeLabel = (()=>{ const f=filters(); const parts=[]; if(f.region){ const r=(G.regions||[]).find(x=>x.id===f.region); parts.push(r?.name||f.region); } if(f.device){ const d=(G.devices||[]).find(x=>x.id===f.device); parts.push(d?.name||f.device); } if(f.env) parts.push(f.env); return parts.length ? parts.join(' · ') : 'All runs'; })();
+    $('d-run-name').textContent = scopeLabel;
+    const p = t.total_passed||0, f = t.total_failed||0, s = t.total_skipped!==undefined ? t.total_skipped : Math.max(0,(t.total_tests||0)-p-f);
+    const total = p+f+s;
+    if(total>0) {
+      destroyChart('c-donut');
+      charts['c-donut'] = new Chart($('c-donut').getContext('2d'),{
+        type:'doughnut',
+        data:{labels:['Passed','Failed','Skipped'],datasets:[{data:[p,f,s],backgroundColor:['rgba(0,229,160,.8)','rgba(255,77,109,.8)','rgba(244,162,97,.8)'],borderColor:['#00e5a0','#ff4d6d','#f4a261'],borderWidth:2,hoverOffset:3}]},
+        options:{responsive:false,cutout:'72%',plugins:{legend:{display:false}}}
+      });
+      $('d-legend').innerHTML = [['#00e5a0','Passed',p],['#ff4d6d','Failed',f],['#f4a261','Skipped',s]].map(([c,l,v])=>`<div class="li"><div class="dot2" style="background:${c}"></div><div class="lbl">${l}</div><div class="val">${fmt(v)}</div></div>`).join('');
+      $('d-pbar').style.width = (t.avg_pass_rate||0)+'%';
+    } else {
+      destroyChart('c-donut');
+      $('d-legend').innerHTML = '<div style="color:var(--text3);font-size:12px;padding:10px 0">No tests match current filter</div>';
+      $('d-pbar').style.width = '0%';
+    }
+
+    // region health
+    $('d-region-list').innerHTML = (trends.by_region||[]).slice(0,6).map(r=>{
+      const p=r.avg_pass_rate||0;
+      const c=passColor(p);
+      return `<div class="suite-row"><div class="sname">${r.region}</div><div class="sbar"><div class="sbar-fill" style="width:${p}%;background:${c}"></div></div><div class="spct" style="color:${c}">${pct(p)}</div></div>`;
+    }).join('') || '<div style="color:var(--text3);font-size:12px;padding:10px 0">No data</div>';
+
+    // device health
+    $('d-device-list').innerHTML = (trends.by_device||[]).slice(0,6).map(d=>{
+      const p=d.avg_pass_rate||0; const c=passColor(p);
+      const icon = d.device_type==='mobile'?'📱':d.device_type==='tablet'?'📱':'🖥';
+      return `<div class="suite-row"><div class="sname">${icon} ${d.device}</div><div class="sbar"><div class="sbar-fill" style="width:${p}%;background:${c}"></div></div><div class="spct" style="color:${c}">${pct(p)}</div></div>`;
+    }).join('') || '<div style="color:var(--text3);font-size:12px;padding:10px 0">No data</div>';
+
+    // recent runs table
+    $('d-recent-body').innerHTML = G.runs.slice(0,8).map(r=>{
+      const c = passColor(r.pass_rate||0);
+      const totalCount = Math.max(0, parseInt(r.total, 10) || 0);
+      const testName = (r.test_summary != null && r.test_summary !== '') ? String(r.test_summary) : ((r.sample_test != null && r.sample_test !== '') ? String(r.sample_test) : '—');
+      const suiteName = (r.suite_summary != null && r.suite_summary !== '') ? String(r.suite_summary) : ((r.sample_suite != null && r.sample_suite !== '') ? String(r.sample_suite) : '—');
+      return `<tr>
+        <td><div style="font-size:13px;color:var(--text);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.name || '—'}</div><div style="font-size:10px;color:var(--text3)">${r.format || ''}</div></td>
+        <td><div style="font-size:12px;color:var(--text2);max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${testName.replace(/\"/g, '&quot;')}">${testName}</div></td>
+        <td><div style="font-size:11px;color:var(--text3);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${suiteName.replace(/\"/g, '&quot;')}">${suiteName}</div></td>
+        <td><span class="badge bregion">${r.region}</span></td>
+        <td><span class="badge bdevice">${r.device}</span></td>
+        <td style="font-family:var(--font-m);font-size:12px;color:${c}">${pct(r.pass_rate)}</td>
+        <td style="font-family:var(--font-m);font-size:12px">${totalCount}</td>
+        <td style="font-size:11px;color:var(--text3)">${relTime(r.created_at)}</td>
+        <td><button class="btn" style="font-size:11px;padding:4px 9px" onclick="openRun('${r.id}')">View</button></td>
+      </tr>`;
+    }).join('');
+
+    // top failures
+    $('d-fail-label').textContent = (trends.top_failures||[]).length + ' unique';
+    $('d-fail-body').innerHTML = (trends.top_failures||[]).slice(0,8).map(f=>`<tr>
+      <td><div class="tname">${f.name}</div></td>
+      <td><div style="font-size:11px;color:var(--text3)">${f.suite}</div></td>
+      <td style="font-family:var(--font-m);font-size:12px;color:var(--fail)">${f.fail_count}✕</td>
+      <td><span class="badge bregion">${f.region||'—'}</span></td>
+    </tr>`).join('') || '<tr><td colspan="4" style="text-align:center;padding:20px;color:var(--text3)">No failures — great job!</td></tr>';
+
+    // flaky tests
+    $('d-flaky-label').textContent = (trends.flaky||[]).length + ' detected';
+    $('d-flaky-body').innerHTML = (trends.flaky||[]).slice(0,6).map(f=>`<tr>
+      <td><div class="tname">${f.name}</div><div style="font-size:10px;color:var(--text3)">${f.suite}</div></td>
+      <td style="font-family:var(--font-m);font-size:12px;color:var(--skip)">${f.occurrences}</td>
+      <td style="font-family:var(--font-m);font-size:12px">${f.retries}</td>
+    </tr>`).join('') || '<tr><td colspan="3" style="text-align:center;padding:20px;color:var(--text3)">No flaky tests</td></tr>';
+
+    $('last-updated').textContent = 'Updated ' + new Date().toLocaleTimeString();
+    $('srv-stats').textContent = `${fmt(t.total_runs)} runs · ${fmt(t.total_tests)} tests`;
+
+  } catch(e) {
+    toast('Failed to load: '+e.message, true);
+    $('srv-status').textContent = 'Server offline';
+  }
+}
+
+// ── History ────────────────────────────────────────────────────────────────────
+let allRunsCache = [];
+
+async function loadHistory() {
+  const runs = await api('/api/runs?' + filterQuery() + '&limit=500');
+  allRunsCache = runs.runs;
+  $('history-count').textContent = runs.total + ' runs';
+  renderHistory(allRunsCache);
+}
+
+function renderHistory(rows) {
+  $('history-body').innerHTML = rows.map(r=>{
+    const c = passColor(r.pass_rate||0);
+    const runId = (r.id != null && r.id !== undefined) ? String(r.id) : '';
+    const testName = (r.test_summary != null && r.test_summary !== '') ? String(r.test_summary) : ((r.sample_test != null && r.sample_test !== '') ? String(r.sample_test) : '—');
+    const suiteName = (r.suite_summary != null && r.suite_summary !== '') ? String(r.suite_summary) : ((r.sample_suite != null && r.sample_suite !== '') ? String(r.sample_suite) : '—');
+    const failedCount = Math.max(0, parseInt(r.failed, 10) || 0);
+    const totalCount = Math.max(0, parseInt(r.total, 10) || 0);
+    return `<tr data-run-id="${runId.replace(/"/g, '&quot;')}">
+      <td><div style="font-size:13px;color:var(--text);max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.name || '—'}</div><div style="font-size:10px;color:var(--text3);font-family:var(--font-m)">${r.format ? r.format : ''} ${r.branch||''} ${r.build_id||''}</div></td>
+      <td><div style="font-size:12px;color:var(--text);max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${testName.replace(/"/g, '&quot;')}">${testName}</div></td>
+      <td><div style="font-size:11px;color:var(--text3);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${suiteName.replace(/"/g, '&quot;')}">${suiteName}</div></td>
+      <td><span class="badge bregion">${r.region}</span></td>
+      <td><span class="badge bdevice" style="font-size:10px">${r.device}</span></td>
+      <td><span class="badge" style="background:rgba(255,255,255,.05);color:var(--text2)">${r.env}</span></td>
+      <td style="font-family:var(--font-m);font-size:12px;color:${c};font-weight:600">${pct(r.pass_rate)}</td>
+      <td style="font-family:var(--font-m);font-size:12px">${totalCount}</td>
+      <td style="font-family:var(--font-m);font-size:12px;color:var(--fail)">${failedCount}</td>
+      <td style="font-family:var(--font-m);font-size:11px;color:var(--text3)">${dur(r.duration_ms||0)}</td>
+      <td style="font-size:11px;color:var(--text3)">${relTime(r.created_at)}</td>
+      <td style="display:flex;gap:5px">
+        <button class="btn" style="font-size:11px;padding:4px 9px" onclick="openRun('${runId.replace(/'/g, "\\'")}')">View</button>
+        <button class="btn btn-danger" style="font-size:11px;padding:4px 9px" onclick="deleteRunFromBtn(this)">✕</button>
+      </td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="11" style="text-align:center;padding:30px;color:var(--text3)">No runs found</td></tr>';
+}
+
+function filterRunsTable(q) {
+  const f = q.toLowerCase();
+  renderHistory(f ? allRunsCache.filter(r => (r.name+(r.test_summary||'')+(r.suite_summary||'')+(r.sample_test||'')+(r.sample_suite||'')+r.region+r.device+r.format+r.env).toLowerCase().includes(f)) : allRunsCache);
+}
+
+// ── Trends ────────────────────────────────────────────────────────────────────
+async function loadTrends() {
+  const trends = await api('/api/trends?' + filterQuery());
+  G.trends = trends;
+  const d = trends.daily||[];
+  const labels = d.map(x=>x.day.slice(5));
+
+  mkChart('c-trend2','line',{labels,datasets:[{data:d.map(x=>x.avg_pass_rate),borderColor:'#00e5a0',backgroundColor:'rgba(0,229,160,0.07)',tension:.4,fill:true,pointRadius:3}]},{yOpts:{min:0,max:100}});
+  mkChart('c-vol','bar',{labels,datasets:[{data:d.map(x=>x.total_tests),backgroundColor:'rgba(72,149,239,.45)',borderColor:'#4895ef',borderWidth:1,borderRadius:3}]},{});
+  mkChart('c-dur','line',{labels,datasets:[{data:d.map(x=>Math.round(x.avg_duration||0)),borderColor:'#f4a261',backgroundColor:'rgba(244,162,97,.07)',tension:.4,fill:true,pointRadius:3}]},{});
+
+  // region bar
+  const rb = trends.by_region||[];
+  mkChart('c-region-bar','bar',{labels:rb.map(r=>r.region),datasets:[{data:rb.map(r=>r.avg_pass_rate),backgroundColor:rb.map(r=>passColor(r.avg_pass_rate)),borderRadius:4}]},{extra:{indexAxis:'y'},yOpts:{},scales:{x:{min:0,max:100,grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#44506a',font:{size:10}}},y:{grid:{display:false},ticks:{color:'#7d87a0',font:{size:11}}}}});
+
+  // device bar
+  const db = trends.by_device||[];
+  mkChart('c-device-bar','bar',{labels:db.map(d=>d.device),datasets:[{data:db.map(d=>d.avg_pass_rate),backgroundColor:db.map(d=>passColor(d.avg_pass_rate)),borderRadius:4}]},{extra:{indexAxis:'y'},yOpts:{},scales:{x:{min:0,max:100,grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#44506a',font:{size:10}}},y:{grid:{display:false},ticks:{color:'#7d87a0',font:{size:11}}}}});
+}
+
+// ── Regions ────────────────────────────────────────────────────────────────────
+async function loadRegionPage() {
+  const trends = await api('/api/trends?' + filterQuery());
+  const byRegion = trends.by_region||[];
+
+  $('region-heatmap').innerHTML = byRegion.map(r=>{
+    const p=r.avg_pass_rate||0; const c=passColor(p);
+    return `<div class="hm-card" onclick="drillRegion('${r.region}')">
+      <div class="hm-name">${r.region}</div>
+      <div class="hm-pct" style="color:${c}">${pct(p)}</div>
+      <div class="hm-meta">${r.runs} runs · ${r.total_failed||0} failures</div>
+    </div>`;
+  }).join('') || '<div style="color:var(--text3);padding:20px">No region data — import reports with region tags</div>';
+
+  // Matrix: regions × devices
+  const runs = await api('/api/runs?' + filterQuery() + '&limit=500');
+  const matrix = {}; const devSet = new Set(); const regSet = new Set();
+  runs.runs.forEach(r => { regSet.add(r.region); devSet.add(r.device); if(!matrix[r.region])matrix[r.region]={}; if(!matrix[r.region][r.device])matrix[r.region][r.device]=[]; matrix[r.region][r.device].push(r.pass_rate||0); });
+  const devs = [...devSet]; const regs = [...regSet];
+  $('region-matrix-head').innerHTML = '<tr><th>Region \\ Device</th>' + devs.map(d=>`<th>${d.split('-').slice(-1)[0]}</th>`).join('') + '</tr>';
+  $('region-matrix-body').innerHTML = regs.map(reg=>`<tr><td style="font-weight:500">${reg}</td>${devs.map(dev=>{const vals=matrix[reg]?.[dev]; if(!vals)return '<td style="color:var(--text3);text-align:center">—</td>'; const avg=vals.reduce((a,b)=>a+b,0)/vals.length; const c=passColor(avg); return `<td style="font-family:var(--font-m);font-size:12px;color:${c};text-align:center">${avg.toFixed(0)}%</td>`;}).join('')}</tr>`).join('');
+}
+
+let regionTrendChart = null;
+function drillRegion(regionId) {
+  $('region-detail').style.display='block';
+  $('region-detail-title').textContent = `Region: ${regionId}`;
+  $('region-detail').scrollIntoView({behavior:'smooth'});
+}
+
+// ── Devices ────────────────────────────────────────────────────────────────────
+async function loadDevicePage() {
+  const trends = await api('/api/trends?' + filterQuery());
+  const byDevice = trends.by_device||[];
+
+  const typeGroups = {desktop:[],mobile:[],tablet:[],api:[]};
+  byDevice.forEach(d => {
+    const t = d.device_type||'desktop';
+    if(!typeGroups[t]) typeGroups[t]=[];
+    typeGroups[t].push(d);
+  });
+
+  const renderDevGroup = (devices) => devices.map(d=>{
+    const p=d.avg_pass_rate||0; const c=passColor(p);
+    return `<div class="suite-row"><div class="sname">${d.device}</div><div class="sbar"><div class="sbar-fill" style="width:${p}%;background:${c}"></div></div><div class="spct" style="color:${c}">${pct(p)}</div></div>`;
+  }).join('') || '<div style="color:var(--text3);font-size:12px">No data</div>';
+
+  $('dev-desktop').innerHTML = renderDevGroup(typeGroups.desktop);
+  $('dev-mobile').innerHTML  = renderDevGroup(typeGroups.mobile);
+  $('dev-tablet').innerHTML  = renderDevGroup([...typeGroups.tablet, ...typeGroups.api]);
+
+  // device type chart
+  const dtMap = {}; byDevice.forEach(d=>{const t=d.device_type||'desktop'; if(!dtMap[t]){dtMap[t]={sum:0,n:0}} dtMap[t].sum+=d.avg_pass_rate; dtMap[t].n++; });
+  const dtLabels=Object.keys(dtMap); const dtData=dtLabels.map(t=>dtMap[t].sum/dtMap[t].n);
+  mkChart('c-devtype','bar',{labels:dtLabels,datasets:[{data:dtData,backgroundColor:dtData.map(passColor),borderRadius:4}]},{yOpts:{min:0,max:100}});
+
+  // device fail chart
+  mkChart('c-devfail','bar',{labels:byDevice.map(d=>d.device.split('-').slice(-1)[0]),datasets:[{data:byDevice.map(d=>d.total_failed||0),backgroundColor:'rgba(255,77,109,.5)',borderColor:'#ff4d6d',borderWidth:1,borderRadius:3}]},{});
+}
+
+// ── Compare ────────────────────────────────────────────────────────────────────
+async function loadCompare() {
+  const runs = await api('/api/runs?' + filterQuery() + '&limit=100');
+  G.selectedRuns = [];
+  $('compare-select').innerHTML = runs.runs.map(r=>`<div class="cmp-card" data-id="${r.id}" onclick="toggleCompare(this,'${r.id}')">
+    <div style="font-size:12px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.name}</div>
+    <div style="margin-top:5px;display:flex;gap:5px;flex-wrap:wrap"><span class="badge bregion">${r.region}</span><span class="badge bdevice">${r.device}</span></div>
+    <div style="font-family:var(--font-m);font-size:18px;font-weight:700;color:${passColor(r.pass_rate||0)};margin-top:7px">${pct(r.pass_rate)}</div>
+    <div style="font-size:10px;color:var(--text3);font-family:var(--font-m)">${relTime(r.created_at)}</div>
+  </div>`).join('');
+}
+
+function toggleCompare(el, id) {
+  if(el.classList.contains('sel')) { el.classList.remove('sel'); G.selectedRuns=G.selectedRuns.filter(r=>r!==id); }
+  else if(G.selectedRuns.length < 4) { el.classList.add('sel'); G.selectedRuns.push(id); }
+  else toast('Max 4 runs to compare');
+}
+
+async function runComparison() {
+  if(G.selectedRuns.length < 2) { toast('Select at least 2 runs'); return; }
+  const runs = await api('/api/compare?ids='+G.selectedRuns.join(','));
+  $('compare-results').style.display = 'block';
+  const cols = ['Run','Format','Region','Device','Total','Passed','Failed','Pass %','Duration'];
+  $('compare-head').innerHTML = '<tr>' + cols.map(c=>`<th>${c}</th>`).join('') + '</tr>';
+  $('compare-body').innerHTML = runs.map(r=>`<tr>
+    <td style="font-size:12px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.name}</td>
+    <td><span class="badge bformat">${r.format}</span></td>
+    <td><span class="badge bregion">${r.region}</span></td>
+    <td><span class="badge bdevice" style="font-size:10px">${r.device}</span></td>
+    <td style="font-family:var(--font-m)">${fmt(r.total)}</td>
+    <td style="font-family:var(--font-m);color:var(--pass)">${fmt(r.passed)}</td>
+    <td style="font-family:var(--font-m);color:var(--fail)">${fmt(r.failed)}</td>
+    <td style="font-family:var(--font-m);color:${passColor(r.pass_rate||0)};font-weight:700">${pct(r.pass_rate)}</td>
+    <td style="font-family:var(--font-m);color:var(--text3)">${dur(r.duration_ms||0)}</td>
+  </tr>`).join('');
+  // compare chart
+  mkChart('c-compare','bar',{labels:runs.map(r=>r.name.slice(0,20)),datasets:[
+    {label:'Pass rate %',data:runs.map(r=>r.pass_rate||0),backgroundColor:runs.map(r=>passColor(r.pass_rate||0)),borderRadius:4},
+  ]},{yOpts:{min:0,max:100}});
+  $('compare-results').scrollIntoView({behavior:'smooth'});
+}
+
+// ── Run Detail Modal ──────────────────────────────────────────────────────────
+async function openRun(runId) {
+  $('run-modal').style.display='flex';
+  $('mt-overview').innerHTML = '<div style="text-align:center;padding:30px;color:var(--text3)">Loading...</div>';
+  try {
+    const data = await api(`/api/runs/${runId}/detail`);
+    currentModalRun = data;
+    $('modal-title').textContent = data.run.name;
+    renderModalOverview(data);
+    renderModalSuites(data);
+    renderModalTests(data, 'all');
+    renderModalFailures(data);
+  } catch(e) { $('mt-overview').innerHTML = '<div style="color:var(--fail);padding:20px">Error loading run: '+e.message+'</div>'; }
+}
+
+function renderModalOverview(data) {
+  const r=data.run;
+  $('mt-overview').innerHTML = `
+    <div class="stats-row" style="margin-bottom:16px">
+      <div class="stat-card c-total"><div class="stat-label">Total</div><div class="stat-value total">${fmt(r.total)}</div></div>
+      <div class="stat-card c-pass"><div class="stat-label">Passed</div><div class="stat-value pass">${fmt(r.passed)}</div></div>
+      <div class="stat-card c-fail"><div class="stat-label">Failed</div><div class="stat-value fail">${fmt(r.failed)}</div></div>
+      <div class="stat-card c-skip"><div class="stat-label">Pass rate</div><div class="stat-value" style="color:${passColor(r.pass_rate||0)}">${pct(r.pass_rate)}</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;font-size:12px;font-family:var(--font-m);color:var(--text2)">
+      <div>Format: <span style="color:var(--text)">${r.format}</span></div>
+      <div>Region: <span style="color:var(--text)">${r.region}</span></div>
+      <div>Device: <span style="color:var(--text)">${r.device}</span></div>
+      <div>Env: <span style="color:var(--text)">${r.env}</span></div>
+      <div>Branch: <span style="color:var(--text)">${r.branch||'—'}</span></div>
+      <div>Build: <span style="color:var(--text)">${r.build_id||'—'}</span></div>
+      <div>Duration: <span style="color:var(--text)">${dur(r.duration_ms||0)}</span></div>
+      <div>Date: <span style="color:var(--text)">${new Date(r.created_at).toLocaleString()}</span></div>
+    </div>`;
+}
+
+function renderModalSuites(data) {
+  $('mt-suites').innerHTML = `<table class="tbl"><thead><tr><th>Suite</th><th>Total</th><th>Passed</th><th>Failed</th><th>Pass %</th><th>Avg dur</th></tr></thead><tbody>` +
+    data.suites.map(s=>{const p=s.total?Math.round(s.passed/s.total*100):0; return `<tr>
+      <td style="font-weight:500;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${s.suite}</td>
+      <td style="font-family:var(--font-m)">${s.total}</td>
+      <td style="font-family:var(--font-m);color:var(--pass)">${s.passed}</td>
+      <td style="font-family:var(--font-m);color:var(--fail)">${s.failed}</td>
+      <td style="font-family:var(--font-m);color:${passColor(p)}">${p}%</td>
+      <td style="font-family:var(--font-m);color:var(--text3)">${dur(Math.round(s.avg_dur||0))}</td>
+    </tr>`;}).join('') + '</tbody></table>';
+}
+
+function renderModalTests(data, filter='all') {
+  const tests = filter==='all' ? data.tests : data.tests.filter(t=>t.status===filter);
+  $('mt-tests').innerHTML = `
+    <div style="display:flex;gap:6px;margin-bottom:12px">
+      ${['all','passed','failed','skipped'].map(f=>`<button class="btn${filter===f?' btn-accent':''}" style="font-size:11px;padding:4px 10px" onclick="renderModalTests(currentModalRun,'${f}')">${f}</button>`).join('')}
+    </div>
+    <table class="tbl"><thead><tr><th>#</th><th>Name</th><th>Suite</th><th>Status</th><th>Duration</th></tr></thead><tbody>` +
+    tests.slice(0,200).map((t,i)=>`<tr>
+      <td style="font-family:var(--font-m);color:var(--text3);font-size:11px">${i+1}</td>
+      <td><div class="tname">${t.name}</div></td>
+      <td><div style="font-size:11px;color:var(--text3)">${t.suite}</div></td>
+      <td>${statusBadge(t.status)}</td>
+      <td><span class="tdur">${dur(t.duration_ms||0)}</span></td>
+    </tr>`).join('') + '</tbody></table>';
+}
+
+function renderModalFailures(data) {
+  const fails = data.tests.filter(t=>t.status==='failed');
+  $('mt-failures').innerHTML = fails.length ? fails.map(t=>`<div style="background:var(--bg3);border:1px solid var(--border);border-left:3px solid var(--fail);border-radius:var(--r);padding:12px 14px;margin-bottom:8px">
+    <div style="font-size:13px;font-weight:500;color:var(--text)">${t.name}</div>
+    <div style="font-size:11px;color:var(--text3);margin-top:3px">${t.suite} · ${dur(t.duration_ms||0)}</div>
+    ${t.error_msg?`<div style="font-size:12px;color:var(--fail);margin-top:7px;font-family:var(--font-m)">${t.error_msg}</div>`:''}
+    ${t.stack_trace?`<pre style="font-size:10px;color:var(--text3);margin-top:6px;white-space:pre-wrap;max-height:80px;overflow:hidden">${t.stack_trace.slice(0,300)}</pre>`:''}
+  </div>`).join('') : '<div style="text-align:center;padding:30px;color:var(--text3)">No failures in this run 🎉</div>';
+}
+
+function modalTab(name, el) {
+  ['overview','suites','tests','failures'].forEach(n=>{ $('mt-'+n).style.display=n===name?'block':'none'; });
+  document.querySelectorAll('.modal .tab-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function closeModal() { $('run-modal').style.display='none'; }
+
+// ── Delete run ────────────────────────────────────────────────────────────────
+function deleteRunFromBtn(btn) {
+  const row = btn.closest('tr');
+  const id = row && row.getAttribute('data-run-id');
+  if (id) deleteRun(id, btn);
+  else toast('Invalid run', true);
+}
+async function deleteRun(id, btn) {
+  if(!confirm('Delete this run? This cannot be undone.')) return;
+  if (!id) { toast('Invalid run', true); return; }
+  btn.disabled = true;
+  try {
+    const res = await fetch(API+'/api/runs/'+encodeURIComponent(id), {method:'DELETE'});
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      toast(data.error || 'Delete failed', true);
+      return;
+    }
+    toast('Run deleted');
+    loadHistory();
+    loadDashboard();
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+// ── AI Triage ─────────────────────────────────────────────────────────────────
+function updateAIContext() {
+  const t=G.summary.totals||{};
+  const tr=G.trends;
+  $('ai-context-panel').innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="suite-row"><div class="sname" style="color:var(--text3)">Total runs</div><div style="font-family:var(--font-m);font-size:13px">${fmt(t.total_runs)}</div></div>
+      <div class="suite-row"><div class="sname" style="color:var(--text3)">Avg pass rate</div><div style="font-family:var(--font-m);font-size:13px;color:${passColor(t.avg_pass_rate||0)}">${pct(t.avg_pass_rate)}</div></div>
+      <div class="suite-row"><div class="sname" style="color:var(--text3)">Total failures</div><div style="font-family:var(--font-m);font-size:13px;color:var(--fail)">${fmt(t.total_failed)}</div></div>
+      <div class="suite-row"><div class="sname" style="color:var(--text3)">Worst region</div><div style="font-size:12px">${(tr.by_region||[]).slice(-1)[0]?.region||'—'}</div></div>
+      <div class="suite-row"><div class="sname" style="color:var(--text3)">Worst device</div><div style="font-size:12px">${(tr.by_device||[]).slice(-1)[0]?.device||'—'}</div></div>
+      <div class="suite-row"><div class="sname" style="color:var(--text3)">Flaky tests</div><div style="font-family:var(--font-m);font-size:13px;color:var(--skip)">${(tr.flaky||[]).length}</div></div>
+    </div>`;
+}
+
+async function sendAI() {
+  const inp=$('ai-inp'), msg=inp.value.trim();
+  if(!msg) return;
+  inp.value='';
+  addMsg('user',msg);
+  const loading=addLoading();
+  try {
+    const t=G.summary.totals||{};
+    const tr=G.trends;
+    const context = `You are an expert QA analyst. Analyse this test data and answer concisely (max 250 words, use bullet points).
+
+DATABASE SUMMARY:
+- Runs: ${t.total_runs}, Tests: ${t.total_tests}, Pass rate: ${pct(t.avg_pass_rate)}
+- Failures: ${t.total_failed}
+
+REGION BREAKDOWN: ${(tr.by_region||[]).map(r=>`${r.region}: ${pct(r.avg_pass_rate)} (${r.runs} runs, ${r.total_failed} fails)`).join(' | ')||'none'}
+
+DEVICE BREAKDOWN: ${(tr.by_device||[]).map(d=>`${d.device}: ${pct(d.avg_pass_rate)} (${d.runs} runs)`).join(' | ')||'none'}
+
+TOP FAILURES: ${(tr.top_failures||[]).slice(0,5).map(f=>`"${f.name}" (${f.fail_count}x in ${f.region})`).join(', ')||'none'}
+
+FLAKY TESTS: ${(tr.flaky||[]).slice(0,5).map(f=>`"${f.name}" (${f.occurrences} times, ${f.retries} retries)`).join(', ')||'none'}
+
+DAILY TREND (last 7): ${(tr.daily||[]).slice(-7).map(d=>`${d.day.slice(5)}: ${pct(d.avg_pass_rate)}`).join(', ')||'no data'}`;
+
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1000, system:context, messages:[{role:'user',content:msg}] })
+    });
+    const data = await res.json();
+    loading.remove();
+    addMsg('ai', data.content?.[0]?.text || 'No response');
+  } catch(e) {
+    loading.remove();
+    addMsg('ai','⚠ Claude API not reachable in this context. Here\'s a local analysis based on your data: ' + localAI(msg));
+  }
+}
+
+function localAI(q) {
+  const t=G.summary.totals||{}; const tr=G.trends;
+  const worst = (tr.by_region||[]).sort((a,b)=>a.avg_pass_rate-b.avg_pass_rate)[0];
+  return `Pass rate is ${pct(t.avg_pass_rate||0)} across ${t.total_runs} runs. ${worst?`Worst region: ${worst.region} at ${pct(worst.avg_pass_rate)}.`:''} ${t.total_failed} total failures tracked. ${(tr.flaky||[]).length} flaky tests detected.`;
+}
+
+function qp(msg) { $('ai-inp').value=msg; sendAI(); }
+
+function addMsg(role, text) {
+  const c=$('ai-chat');
+  const d=document.createElement('div');
+  d.className=`msg msg-${role}`;
+  d.innerHTML=`<div class="mavatar ${role==='ai'?'mav-ai':'mav-u'}">${role==='ai'?'AI':'You'}</div><div class="mbubble">${text.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/•/g,'·')}</div>`;
+  c.appendChild(d); c.scrollTop=c.scrollHeight; return d;
+}
+
+function addLoading() {
+  const c=$('ai-chat');
+  const d=document.createElement('div');
+  d.className='msg msg-ai';
+  d.innerHTML='<div class="mavatar mav-ai">AI</div><div class="mbubble"><div class="ldots"><span></span><span></span><span></span></div></div>';
+  c.appendChild(d); c.scrollTop=c.scrollHeight; return d;
+}
+
+// ── AI Insights ───────────────────────────────────────────────────────────────
+async function generateInsights() {
+  $('insights-body').innerHTML='<div style="text-align:center;padding:40px;color:var(--text3)"><div class="ldots" style="justify-content:center"><span></span><span></span><span></span></div><div style="margin-top:12px;font-size:12px">Analysing all historical data...</div></div>';
+  const t=G.summary.totals||{}; const tr=G.trends;
+  const prompt = `Analyse this QA test data and return ONLY a valid JSON array (no markdown, no backticks) of exactly 6 insight objects.
+Each object must have: title (string), description (string, 60-80 words, actionable), severity ("critical"|"warning"|"info"|"success"), icon (one emoji), action (string, short recommended next step).
+
+Data:
+- Total runs: ${t.total_runs}, avg pass rate: ${pct(t.avg_pass_rate)}, total failures: ${t.total_failed}
+- Regions: ${(tr.by_region||[]).map(r=>`${r.region}=${pct(r.avg_pass_rate)}`).join(',')||'none'}
+- Devices: ${(tr.by_device||[]).map(d=>`${d.device}=${pct(d.avg_pass_rate)}`).join(',')||'none'}
+- Flaky tests: ${(tr.flaky||[]).length}
+- Top failures: ${(tr.top_failures||[]).slice(0,5).map(f=>f.name).join(', ')||'none'}
+- Trend (last 7 days): ${(tr.daily||[]).slice(-7).map(d=>pct(d.avg_pass_rate)).join(', ')||'no data'}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})
+    });
+    const data=await res.json();
+    const insights=JSON.parse(data.content[0].text.replace(/```json|```/g,'').trim());
+    renderInsights(insights);
+  } catch(e) {
+    renderInsights(localInsights());
+  }
+}
+
+function localInsights() {
+  const t=G.summary.totals||{}; const tr=G.trends;
+  const p=t.avg_pass_rate||0;
+  const worst=(tr.by_region||[]).sort((a,b)=>a.avg_pass_rate-b.avg_pass_rate)[0];
+  const worstDev=(tr.by_device||[]).sort((a,b)=>a.avg_pass_rate-b.avg_pass_rate)[0];
+  return [
+    {icon:'📊',title:'Overall quality health',description:`Pass rate stands at ${pct(p)} across ${t.total_runs} runs and ${t.total_tests} tests. ${p>=85?'Quality is strong — focus on maintaining and expanding test coverage.':'There are significant quality issues that need addressing before the next release.'}`,severity:p>=85?'success':p>=70?'warning':'critical',action:p>=85?'Expand regression coverage':'Initiate failure root-cause analysis'},
+    {icon:'🌍',title:'Regional disparity',description:`${worst?`${worst.region} is the worst-performing region at ${pct(worst.avg_pass_rate)}. Investigate environment-specific configuration, network latency, and locale-specific data issues.`:'No regional data yet — import reports with region metadata.'}`,severity:worst&&worst.avg_pass_rate<70?'critical':'info',action:`Review ${worst?.region||'regions'} environment config`},
+    {icon:'📱',title:'Device coverage',description:`${worstDev?`${worstDev.device} has the lowest pass rate at ${pct(worstDev.avg_pass_rate)}. Check for device-specific rendering, performance, or compatibility issues.`:'No device data yet.'}`,severity:worstDev&&worstDev.avg_pass_rate<70?'warning':'info',action:`Investigate ${worstDev?.device||'device'} failures`},
+    {icon:'⚡',title:'Flaky test risk',description:`${(tr.flaky||[]).length} flaky tests detected. Flaky tests erode confidence in the test suite and slow down CI pipelines due to reruns. Each flaky test should be quarantined and fixed within one sprint.`,severity:(tr.flaky||[]).length>10?'critical':(tr.flaky||[]).length>0?'warning':'success',action:'Quarantine and fix flaky tests'},
+    {icon:'📈',title:'Trend analysis',description:`${(tr.daily||[]).length>=7?`Pass rate over the last 7 data points: ${(tr.daily||[]).slice(-7).map(d=>pct(d.avg_pass_rate)).join(' → ')}. ${(tr.daily||[]).slice(-1)[0]?.avg_pass_rate>(tr.daily||[]).slice(-7,1)[0]?.avg_pass_rate?'Improving ↑':'Degrading ↓'}`:'Not enough historical data for trend analysis — run more imports over time.'}`,severity:'info',action:'Continue monitoring daily'},
+    {icon:'🔥',title:'Critical failures',description:`${(tr.top_failures||[]).length} unique failing tests tracked. The highest-frequency failure is "${(tr.top_failures||[])[0]?.name||'unknown'}" with ${(tr.top_failures||[])[0]?.fail_count||0} occurrences. Prioritise the top 3 by occurrence count for immediate investigation.`,severity:(tr.top_failures||[]).length>0?'critical':'success',action:`Fix "${(tr.top_failures||[])[0]?.name||'top failures'}" first`},
+  ];
+}
+
+function renderInsights(insights) {
+  const sc={critical:'rgba(255,77,109,.1)',warning:'rgba(244,162,97,.1)',info:'rgba(72,149,239,.1)',success:'rgba(0,229,160,.1)'};
+  const tc={critical:'var(--fail)',warning:'var(--skip)',info:'var(--pending)',success:'var(--pass)'};
+  $('insights-body').innerHTML=insights.map(ins=>`<div class="insight">
+    <div class="iicon" style="background:${sc[ins.severity]||sc.info};color:${tc[ins.severity]||tc.info}">${ins.icon}</div>
+    <div style="flex:1">
+      <div class="ititle">${ins.title} <span style="font-size:10px;font-family:var(--font-m);padding:2px 7px;border-radius:4px;background:${sc[ins.severity]};color:${tc[ins.severity]};margin-left:5px">${ins.severity}</span></div>
+      <div class="idesc">${ins.description}</div>
+      ${ins.action?`<div style="font-size:11px;font-family:var(--font-m);color:var(--accent);margin-top:5px">→ ${ins.action}</div>`:''}
+    </div>
+  </div>`).join('');
+}
+
+// ── Upload ─────────────────────────────────────────────────────────────────────
+// ── Import wizard ─────────────────────────────────────────────────────────────
+let importFiles = [];
+
+function openImportModal() { nav('upload', document.querySelector('.nav-item[onclick*="upload"]')||document.querySelectorAll('.nav-item')[0]); resetImport(); }
+
+function resetImport() {
+  importFiles = [];
+  ['step1','step2','step3','step4'].forEach((s,i)=>{ const el=$(s); if(el) el.style.display=i===0?'block':'none'; });
+  ['sp1','sp2','sp3'].forEach((s,i)=>{ const el=$(s); if(el){el.classList.toggle('active',i===0);el.classList.remove('done');} });
+  const ul=$('uploaded-list'); if(ul) ul.innerHTML='';
+  const btn = $('submit-btn'); if(btn){ btn.disabled=false; btn.textContent='⬆ Upload all files'; }
+}
+
+function dropFiles(e) {
+  e.preventDefault();
+  $('drop-zone').classList.remove('drag');
+  filesSelected(e.dataTransfer.files);
+}
+
+function filesSelected(files) {
+  if(!files||!files.length) return;
+  importFiles = Array.from(files);
+  // Show files preview
+  $('files-preview').innerHTML = importFiles.map(f=>{
+    const ext = f.name.split('.').pop().toLowerCase();
+    const color = ext==='xml'?'#a78bfa': ext==='json'?'#4ade80': '#fb923c';
+    const icon  = ext==='xml'?'📄': ext==='json'?'📋': '🌐';
+    return `<div class="file-chip"><span style="font-size:14px">${icon}</span><span style="color:var(--text)">${f.name}</span><span style="font-family:var(--font-m);font-size:10px;color:${color};padding:1px 5px;background:rgba(255,255,255,.05);border-radius:4px">.${ext}</span><span style="font-size:11px;color:var(--text3)">${(f.size/1024).toFixed(1)}KB</span></div>`;
+  }).join('');
+  // Transition to step 2
+  $('step1').style.display='none';
+  $('step2').style.display='block';
+  $('sp1').classList.remove('active'); $('sp1').classList.add('done');
+  $('sp2').classList.add('active');
+}
+
+function onRegionChange() {
+  const v = $('m-region').value;
+  $('m-region').classList.remove('invalid');
+  const hints = {
+    UK:'🇬🇧 GBP · en-GB · shop.example.co.uk',
+    DE:'🇩🇪 EUR · de-DE · shop.example.de',
+    AT:'🇦🇹 EUR · de-AT · shop.example.at',
+    FR:'🇫🇷 EUR · fr-FR',
+    'us-east':'🇺🇸 USD · en-US · East coast servers',
+    'us-west':'🇺🇸 USD · en-US · West coast servers',
+    global:'🌍 All regions / no specific locale',
+  };
+  $('region-hint').innerHTML = hints[v]
+    ? `<span style="color:var(--text2)">${hints[v]}</span>`
+    : '';
+}
+
+function onDeviceChange() {
+  const sel = $('m-device');
+  const opt = sel.options[sel.selectedIndex];
+  sel.classList.remove('invalid');
+  if(!opt||!opt.value) { $('device-hint').innerHTML=''; return; }
+  const dtype   = opt.dataset.type    || '';
+  const os      = opt.dataset.os      || '';
+  const browser = opt.dataset.browser || '';
+  // Auto-fill OS and browser
+  if(os)      { $('m-os').value = os; }
+  if(browser) { $('m-browser').value = browser; }
+  // device_type hidden value
+  if(!$('m-dtype')) {
+    const inp = document.createElement('input');
+    inp.type='hidden'; inp.id='m-dtype'; inp.value=dtype;
+    document.body.appendChild(inp);
+  } else { $('m-dtype').value = dtype; }
+
+  const icons = {desktop:'🖥', mobile:'📱', tablet:'📱', api:'⚡'};
+  $('device-hint').innerHTML = `<span style="color:var(--text2)">${icons[dtype]||'📟'} ${dtype} · ${os||'—'} · ${browser||'—'}</span>`;
+}
+
+function backToStep1() {
+  $('step2').style.display='none';
+  $('step1').style.display='block';
+  $('sp2').classList.remove('active');
+  $('sp1').classList.remove('done'); $('sp1').classList.add('active');
+}
+
+function backToStep2() {
+  $('step3').style.display='none';
+  $('step2').style.display='block';
+  $('sp3').classList.remove('active');
+  $('sp2').classList.remove('done'); $('sp2').classList.add('active');
+}
+
+function goToStep3() {
+  // Validate required fields
+  let valid = true;
+  if(!$('m-region').value) { $('m-region').classList.add('invalid'); $('region-hint').innerHTML='<span style="color:var(--fail)">Region is required</span>'; valid=false; }
+  if(!$('m-device').value) { $('m-device').classList.add('invalid'); $('device-hint').innerHTML='<span style="color:var(--fail)">Device is required</span>'; valid=false; }
+  if(!valid) { toast('Please select Region and Device before continuing', true); return; }
+
+  const region  = $('m-region').value;
+  const device  = $('m-device').value;
+  const dtype   = $('m-dtype') ? $('m-dtype').value : $('m-device').options[$('m-device').selectedIndex].dataset.type || 'desktop';
+  const env     = $('m-env').value;
+  const runName = $('m-name').value;
+  const rOpt    = $('m-region').options[$('m-region').selectedIndex];
+  const dOpt    = $('m-device').options[$('m-device').selectedIndex];
+
+  // Build confirm cards
+  $('confirm-cards').innerHTML = importFiles.map(f=>{
+    const ext   = f.name.split('.').pop().toLowerCase();
+    const fmtLabel = ext==='xml'?'XML (Allure/JUnit)': ext==='json'?'JSON (Cucumber/Playwright/Mocha)': 'HTML (ExtentReports)';
+    const icon  = ext==='xml'?'📄': ext==='json'?'📋': '🌐';
+    return `<div class="confirm-card">
+      <div class="cicon" style="background:var(--bg3);border:1px solid var(--border)">${icon}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:13px;font-weight:500;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${f.name}</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:2px;font-family:var(--font-m)">${fmtLabel} · ${(f.size/1024).toFixed(1)}KB</div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end">
+        <span class="badge bregion">${rOpt.text||region}</span>
+        <span class="badge bdevice">${dOpt.text||device}</span>
+        <span class="badge" style="background:rgba(255,255,255,.05);color:var(--text2)">${env}</span>
+        ${runName?`<span class="badge" style="background:rgba(255,255,255,.05);color:var(--text2)">${runName}</span>`:''}
+      </div>
+    </div>`;
+  }).join('');
+
+  $('step2').style.display='none';
+  $('step3').style.display='block';
+  $('sp2').classList.remove('active'); $('sp2').classList.add('done');
+  $('sp3').classList.add('active');
+}
+
+async function submitImport() {
+  const btn = $('submit-btn');
+  btn.disabled=true; btn.textContent='Uploading...';
+
+  const dtype = $('m-dtype') ? $('m-dtype').value
+    : ($('m-device').options[$('m-device').selectedIndex].dataset.type||'desktop');
+
+  const meta = {
+    run_name:    $('m-name').value.trim(),
+    region:      $('m-region').value,
+    device:      $('m-device').value,
+    device_type: dtype,
+    env:         $('m-env').value,
+    branch:      $('m-branch').value.trim(),
+    os_name:     $('m-os').value.trim(),
+    browser:     $('m-browser').value.trim(),
+    build_id:    $('m-build').value.trim(),
+  };
+
+  const fd = new FormData();
+  Object.entries(meta).forEach(([k,v])=>{ if(v) fd.append(k,v); });
+  importFiles.forEach(f=>fd.append('file',f,f.name));
+
+  try {
+    const res  = await fetch(API+'/api/upload',{method:'POST',body:fd});
+    const data = await res.json();
+    $('step3').style.display='none';
+    $('step4').style.display='block';
+    $('sp3').classList.remove('active'); $('sp3').classList.add('done');
+    const ul = $('uploaded-list');
+    ul.innerHTML = '';
+    data.results.forEach(r=>{
+      const ok = !r.error;
+      const div=document.createElement('div');
+      div.style.cssText=`background:var(--bg2);border:1px solid ${ok?'rgba(0,229,160,.2)':'rgba(255,77,109,.2)'};border-radius:var(--r);padding:13px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px`;
+      const rOpt = $('m-region').options[$('m-region').selectedIndex];
+      const dOpt = $('m-device').options[$('m-device').selectedIndex];
+      div.innerHTML=ok
+        ?`<div style="font-size:20px">✅</div>
+          <div style="flex:1">
+            <div style="font-size:13px;color:var(--text);font-weight:500">${r.filename}</div>
+            <div style="font-size:11px;font-family:var(--font-m);color:var(--text3);margin-top:3px">${r.tests} tests · ${r.format} · ${r.run?.pass_rate}% pass rate</div>
+          </div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span class="badge bregion">${rOpt.text||meta.region}</span>
+            <span class="badge bdevice">${dOpt.text||meta.device}</span>
+            <button type="button" class="btn btn-danger" style="font-size:11px;padding:4px 8px" onclick="deleteRun('${r.run?.id||''}', this)">✕</button>
+          </div>`
+        :`<div style="font-size:20px">❌</div><div><div style="font-size:13px;color:var(--text)">${r.filename}</div><div style="font-size:11px;color:var(--fail);margin-top:3px">${r.error}</div></div>`;
+      ul.appendChild(div);
+      if(ok) toast(`✓ ${r.filename} → ${rOpt.text||meta.region} · ${dOpt.text||meta.device}`);
+      else   toast(`Error: ${r.error}`, true);
+    });
+    loadDashboard();
+  } catch(e) {
+    toast('Upload failed: '+e.message, true);
+  } finally {
+    btn.disabled=false;
+    btn.textContent='⬆ Upload all files';
+  }
+}
+
+
+// ── Upload tab switcher ───────────────────────────────────────────────────────
+function switchUploadTab(tab, el) {
+  document.querySelectorAll('.upload-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.upload-tab-panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  $('tab-'+tab).classList.add('active');
+}
+
+// ── ZIP / Allure folder upload ─────────────────────────────────────────────────
+let zipImportFile = null;
+let zipIsMultiFolder = false;
+
+function zipDropped(e) {
+  e.preventDefault();
+  $('zip-drop-zone').classList.remove('drag');
+  zipSelected(e.dataTransfer.files);
+}
+
+function zipSelected(files) {
+  if(!files||!files.length) return;
+  const f = files[0];
+  if(!f.name.toLowerCase().endsWith('.zip')) {
+    toast('Please upload a .zip file', true); return;
+  }
+  zipImportFile = f;
+  $('zip-file-label').textContent = f.name + ' · ' + (f.size/1024).toFixed(1) + ' KB';
+  // Peek inside to detect multi-folder structure
+  detectZipStructure(f);
+}
+
+async function detectZipStructure(file) {
+  // We can't unzip in the browser without a lib, so just check filename hints
+  const name = file.name.toLowerCase();
+  const likelyMulti = name.includes('all') || name.includes('regions') || name.includes('multi');
+  zipIsMultiFolder = likelyMulti;
+  const notice = $('zip-folder-notice');
+  if(likelyMulti) {
+    notice.style.display='block';
+    notice.innerHTML='⚡ Filename suggests a multi-folder ZIP — QA Pulse will create <strong>one run per sub-folder</strong>. Region and Device below apply only if sub-folder names cannot be auto-detected.';
+  } else {
+    notice.style.display='none';
+  }
+  $('zip-step1').style.display='none';
+  $('zip-step2').style.display='block';
+}
+
+function onZipRegionChange() {
+  const v = $('zm-region').value;
+  $('zm-region').classList.remove('invalid');
+  const hints = {UK:'🇬🇧 GBP · en-GB',DE:'🇩🇪 EUR · de-DE',AT:'🇦🇹 EUR · de-AT',global:'🌍 All regions'};
+  $('zregion-hint').textContent = hints[v] ? hints[v] : 'Required for single-folder ZIPs.';
+}
+
+function onZipDeviceChange() {
+  const sel=$('zm-device'), opt=sel.options[sel.selectedIndex];
+  sel.classList.remove('invalid');
+  if(!opt||!opt.value){$('zdevice-hint').innerHTML='';return;}
+  const dtype=opt.dataset.type||'', os=opt.dataset.os||'', browser=opt.dataset.browser||'';
+  if(os)      $('zm-os').value=os;
+  if(browser) $('zm-browser').value=browser;
+  const icons={desktop:'🖥',mobile:'📱',tablet:'📱',api:'⚡'};
+  $('zdevice-hint').innerHTML=`<span style="color:var(--text2)">${icons[dtype]||'📟'} ${dtype} · ${os||'—'} · ${browser||'—'}</span>`;
+}
+
+function resetZipImport() {
+  zipImportFile=null; zipIsMultiFolder=false;
+  $('zip-step1').style.display='block';
+  $('zip-step2').style.display='none';
+  $('zip-step3').style.display='none';
+  const rl=$('zip-results-list'); if(rl) rl.innerHTML='';
+  $('zip-inp').value='';
+}
+
+async function submitZipImport() {
+  // Validate
+  let valid=true;
+  if(!$('zm-region').value&&!zipIsMultiFolder){$('zm-region').classList.add('invalid');valid=false;}
+  if(!$('zm-device').value&&!zipIsMultiFolder){$('zm-device').classList.add('invalid');valid=false;}
+  if(!valid&&!zipIsMultiFolder){toast('Please select Region and Device',true);return;}
+
+  const opt = $('zm-device').options[$('zm-device').selectedIndex];
+  const dtype = opt ? opt.dataset.type||'desktop' : 'desktop';
+
+  const fd = new FormData();
+  fd.append('file', zipImportFile, zipImportFile.name);
+  const fields = {
+    region:$('zm-region').value||'global', device:$('zm-device').value||'unknown',
+    device_type:dtype, env:$('zm-env').value, run_name:$('zm-name').value.trim(),
+    branch:$('zm-branch').value.trim(), os_name:$('zm-os').value.trim(),
+    browser:$('zm-browser').value.trim(), build_id:$('zm-build').value.trim(),
+  };
+  Object.entries(fields).forEach(([k,v])=>{if(v) fd.append(k,v);});
+
+  toast('⬆ Uploading ZIP...');
+  try {
+    const res  = await fetch(API+'/api/upload-zip',{method:'POST',body:fd});
+    const data = await res.json();
+    $('zip-step2').style.display='none';
+    $('zip-step3').style.display='block';
+    const rl=$('zip-results-list');
+    rl.innerHTML='';
+    data.results.forEach(r=>{
+      const ok=!r.error;
+      const div=document.createElement('div');
+      div.style.cssText=`background:var(--bg2);border:1px solid ${ok?'rgba(0,229,160,.2)':'rgba(255,77,109,.2)'};border-radius:var(--r);padding:13px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px`;
+      div.innerHTML=ok
+        ?`<div style="font-size:20px">✅</div>
+          <div style="flex:1">
+            <div style="font-size:13px;color:var(--text);font-weight:500">${r.filename}</div>
+            <div style="font-size:11px;font-family:var(--font-m);color:var(--text3);margin-top:3px">${r.tests} tests · ${r.format} · ${r.run?.pass_rate}% pass rate</div>
+          </div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span class="badge bregion">${r.run?.region||fields.region}</span>
+            <span class="badge bdevice">${r.run?.device||fields.device}</span>
+            <button type="button" class="btn btn-danger" style="font-size:11px;padding:4px 8px" onclick="deleteRun('${r.run?.id||''}', this)">✕</button>
+          </div>`
+        :`<div style="font-size:20px">❌</div><div><div style="font-size:13px;color:var(--text)">${r.filename}</div><div style="font-size:11px;color:var(--fail);margin-top:3px">${r.error}</div></div>`;
+      rl.appendChild(div);
+      if(ok) toast(`✓ ${r.filename.split('/').pop()} → ${r.run?.region||fields.region} · ${r.tests} tests`);
+    });
+    loadDashboard();
+  } catch(e) {
+    toast('Upload failed: '+e.message, true);
+  }
+}
+
+// ── Refresh all ────────────────────────────────────────────────────────────────
+function refreshAll() { loadDashboard(); }
+
+// ── Consolidated batches ─────────────────────────────────────────────────────
+let currentBatchId = '';
+let currentBatchDetail = null;
+let batchTestsMode = 'matrix'; // 'raw' | 'matrix'
+
+function _downloadText(filename, mime, text) {
+  const blob = new Blob([text], {type: mime || 'text/plain;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename || 'export.txt';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 0);
+}
+
+async function loadBatches(resetDetail=true) {
+  if (resetDetail) {
+    currentBatchId = '';
+    currentBatchDetail = null;
+    const detail = $('batch-detail-card');
+    if (detail) detail.style.display = 'none';
+  }
+
+  try {
+    const batches = await api('/api/batches');
+    $('batch-body').innerHTML = (batches||[]).map(b=>{
+      const c = passColor(b.pass_rate||0);
+      const regs = (b.regions||[]).slice(0,3).join(', ') + ((b.regions||[]).length>3?` (+${(b.regions||[]).length-3})`:'');
+      const devs = (b.devices||[]).slice(0,2).join(', ') + ((b.devices||[]).length>2?` (+${(b.devices||[]).length-2})`:'');
+      const bid = (b.id||'');
+      const testName = (b.test_summary != null && b.test_summary !== '') ? String(b.test_summary) : '—';
+      const suiteName = (b.suite_summary != null && b.suite_summary !== '') ? String(b.suite_summary) : '—';
+      return `<tr>
+        <td><div style="font-size:13px;color:var(--text);font-weight:500;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${b.name||('Batch '+bid.slice(0,8))}</div><div style="font-size:10px;color:var(--text3);font-family:var(--font-m)">${bid.slice(0,8)}...</div></td>
+        <td><div style="font-size:12px;color:var(--text2);max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${testName.replace(/\"/g,'&quot;')}">${testName}</div></td>
+        <td><div style="font-size:11px;color:var(--text3);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${suiteName.replace(/\"/g,'&quot;')}">${suiteName}</div></td>
+        <td style="font-family:var(--font-m)">${fmt(b.run_count||0)}</td>
+        <td style="font-size:11px;color:var(--text2)">${regs||'—'}</td>
+        <td style="font-size:11px;color:var(--text2)">${devs||'—'}</td>
+        <td style="font-family:var(--font-m);color:${c}">${pct(b.pass_rate||0)}</td>
+        <td style="font-family:var(--font-m);color:var(--fail)">${fmt(b.failed||0)}</td>
+        <td style="font-size:11px;color:var(--text3)">${b.created_at?relTime(b.created_at):'—'}</td>
+        <td style="display:flex;gap:6px">
+          <button class="btn" style="font-size:11px;padding:4px 9px" onclick="openBatchFromBtn(this)" data-batch-id="${String(bid).replace(/\"/g,'&quot;')}">View</button>
+          <button class="btn btn-danger" style="font-size:11px;padding:4px 9px" onclick="deleteBatchFromBtn(this)" data-batch-id="${String(bid).replace(/\"/g,'&quot;')}">✕</button>
+        </td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="10" style="text-align:center;padding:24px;color:var(--text3)">No consolidated batches yet. Import a ZIP with multiple region/device folders to create one.</td></tr>';
+  } catch(e) {
+    $('batch-body').innerHTML = '<tr><td colspan="10" style="text-align:center;padding:24px;color:var(--fail)">Failed to load batches</td></tr>';
+  }
+}
+
+async function createBatchPrompt() {
+  try {
+    const builds = await api('/api/builds');
+    const sel = $('bc-build');
+    if (sel) {
+      sel.innerHTML = '<option value="">— select build —</option>' + (builds||[]).map(b=>`<option value="${b.id}">${b.id} (${b.run_count} runs)</option>`).join('');
+      $('bc-build-hint').textContent = builds && builds.length ? 'Pick a build id imported earlier.' : 'No builds found yet — import runs with a build id first.';
+    }
+    $('bc-name').value = '';
+    $('batch-create-modal').style.display = 'flex';
+  } catch(e) {
+    toast('Could not load builds', true);
+  }
+}
+
+function closeBatchCreateModal() {
+  const m = $('batch-create-modal');
+  if (m) m.style.display = 'none';
+}
+
+async function submitBatchCreate() {
+  const buildId = $('bc-build').value.trim();
+  const name = $('bc-name').value.trim();
+  if (!buildId) {
+    toast('Please select a build id', true);
+    return;
+  }
+  const btn = $('bc-submit');
+  if (btn) { btn.disabled = true; btn.textContent = 'Creating...'; }
+  try {
+    const qs = `build_id=${encodeURIComponent(buildId)}${name?`&batch_name=${encodeURIComponent(name)}`:''}`;
+    const res = await fetch(API + '/api/batches/create?' + qs, {method:'POST'});
+    const data = await res.json().catch(()=> ({}));
+    if (!res.ok) {
+      toast(data.error || 'Could not create batch', true);
+      return;
+    }
+    toast('Consolidated batch created');
+    closeBatchCreateModal();
+    await loadBatches();
+    if (data.batch && data.batch.id) {
+      openBatch(data.batch.id);
+    }
+  } catch(e) {
+    toast('Could not create batch', true);
+  } finally {
+    if (btn) { btn.disabled=false; btn.textContent='Create batch'; }
+  }
+}
+
+function openBatchFromBtn(btn) {
+  const id = btn && btn.getAttribute('data-batch-id');
+  if (id) openBatch(id);
+  else toast('Invalid batch', true);
+}
+
+async function deleteBatchFromBtn(btn) {
+  const id = btn && btn.getAttribute('data-batch-id');
+  if (!id) { toast('Invalid batch', true); return; }
+  if (!confirm('Delete this consolidated batch view? This will NOT delete runs, only remove this batch grouping.')) return;
+  btn.disabled = true;
+  try {
+    const res = await fetch(API + '/api/batches/' + encodeURIComponent(id), {method:'DELETE'});
+    const data = await res.json().catch(()=>({}));
+    if (!res.ok) {
+      toast(data.error || 'Delete failed', true);
+      return;
+    }
+    toast('Batch deleted');
+    // Close detail if we were viewing it
+    if (currentBatchId === id) {
+      currentBatchId = '';
+      currentBatchDetail = null;
+      const detail = $('batch-detail-card');
+      if (detail) detail.style.display = 'none';
+    }
+    await loadBatches();
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+async function openBatch(batchId) {
+  currentBatchId = batchId;
+  currentBatchDetail = null;
+  const detail = $('batch-detail-card');
+  if (detail) detail.style.display = 'block';
+  $('batch-title').textContent = 'Loading…';
+  $('batch-sub').textContent = '';
+  $('batch-by-region').innerHTML = '';
+  $('batch-by-device').innerHTML = '';
+  $('batch-runs').innerHTML = '';
+  try {
+    const d = await api(`/api/batches/${batchId}/detail`);
+    currentBatchDetail = d;
+    const b = d.batch || {};
+    $('batch-title').textContent = b.name || ('Batch ' + (b.id||'').slice(0,8));
+    $('batch-sub').textContent = `${fmt(b.run_count||0)} runs · ${fmt(b.total_tests||0)} tests · ${pct(b.pass_rate||0)} pass · ${fmt(b.failed||0)} failed`;
+
+    $('batch-by-region').innerHTML = (d.by_region||[]).map(r=>`<tr>
+      <td>${r.region}</td><td style="font-family:var(--font-m)">${r.runs}</td>
+      <td style="font-family:var(--font-m);color:${passColor(r.avg_pass_rate||0)}">${pct(r.avg_pass_rate||0)}</td>
+      <td style="font-family:var(--font-m);color:var(--fail)">${fmt(r.total_failed||0)}</td>
+    </tr>`).join('') || '<tr><td colspan="4" style="text-align:center;padding:16px;color:var(--text3)">No data</td></tr>';
+
+    $('batch-by-device').innerHTML = (d.by_device||[]).map(x=>`<tr>
+      <td>${x.device}</td><td style="font-size:11px;color:var(--text3)">${x.device_type||''}</td>
+      <td style="font-family:var(--font-m)">${x.runs}</td>
+      <td style="font-family:var(--font-m);color:${passColor(x.avg_pass_rate||0)}">${pct(x.avg_pass_rate||0)}</td>
+      <td style="font-family:var(--font-m);color:var(--fail)">${fmt(x.total_failed||0)}</td>
+    </tr>`).join('') || '<tr><td colspan="5" style="text-align:center;padding:16px;color:var(--text3)">No data</td></tr>';
+
+    $('batch-runs').innerHTML = (d.runs||[]).map(r=>`<tr>
+      <td><div style="font-size:12px;color:var(--text);max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.name||'—'}</div><div style="font-size:10px;color:var(--text3)">${r.format||''}</div></td>
+      <td><div style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${(r.test_summary||r.sample_test||'').replace(/\"/g,'&quot;')}">${r.test_summary||r.sample_test||'—'}</div></td>
+      <td><div style="font-size:11px;color:var(--text3);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.suite_summary||r.sample_suite||'—'}</div></td>
+      <td><span class="badge bregion">${r.region||'—'}</span></td>
+      <td><span class="badge bdevice">${r.device||'—'}</span></td>
+      <td style="font-family:var(--font-m);color:${passColor(r.pass_rate||0)}">${pct(r.pass_rate||0)}</td>
+      <td style="font-family:var(--font-m)">${fmt(r.total||0)}</td>
+      <td style="font-family:var(--font-m);color:var(--fail)">${fmt(r.failed||0)}</td>
+      <td style="font-size:11px;color:var(--text3)">${r.created_at?relTime(r.created_at):'—'}</td>
+    </tr>`).join('') || '<tr><td colspan="10" style="text-align:center;padding:16px;color:var(--text3)">No runs</td></tr>';
+
+    setBatchTestsMode(batchTestsMode);
+    renderBatchTestsView();
+  } catch(e) {
+    $('batch-title').textContent = 'Batch detail';
+    $('batch-sub').textContent = 'Failed to load batch';
+    toast('Could not load consolidated batch', true);
+  }
+}
+
+function setBatchTestsMode(mode) {
+  batchTestsMode = mode;
+  const raw = $('batch-view-raw');
+  const matrix = $('batch-view-matrix');
+  if (raw && matrix) {
+    raw.classList.toggle('btn-accent', mode === 'raw');
+    matrix.classList.toggle('btn-accent', mode === 'matrix');
+  }
+}
+
+function _comboKey(region, device) {
+  return `${region||'—'}|${device||'—'}`;
+}
+
+function renderBatchTestsView() {
+  const wrap = $('batch-tests-wrap');
+  if (!wrap) return;
+  const d = currentBatchDetail;
+  const q = ($('batch-test-q')?.value || '').trim().toLowerCase();
+  const tests = (d && d.tests) ? d.tests : [];
+  const runs = (d && d.runs) ? d.runs : [];
+
+  if (!tests.length) {
+    wrap.innerHTML = `<table class="tbl"><tbody><tr><td style="text-align:center;padding:16px;color:var(--text3)">No tests</td></tr></tbody></table>`;
+    return;
+  }
+
+  if (batchTestsMode === 'raw') {
+    const filtered = q ? tests.filter(t => ((t.name||'') + ' ' + (t.suite||'') + ' ' + (t.region||'') + ' ' + (t.device||'')).toLowerCase().includes(q)) : tests;
+    // Sort by test name then region/device for readability
+    filtered.sort((a,b)=>{
+      const ak = ((a.suite||'')+'::'+(a.name||'')).toLowerCase();
+      const bk = ((b.suite||'')+'::'+(b.name||'')).toLowerCase();
+      if (ak < bk) return -1;
+      if (ak > bk) return 1;
+      const ar = (a.region||'').toLowerCase(), br = (b.region||'').toLowerCase();
+      if (ar < br) return -1;
+      if (ar > br) return 1;
+      const ad = (a.device||'').toLowerCase(), bd = (b.device||'').toLowerCase();
+      return ad.localeCompare(bd);
+    });
+    const rows = filtered.slice(0,400);
+    wrap.innerHTML = `<table class="tbl"><thead><tr><th>#</th><th>Test</th><th>Suite</th><th>Run</th><th>Region</th><th>Device</th><th>Status</th><th>Duration</th></tr></thead><tbody>` +
+      rows.map((t,i)=>`<tr>
+        <td style="font-family:var(--font-m);font-size:11px;color:var(--text3)">${i+1}</td>
+        <td><div class="tname" title="${(t.name||'').replace(/\"/g,'&quot;')}">${t.name||'—'}</div></td>
+        <td><div style="font-size:11px;color:var(--text3);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${(t.suite||'').replace(/\"/g,'&quot;')}">${t.suite||'—'}</div></td>
+        <td><div style="font-size:11px;color:var(--text3);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${(t.run_name||'').replace(/\"/g,'&quot;')}">${t.run_name||'—'}</div></td>
+        <td><span class="badge bregion">${t.region||'—'}</span></td>
+        <td><span class="badge bdevice">${t.device||'—'}</span></td>
+        <td>${statusBadge(t.status||'')}</td>
+        <td><span class="tdur">${dur(t.duration_ms||0)}</span></td>
+      </tr>`).join('') +
+      `</tbody></table>`;
+    return;
+  }
+
+  // Matrix mode: one row per test, columns per region/device combo
+  const combos = [];
+  const seenC = new Set();
+  runs.forEach(r=>{
+    const k = _comboKey(r.region, r.device);
+    if (!seenC.has(k)) { seenC.add(k); combos.push({key:k, region:r.region||'—', device:r.device||'—'}); }
+  });
+  combos.sort((a,b)=> (a.region+'|'+a.device).localeCompare(b.region+'|'+b.device));
+
+  const map = new Map(); // testKey -> {name,suite, statuses:{comboKey: status}}
+  tests.forEach(t=>{
+    const name = t.name || '—';
+    const suite = t.suite || '—';
+    const testKey = (suite + '::' + name).toLowerCase();
+    const combo = _comboKey(t.region, t.device);
+    if (q && !( (name+' '+suite).toLowerCase().includes(q) )) return;
+    if (!map.has(testKey)) map.set(testKey, {name, suite, statuses:{}});
+    const row = map.get(testKey);
+    // Choose worst status if multiple (failed > skipped > passed)
+    const prev = row.statuses[combo];
+    const cur = t.status || '';
+    const rank = s => s==='failed'?3 : s==='skipped'?2 : s==='passed'?1 : 0;
+    if (!prev || rank(cur) > rank(prev)) row.statuses[combo] = cur;
+  });
+
+  const rows = Array.from(map.values()).sort((a,b)=> (a.suite+'::'+a.name).localeCompare(b.suite+'::'+b.name)).slice(0,200);
+  const head = `<thead><tr><th>Test</th><th>Suite</th>${combos.map(c=>`<th style="white-space:nowrap">${c.region}<br/><span style="color:var(--text3);font-size:10px">${c.device}</span></th>`).join('')}</tr></thead>`;
+  const body = `<tbody>` + rows.map(r=>{
+    return `<tr>
+      <td><div class="tname" title="${String(r.name).replace(/\"/g,'&quot;')}">${r.name}</div></td>
+      <td><div style="font-size:11px;color:var(--text3);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${String(r.suite).replace(/\"/g,'&quot;')}">${r.suite}</div></td>
+      ${combos.map(c=>{
+        const s = r.statuses[c.key] || '';
+        return `<td>${s ? statusBadge(s) : '<span style="color:var(--text3)">—</span>'}</td>`;
+      }).join('')}
+    </tr>`;
+  }).join('') + `</tbody>`;
+
+  wrap.innerHTML = `<div style="overflow-x:auto"><table class="tbl">${head}${body}</table></div>` +
+    `<div style="padding:10px 0 0;color:var(--text3);font-size:11px">Showing ${rows.length} tests${map.size>rows.length?` (filtered from ${map.size})`:''}. Matrix shows status per region/device.</div>`;
+}
+
+async function exportBatch(format) {
+  if (!currentBatchId) { toast('Open a batch first', true); return; }
+  try {
+    const d = await api(`/api/batches/${currentBatchId}/export?format=${encodeURIComponent(format)}`);
+    _downloadText(d.filename, d.mime, d.content);
+    toast('Export downloaded');
+  } catch(e) {
+    toast('Export failed', true);
+  }
+}
+
+// ── Data Store info ───────────────────────────────────────────────────────────
+async function loadDbInfo() {
+  try {
+    const d = await api('/api/db');
+    $('db-info-grid').innerHTML = [
+      ['📄 Storage format', d.storage],
+      ['📁 runs.json',      d.runs_file],
+      ['📂 Tests folder',   d.tests_dir],
+      ['🗂 Run entries',    d.run_count + ' runs'],
+      ['📝 Test files',     d.test_files + ' files'],
+      ['💾 Total size',     d.total_size_kb + ' KB'],
+    ].map(([label,val])=>`
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px">
+        <div style="font-size:11px;font-family:var(--font-m);color:var(--text3);margin-bottom:4px">${label}</div>
+        <div style="font-size:12px;color:var(--text);font-family:var(--font-m);word-break:break-all">${val}</div>
+      </div>`).join('');
+
+    // show a real sample from runs.json if available
+    const runs = await api('/api/runs?limit=1');
+    if(runs.runs && runs.runs.length) {
+      const sample = runs.runs[0];
+      const pretty = JSON.stringify(sample, null, 2)
+        .replace(/"([^"]+)":/g, '<span style="color:#4ade80">"$1"</span>:')
+        .replace(/: "([^"]+)"/g, ': <span style="color:#fb923c">"$1"</span>')
+        .replace(/: (\d+\.?\d*)/g, ': <span style="color:#60a5fa">$1</span>');
+      $('runs-sample').innerHTML = '[  // data/runs.json\n' + pretty + '\n]';
+    } else {
+      $('runs-sample').textContent = '[]  // No runs yet — import a report to see data here';
+    }
+  } catch(e) {
+    toast('Could not load data store info', true);
+  }
+}
+
+async function resetDashboard() {
+  if (!confirm('Reset the dashboard? This will permanently delete all runs and test data. This cannot be undone.')) return;
+  const btn = $('btn-reset-dashboard');
+  if (btn) { btn.disabled = true; btn.textContent = 'Resetting…'; }
+  try {
+    const res = await fetch(API + '/api/reset', { method: 'POST' });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      toast(data.error || 'Reset failed', true);
+      return;
+    }
+    toast(data.message || 'Dashboard reset.');
+    await loadDbInfo();
+    nav('dashboard', document.querySelector('.nav-item[onclick*="dashboard"]'));
+    refreshAll();
+  } catch(e) {
+    toast('Reset failed', true);
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = 'Reset dashboard'; }
+  }
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+(async function init() {
+  await populateFilters();
+  await loadDashboard();
+  applyFilters();
+  // auto-refresh every 60s
+  setInterval(loadDashboard, 60000);
+})();
+</script>
+</body>
+</html>

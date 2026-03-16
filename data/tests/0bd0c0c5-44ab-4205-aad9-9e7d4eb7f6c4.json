@@ -1,0 +1,24 @@
+[
+  {
+    "id": "e45331ce-7e7c-430b-9002-f6cf840f70de",
+    "run_id": "6fe7948d-0516-4d08-9b9e-311167db8a62",
+    "name": "DeliveryAddressValidation",
+    "full_name": "com.example.retail.tests.CheckoutTest.testDeliveryAddressValidation",
+    "suite": "CheckoutTest",
+    "feature": "Checkout",
+    "status": "passed",
+    "duration_ms": 2658,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression",
+      "@checkout"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

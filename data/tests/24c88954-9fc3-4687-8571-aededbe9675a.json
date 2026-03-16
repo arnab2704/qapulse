@@ -1,0 +1,24 @@
+[
+  {
+    "id": "a611f85a-c2a5-4153-9e69-a75e9e70799b",
+    "run_id": "85ee21af-bb18-4faf-880b-0445249fdb58",
+    "name": "PricesCurrencySymbol",
+    "full_name": "com.example.retail.tests.LocalisationTest.testPricesCurrencySymbol",
+    "suite": "LocalisationTest",
+    "feature": "Localisation",
+    "status": "passed",
+    "duration_ms": 2977,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@smoke",
+      "@localisation"
+    ],
+    "region": "AT",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "a368e866-c56c-4b0a-ac81-65b4bbb24235",
+    "run_id": "5ea4fe4e-86c5-4aeb-a2a8-bdeb3e7423ac",
+    "name": "SearchSpecialChars",
+    "full_name": "com.example.retail.tests.SearchTest.testSearchSpecialChars",
+    "suite": "SearchTest",
+    "feature": "Search",
+    "status": "passed",
+    "duration_ms": 2072,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression"
+    ],
+    "region": "UK",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]

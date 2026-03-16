@@ -1,0 +1,24 @@
+[
+  {
+    "id": "6d23e918-d71a-47e6-bd45-3fc1b846f0fb",
+    "run_id": "9cdf8e44-072c-4c13-916b-753e05b9cf7f",
+    "name": "ImageGallerySwipe",
+    "full_name": "com.example.retail.tests.ProductDetailTest.testImageGallerySwipe",
+    "suite": "ProductDetailTest",
+    "feature": "Product Detail Page",
+    "status": "passed",
+    "duration_ms": 4270,
+    "error_msg": "",
+    "error_type": "",
+    "stack_trace": "",
+    "tags": [
+      "@regression",
+      "@mobile"
+    ],
+    "region": "DE",
+    "device": "desktop-chrome",
+    "device_type": "desktop",
+    "retry_count": 0,
+    "is_flaky": 0
+  }
+]
