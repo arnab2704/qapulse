@@ -4,14 +4,11 @@
 
 QA Pulse runs entirely on your machine. Upload test reports from JUnit, Allure, Playwright, and more — see pass rates, trends, region/device breakdowns, and AI-powered insights in seconds.
 
-<<<<<<< HEAD
+
 ![QA Pulse Dashboard](screenshots/dashboard.png)
 
 *QA Pulse Dashboard — KPIs, trends, test distribution, region/device health, and recent runs at a glance.*
 
-=======
->>>>>>> dc46baf48aa97431a3d39c875fcb6cb0e6f1fc14
----
 
 ## Version & License
 
